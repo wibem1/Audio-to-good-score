@@ -1,6 +1,6 @@
 # Audio to Good Score
 
-Lokale Web-App für **V0.1 – Meilenstein 1 und technischer Transkriptionsweg aus Meilenstein 2**. Standard: **Musikalisch ausgewogen**. Keine musikalische oder vollständige V0.1-Freigabe.
+Lokale Web-App für **V0.1 – technischer Workflow aus Import, Transkription, selektiver Reparatur und Klaviernotation**. Standard: **Musikalisch ausgewogen**. Keine musikalische oder vollständige V0.1-Freigabe.
 
 ## Start
 
@@ -28,7 +28,7 @@ Der synthetische Test zeigt diese Grenzen ausdrücklich: 7 von 8 erwarteten Note
 
 WAV/MP3 und/oder SMF 0/1 importieren, bei Audio+MIDI den konstanten Audio-Versatz einstellen. Positive Werte überspringen den entsprechenden Audioanfang; Tempodrift erfordert ein späteres Mehrpunkt-Alignment. Passage per Feldern oder Ziehen auf der Pianorolle markieren. Note anklicken oder in der Liste wählen, Tonhöhe/Velocity ändern und begründen. Start-/Endticks erfordern eine ausdrückliche Freigabe. Nur vollständig in der Passage liegende Noten werden bearbeitet; es gibt keine pauschale Quantisierung.
 
-Originale sind separat herunterladbar. B/C vergleichen, rückgängig machen/wiederherstellen, MIDI und Diagnose exportieren. **Vor dem Schließen Projekt speichern**; keine automatische dauerhafte Speicherung. Projekte aus Meilenstein 1 (Schema 1) lassen sich weiterhin öffnen, neue Projekte benutzen Schema 3 (ältere Versionen sollen Ausblendungen nicht stillschweigend verlieren). Der Vergleichssynthesizer ist kein gesampeltes Klavier; Programme, Pitchbend und weitere Controller sind im Export erhalten, im Klang vereinfacht.
+Originale sind separat herunterladbar. B/C vergleichen, rückgängig machen/wiederherstellen, MIDI und Diagnose exportieren. **Vor dem Schließen Projekt speichern**; keine automatische dauerhafte Speicherung. Projekte aus Meilenstein 1 (Schema 1) lassen sich weiterhin öffnen, neue Projekte benutzen Schema 4 (ältere Versionen sollen Ergänzungen/Notationsparameter nicht stillschweigend verlieren). Der Vergleichssynthesizer ist kein gesampeltes Klavier; Programme, Pitchbend und weitere Controller sind im Export erhalten, im Klang vereinfacht.
 
 ## Entwicklung und Prüfungen
 
@@ -59,3 +59,21 @@ Testdaten sind synthetisch und werden automatisch erzeugt. Standardausgaben: `/t
 Siehe [PROJECT_STATE.md](PROJECT_STATE.md), [TEST_RESULTS.md](TEST_RESULTS.md), [ARCHITECTURE.md](ARCHITECTURE.md), [TRANSCRIPTION_DECISION.md](TRANSCRIPTION_DECISION.md) und [PFLICHTENHEFT_V0.1.md](PFLICHTENHEFT_V0.1.md).
 
 Einzelnoten ausblenden: Note wählen, „Note aus Bearbeitung ausblenden“ ankreuzen, begründen und übernehmen. B und Originaldatei bleiben vollständig; C und MIDI-Export lassen nur diese Note weg. Ausgeblendete Noten bleiben blass sichtbar und lassen sich per Undo/Redo oder durch Aufheben des Häkchens wieder aufnehmen. Projekt Schema 3 speichert diesen Zustand, Schema 1/2 bleibt lesbar. Zusätzlicher Test: `python3 tests/independent_mute.py` nach dem M1-Browsertest.
+
+## Reparatur und Klaviernotation
+
+Für fehlende Töne gewünschte Tonhöhe/Velocity und Start-/Endticks in der Einzelnotenmaske eingeben, die Passage passend wählen, begründen und „Als neue Note ergänzen“ benutzen. Auch Ergänzungen sind mit Undo/Redo reversibel und werden in Schema 4 gespeichert. Bei „Markierte Passage im Kontext analysieren“ entstehen unsichere Hypothesen. „Note prüfen“ wählt die betroffene Note; erst eine eigene Prüfbegründung und die einzelne Übernahme verändern die Bearbeitung. Keine vollwertige musikalische KI-Entscheidung – siehe `ACCEPTANCE.md`.
+
+Unter „Klaviernotation / MusicXML“ Taktart und Handteilungsgrenze kontrollieren. Für Audio-only musikalisches BPM selbst wählen und Zeitbasis „Audiosekunden“ benutzen; die im MIDI hinterlegten 120 BPM sind kein erkannter Puls. Importierte metrische MIDI kann mit „MIDI-Metrik“ notiert werden. Das separate Score-Modell rundet auf Sechzehntel; expressive MIDI-Zeiten bleiben unverändert. Export ist eine **Prüffassung**, keine zugesicherte spielbare Endpartitur. Triolen, freie Rhythmik, Handteilung und Phrasierung müssen gegebenenfalls im Notationsprogramm nachgearbeitet werden.
+
+Zusätzliche unabhängige Notationsprüfung:
+
+```sh
+node tests/generate-score.js
+python3 -m pip install music21==9.9.1 verovio==5.7.0
+python3 tests/independent_score.py
+```
+
+Diese Werkzeuge sind nur Testabhängigkeiten. Quellen: MusicXML-4.0-Referenz https://www.w3.org/2021/06/musicxml40/ und Verovio-Importreferenz https://book.verovio.org/toolkit-reference/input-formats.html. Reale Dorico-/MuseScore-Abnahme und menschlicher Hörvergleich bleiben erforderlich. Der verbindliche Gesamtstatus steht in `ACCEPTANCE.md`.
+
+Die zusätzliche Schaltfläche „Markierte Passage lokal mit Audio gegenprüfen“ benötigt Audio und vorhandene MIDI. Sie verwendet das echte lokale Basic-Pitch-Modell und erzeugt nur eng begrenzte, unsichere Oktavvorschläge. Original und MIDI bleiben zunächst unverändert. Jeder Vorschlag braucht eine eigene Hör-/Prüfbegründung und einzelne Übernahme; keine Löschung aufgrund bloß vom Modell fehlender Noten. Zusatztest: `python3 tests/independent_countercheck.py` nach dem Browserlauf.

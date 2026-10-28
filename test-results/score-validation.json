@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "parser": "music21 9.9.1",
+  "renderer": "5.7.0-7135340",
+  "notes_after_tie_rejoin": 10,
+  "all_quantized_pitches_onsets_durations_equal": true,
+  "all_voice_measures_filled": true,
+  "staves": 2,
+  "rendered_pages": 1,
+  "dorico_import": false,
+  "musescore_import": false,
+  "human_musical_approval": false
+}

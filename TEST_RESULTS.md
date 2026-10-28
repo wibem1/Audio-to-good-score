@@ -81,3 +81,15 @@ Die Web-Audio-Engine hat echte AudioBufferSource-/Oscillator-Starts ausgeführt.
 ## Wiederholung
 
 `npm test`; dann die im README beschriebenen Browser- und unabhängigen MIDI-Tests. Testdaten werden synthetisch erzeugt; FFmpeg erzeugt die MP3. Testergebnisse nicht als Hörfreigabe umdeuten. Standard-Playwright-Browserdownload war in der Arbeitsumgebung nicht verwendbar; der tatsächliche Browser wurde über das offizielle npm-Testbrowserpaket bereitgestellt. Dies ändert die Produktabhängigkeiten nicht.
+
+# Aktuelle Ergänzung – Reparatur und MusicXML
+
+31 Kerntests bestanden. Hinzugekommen: reversible Ergänzung fehlender Noten mit unveränderten Nachbarn; Kontext-Hypothesen ohne automatische Änderung; Zurückweisung veralteter Vorschläge; Score-/Performance-Trennung; unabhängige Stimmen und gleichzeitige identische Tonhöhen; Taktwechsel/Balkengruppierung (einschließlich 6/8). Im Balkentest wurde ein Fehler der zusammengesetzten Metrik gefunden und vor Sicherung korrigiert.
+
+Browserprüfung: manuelle Ergänzung, Undo/Redo, Schema-4-Wiederherstellung, MusicXML und Mapping herunterladen, Kontextanalyse darstellen; keine JavaScript-Seitenfehler. Lokale Modellregression weiter bestanden. MusicXML-Prüfung mit music21 9.9.1 und Verovio 5.7.0: zehn Noten nach Zusammenführung von Bindungen mit identischen Score-Tonhöhen/Startwerten/Dauern; alle Stimmen/Takte exakt gefüllt; zwei Systeme, echte SVG-Renderausgabe visuell geprüft. Ergebnisse und Beispieldatei unter `test-results/score-*`.
+
+Keine XSD-Validierung behauptet: der versuchte Zugriff auf das verschobene W3C-GitHub-Schema lieferte keinen verwendbaren Schema-Download. Der belegte Nachweis ist unabhängiger Parserimport mit Notenvergleich und Verovio-Rendering. Keine reale Dorico-/MuseScore-Prüfung oder menschliche Hörfreigabe. Vollständige Grenzen einschließlich F07/F08: `ACCEPTANCE.md`.
+
+## Neuronale selektive Gegenprüfung
+
+Echtes lokales Basic-Pitch-WASM-Modell gegen synthetischen C4-Audioton und MIDI-C5 geprüft: Vorschlag erscheint ohne Änderung; fehlende Prüfbegründung verhindert Übernahme; explizite Übernahme korrigiert nur 72→60; Undo stellt 72 wieder her. Unabhängiger mido-Test bestätigt nur zwei geänderte Pitch-Ereignisse, keine veränderten Ereigniszeiten. Modellevidenz und Aktivierungsunsicherheit sind im Kontextbericht, Modell-/Audiohash und Parameter im lokalen Laufprotokoll. Kein Cloud-/kostenpflichtiger Aufruf.

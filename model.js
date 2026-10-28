@@ -1,6 +1,6 @@
 import {exportMidi,parseMidi,tickToSeconds} from './midi.js';
 export class Session {
-  constructor(midi){this.midi=midi;this.notes=structuredClone(midi.notes);this.history=[];this.future=[];}
+  constructor(midi){this.midi=midi;this.notes=structuredClone(midi.notes);this.history=[];this.future=[];this.nextAdded=1;}
   edit(id,patch,section,reason,allowTiming=false){
     const old=this.notes.find(n=>n.id===id);if(!old)throw Error('Note fehlt.');
     if(!reason.trim())throw Error('Bitte die musikalische Begründung angeben.');
@@ -21,8 +21,19 @@ export class Session {
     this.history.push({id,before:structuredClone(old),after:structuredClone(next),reason:reason.trim(),uncertainty:'manuelle Hypothese, musikalisch ungeprüft',at:new Date().toISOString()});
     this.notes=after;this.future=[];
   }
-  undo(){const c=this.history.pop();if(!c)return;this.notes=this.notes.map(n=>n.id===c.id?structuredClone(c.before):n);this.future.push(c);}
-  redo(){const c=this.future.pop();if(!c)return;this.notes=this.notes.map(n=>n.id===c.id?structuredClone(c.after):n);this.history.push(c);}
+  add(values,section,reason){
+    if(this.notes.length>=10000)throw Error('Maximal 10.000 Noten.');
+    const id=values.id||`added:${this.nextAdded++}`;
+    if(!/^added:\d+$/.test(id)||this.notes.some(n=>n.id===id))throw Error('Ungültige neue Noten-ID.');
+    this.nextAdded=Math.max(this.nextAdded,Number(id.split(':')[1])+1);
+    const n={id,track:0,channel:0,pitch:values.pitch,velocity:values.velocity,start:values.start,end:values.end,on:-1,off:-1,added:true};
+    if(this.notes.some(o=>!o.muted&&o.channel===0&&o.pitch===n.pitch&&o.start<n.end&&n.start<o.end))throw Error('Neue Überlappung gleicher Tonhöhe.');
+    this.notes.push(n);
+    try{this.edit(id,{},section,reason,true);}catch(error){this.notes.pop();throw error;}
+    this.history.push({id,before:null,after:structuredClone(n),reason:reason.trim(),uncertainty:'manuell ergänzte Note, musikalisch ungeprüft',at:new Date().toISOString()});this.future=[];return id;
+  }
+  undo(){const c=this.history.pop();if(!c)return;this.notes=c.before?this.notes.map(n=>n.id===c.id?structuredClone(c.before):n):this.notes.filter(n=>n.id!==c.id);this.future.push(c);}
+  redo(){const c=this.future.pop();if(!c)return;this.notes=c.before?this.notes.map(n=>n.id===c.id?structuredClone(c.after):n):[...this.notes,structuredClone(c.after)];this.history.push(c);}
   diagnose(){
     const findings=this.midi.warnings.map(message=>({kind:'Import',message,certainty:'technisch'}));
     const add=f=>{if(findings.length<200)findings.push(f);};

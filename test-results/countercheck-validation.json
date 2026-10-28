@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "parser": "mido 1.3.3",
+  "changed_pitch_events": 2,
+  "all_event_times_unchanged": true,
+  "duration_seconds": 4.0
+}

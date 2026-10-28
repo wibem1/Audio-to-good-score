@@ -1,0 +1,294 @@
+{
+  "voices": [
+    [
+      [
+        {
+          "start": 0,
+          "end": 4,
+          "staff": 1,
+          "notes": [
+            {
+              "id": "0:2",
+              "track": 0,
+              "channel": 0,
+              "pitch": 60,
+              "velocity": 82,
+              "start": 0,
+              "end": 420,
+              "on": 2,
+              "off": 3
+            }
+          ]
+        },
+        {
+          "start": 4,
+          "end": 8,
+          "staff": 1,
+          "notes": [
+            {
+              "id": "0:4",
+              "track": 0,
+              "channel": 0,
+              "pitch": 64,
+              "velocity": 82,
+              "start": 480,
+              "end": 900,
+              "on": 4,
+              "off": 5
+            }
+          ]
+        },
+        {
+          "start": 8,
+          "end": 12,
+          "staff": 1,
+          "notes": [
+            {
+              "id": "0:6",
+              "track": 0,
+              "channel": 0,
+              "pitch": 67,
+              "velocity": 82,
+              "start": 960,
+              "end": 1380,
+              "on": 6,
+              "off": 7
+            }
+          ]
+        },
+        {
+          "start": 12,
+          "end": 16,
+          "staff": 1,
+          "notes": [
+            {
+              "id": "0:8",
+              "track": 0,
+              "channel": 0,
+              "pitch": 72,
+              "velocity": 82,
+              "start": 1440,
+              "end": 1860,
+              "on": 8,
+              "off": 9
+            }
+          ]
+        },
+        {
+          "start": 16,
+          "end": 20,
+          "staff": 1,
+          "notes": [
+            {
+              "id": "0:10",
+              "track": 0,
+              "channel": 0,
+              "pitch": 71,
+              "velocity": 82,
+              "start": 1920,
+              "end": 2340,
+              "on": 10,
+              "off": 11
+            }
+          ]
+        },
+        {
+          "start": 20,
+          "end": 24,
+          "staff": 1,
+          "notes": [
+            {
+              "id": "0:12",
+              "track": 0,
+              "channel": 0,
+              "pitch": 67,
+              "velocity": 82,
+              "start": 2400,
+              "end": 2820,
+              "on": 12,
+              "off": 13
+            }
+          ]
+        },
+        {
+          "start": 24,
+          "end": 28,
+          "staff": 1,
+          "notes": [
+            {
+              "id": "0:14",
+              "track": 0,
+              "channel": 0,
+              "pitch": 64,
+              "velocity": 82,
+              "start": 2880,
+              "end": 3300,
+              "on": 14,
+              "off": 15
+            }
+          ]
+        },
+        {
+          "start": 28,
+          "end": 32,
+          "staff": 1,
+          "notes": [
+            {
+              "id": "0:16",
+              "track": 0,
+              "channel": 0,
+              "pitch": 60,
+              "velocity": 82,
+              "start": 3360,
+              "end": 3780,
+              "on": 16,
+              "off": 17
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "start": 2,
+          "end": 8,
+          "staff": 1,
+          "notes": [
+            {
+              "id": "added:2",
+              "track": 0,
+              "channel": 0,
+              "pitch": 76,
+              "velocity": 60,
+              "start": 240,
+              "end": 900,
+              "on": -1,
+              "off": -1,
+              "added": true
+            }
+          ]
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "start": 0,
+          "end": 25,
+          "staff": 2,
+          "notes": [
+            {
+              "id": "added:1",
+              "track": 0,
+              "channel": 0,
+              "pitch": 48,
+              "velocity": 70,
+              "start": 0,
+              "end": 3000,
+              "on": -1,
+              "off": -1,
+              "added": true
+            }
+          ]
+        }
+      ]
+    ]
+  ],
+  "mapping": [
+    {
+      "id": "0:2",
+      "performanceStart": 0,
+      "performanceEnd": 420,
+      "scoreStart": 0,
+      "scoreEnd": 4,
+      "staff": 1
+    },
+    {
+      "id": "0:4",
+      "performanceStart": 480,
+      "performanceEnd": 900,
+      "scoreStart": 4,
+      "scoreEnd": 8,
+      "staff": 1
+    },
+    {
+      "id": "0:6",
+      "performanceStart": 960,
+      "performanceEnd": 1380,
+      "scoreStart": 8,
+      "scoreEnd": 12,
+      "staff": 1
+    },
+    {
+      "id": "0:8",
+      "performanceStart": 1440,
+      "performanceEnd": 1860,
+      "scoreStart": 12,
+      "scoreEnd": 16,
+      "staff": 1
+    },
+    {
+      "id": "0:10",
+      "performanceStart": 1920,
+      "performanceEnd": 2340,
+      "scoreStart": 16,
+      "scoreEnd": 20,
+      "staff": 1
+    },
+    {
+      "id": "0:12",
+      "performanceStart": 2400,
+      "performanceEnd": 2820,
+      "scoreStart": 20,
+      "scoreEnd": 24,
+      "staff": 1
+    },
+    {
+      "id": "0:14",
+      "performanceStart": 2880,
+      "performanceEnd": 3300,
+      "scoreStart": 24,
+      "scoreEnd": 28,
+      "staff": 1
+    },
+    {
+      "id": "0:16",
+      "performanceStart": 3360,
+      "performanceEnd": 3780,
+      "scoreStart": 28,
+      "scoreEnd": 32,
+      "staff": 1
+    },
+    {
+      "id": "added:1",
+      "performanceStart": 0,
+      "performanceEnd": 3000,
+      "scoreStart": 0,
+      "scoreEnd": 25,
+      "staff": 2
+    },
+    {
+      "id": "added:2",
+      "performanceStart": 240,
+      "performanceEnd": 900,
+      "scoreStart": 2,
+      "scoreEnd": 8,
+      "staff": 1
+    }
+  ],
+  "bar": 16,
+  "beat": 4,
+  "measures": 2,
+  "parameters": {
+    "beats": 4,
+    "beatType": 4,
+    "splitPitch": 60,
+    "bpm": 120,
+    "timeBasis": "ticks",
+    "title": "Klavier – Prüffassung"
+  },
+  "warnings": [
+    "Notationsraster: Sechzehntel; keine Triolen oder automatisch erkannten Taktarten.",
+    "Handteilung nach gewählter Tonhöhengrenze, keine bestätigte Spielbarkeitsanalyse.",
+    "Notationszeiten sind eine separate Darstellung; Performance-MIDI wird nicht verändert."
+  ]
+}

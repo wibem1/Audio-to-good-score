@@ -63,7 +63,7 @@ export function secondsToTick(midi,seconds){
 export function exportMidi(midi,notes=midi.notes){
   if(JSON.stringify(notes)===JSON.stringify(midi.notes)) return new Uint8Array(midi.original);
   const tracks=structuredClone(midi.tracks);
-  for(const n of notes){const on=tracks[n.track][n.on],off=tracks[n.track][n.off];if(n.muted){on.omitted=true;off.omitted=true;}on.tick=n.start;on.data=[n.pitch,n.velocity];off.tick=n.end;off.data[0]=n.pitch;}
+  for(const n of notes){if(n.added){if(!n.muted)tracks[n.track].push({tick:n.start,status:144+n.channel,data:[n.pitch,n.velocity],order:tracks[n.track].length},{tick:n.end,status:128+n.channel,data:[n.pitch,0],order:tracks[n.track].length+1});continue;}const on=tracks[n.track][n.on],off=tracks[n.track][n.off];if(n.muted){on.omitted=true;off.omitted=true;}on.tick=n.start;on.data=[n.pitch,n.velocity];off.tick=n.end;off.data[0]=n.pitch;}
   const result=[77,84,104,100,...u32(6),...u16(midi.format),...u16(tracks.length),...u16(midi.ppq)];
   for(const events of tracks){
     const eot=events.find(e=>e.status===255&&e.meta===47);

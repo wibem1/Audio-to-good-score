@@ -1,0 +1,60 @@
+{
+  "browser": "138.0.7204.0",
+  "model": {
+    "provider": "spotify-basic-pitch",
+    "packageVersion": "1.0.1",
+    "model": "ICASSP 2022",
+    "tensorflow": "3.21.0",
+    "license": "Apache-2.0",
+    "files": {
+      "model.json": {
+        "bytes": 174537,
+        "sha256": "1ed1aaee3409ec1dc098c8b01f430c0911f6fe9412e7af8086750f9e8f302f68"
+      },
+      "group1-shard1of1.bin": {
+        "bytes": 742392,
+        "sha256": "b142a95737a52e1e412d5f92e73d8bb80dfe8d04941acc0702f11f4524fb377c"
+      }
+    }
+  },
+  "backend": "wasm",
+  "localRuns": 2,
+  "elapsedMs": 815,
+  "tensorBytes": 5570376,
+  "synthetic": {
+    "truthNotes": 8,
+    "candidateNotes": 9,
+    "matchedNotes": 7,
+    "recall": 0.875,
+    "precision": 0.7777777777777778,
+    "maxOnsetErrorSeconds": 0.013500000000000068
+  },
+  "passed": [
+    "real local WASM polyphonic inference from stereo WAV",
+    "MP3-only inference without MIDI",
+    "preview before adoption and discard",
+    "Audio A / raw candidate B / edited C / mix playback",
+    "non-destructive candidate editing with unchanged timing",
+    "original audio identity",
+    "provenance and model hashes in diagnosis",
+    "project restore with undo/redo",
+    "cancellation with no stale candidate",
+    "corrupt model rejected by SHA-256",
+    "missing model handled without lost input",
+    "silence returns no fake MIDI notes",
+    "UI heartbeat during inference",
+    "desktop/mobile viewport without page overflow",
+    "no external requests, uploads or paid inference"
+  ],
+  "pageErrors": [],
+  "externalRequests": [],
+  "nonGetRequests": [],
+  "capacityTest": {
+    "seconds": 60,
+    "elapsedMs": 7072,
+    "tensorBytes": 60603048,
+    "noteCount": 0,
+    "progressEvents": 40
+  },
+  "humanListeningApproval": false
+}

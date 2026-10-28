@@ -1,52 +1,29 @@
 # Projektstand – Audio to Good Score
 
-**Stand:** 28.10.2026  
-**Phase:** M1 technisch geprüft; M2 als lokaler polyphoner Audio-only-Kandidatenweg implementiert und mit echtem Modell technisch geprüft. **Musikalische Abnahme offen.**  
-**Zielversion:** V0.1 insgesamt nicht freigegeben.  
-**Repository:** `wibem1/Audio-to-Good-Score`, `main`. Code, Modellassets, Testnachweise und Übergabe liegen gemeinsam im Commit dieses Dokuments. Letzter M1-Stand bleibt als Commit `6458b6db070652821d2ead96a947b64ebbffe0be` erhalten.
+Stand: 28.10.2026. **Technisch geprüfter Entwicklungsstand; V0.1 nicht vollständig abgenommen.** GitHub `wibem1/Audio-to-Good-Score`, `main`, ist maßgeblich. Vorige gesicherte Stände bleiben in der Historie: M1 `6458b6d`, Audio-only `0b3bcf7`, Notenausblendung `b48547c`.
 
-## Verbindliche Leitplanken
+## Nachgewiesene Funktionen
 
-Audio allein, Audio+MIDI und MIDI allein sind gleichrangige Eingänge. Standard **Musikalisch ausgewogen**. Originale nicht überschreiben; Korrekturen einzeln begründen, sichtbar machen, vergleichen und rückgängig machen. Performance und spätere Score-Zeiten getrennt. Keine pauschale Quantisierung. Keine kostenpflichtigen KI-Aufrufe ohne Zustimmung. Technische Tests ersetzen keine musikalische Hörfreigabe.
+- Audio-only, Audio+MIDI und MIDI-only; WAV/MP3, SMF 0/1, lokale Basic-Pitch-Transkription ohne Cloud und ohne bestehende MIDI.
+- Gemeinsame Zeitachse, manuelles Alignment, Abschnittsauswahl/Pianorolle, A/B/C und Mix. Einfacher Vergleichssynthesizer, keine Klaviersample-Klangfreigabe.
+- Nicht-destruktive Tonhöhen-/Velocity-/Zeitänderungen mit Begründung, separate Timingfreigabe, reversible Notenausblendung und **manuelles Ergänzen fehlender Noten**. Abschnitts-/Überlappungs-/Export-Roundtrip-Schutz, Undo/Redo. Originaldateien unverändert.
+- **Kontextdiagnose und kontrollierte Vorschläge:** Tonklassen-/Bass-/Spitzenlage, einfache Akkordmuster, wiederkehrende Intervalle und Einsatzabstände; mögliche Oktavdoppelungen/-sprünge als unsichere Hypothesen. Zusätzlich echte lokale Basic-Pitch-Audio-Gegenprüfung bestehender MIDI mit begrenzten neuronalen Oktavvorschlägen und protokollierter Modellevidenz. Kein automatisches Übernehmen. Veraltete Vorschläge/Quellenwechsel werden abgefangen, Gründe stehen im Änderungsprotokoll und Kontext im Diagnoseexport.
+- **Getrenntes Score-Modell und MusicXML:** zwei Klaviersysteme, mehrere unabhängige Stimmen, Akkorde, Pausen, Taktfüllung, Bindungen und Balken. Wählbare Taktart/Handteilung, MIDI-Metrik oder Audiosekunden mit gewähltem BPM. Sechzehntelraster ausschließlich im Score-Modell. Keine Rückquantisierung des Performance-MIDI.
+- Projekt Schema 4 speichert Originale, Änderungen einschließlich Ergänzungen, Modellherkunft und Notationsparameter; ältere Schema 1/2/3 bleiben lesbar. Manuell speichern. Diagnose und Notationszuordnung exportierbar.
 
-## Ergänzung: selektive manuelle Reparatur
+## Prüfgrundlage
 
-Noten lassen sich mit Begründung und Abschnittsschutz reversibel aus C und dem Export ausblenden. Original/B bleibt erhalten, keine Zeitverschiebung anderer Noten. Wiedergabe, Export, Undo/Redo und Projekt Schema 3 geprüft; Schema 1/2 weiterhin lesbar. Unabhängiger mido-Test bestätigt ausschließlich zwei entfernte Ereignisse bei unveränderten absoluten Zeiten der übrigen Ereignisse. M3 bleibt hinsichtlich musikalischer KI-Diagnose und automatischer Reparatur offen.
+31/31 Kerntests bestanden. Reale Chromium-Prüfung einschließlich Ergänzen, Projektwiederherstellung, Kontext-UI, MusicXML-/Mapping-Export; lokale Modellregression weiterhin bestanden. Unabhängige mido-Prüfungen bestätigen Ereignis-/Rhythmuserhalt. MusicXML durch music21 9.9.1 erneut gelesen: alle zehn Testnoten einschließlich quantisierter Start-/Dauerwerte nach Tie-Zusammenführung gleich. Jede Stimme füllt jeden Takt. Verovio 5.7.0 rendert zwei Systeme; SVG visuell geprüft. Kein XSD-Validierungsnachweis und keine Dorico-/MuseScore-Abnahme. Einzelheiten: `TEST_RESULTS.md`, `ACCEPTANCE.md`, `test-results/`.
 
-## Aktuell nachgewiesen
+## Verbleibende Lücken für vollständige V0.1
 
-| Bereich | Nachweis / Grenzen |
-|---|---|
-| M1 Import, Pianorolle, Passage, manuelles Alignment | Echte Chromium-Regression für WAV/MP3/SMF 0/1, Mausmarkierung, gemeinsame Web-Audio-Uhr; keine automatische Tempoausrichtung |
-| Einzelnoten, Undo/Redo, MIDI-Export | Abschnitts-/Timingfreigabe-/Überlappungsschutz und Export-Roundtrip; ursprüngliche Tempokarte/Ereignisse erhalten; unabhängige mido-Prüfung |
-| Audio-only → MIDI-Kandidat | Basic Pitch 1.0.1 / ICASSP 2022 mit TensorFlow-WASM direkt im Browser. Kein vorheriges MIDI, kein Backend, keine Cloud. WAV/MP3 einschließlich Stereo-Resampling mit echtem Modell geprüft |
-| Kandidatensicherheit | Separates Ergebnis, Übernehmen/Verwerfen; vorhandene MIDI blockiert Neu-Transkription; Abbruch terminiert Worker, Quellenwechsel invalidiert Ergebnisse, Modellhashes vor Ausführung geprüft |
-| Vergleich und Korrektur | A Originalaudio, B unbearbeiteter Kandidat, C manuell bearbeiteter Kandidat; reale Audioknoten gestartet, Zeiten nach Korrektur unverändert; kein behaupteter menschlicher Hörtest |
-| Projekt/Diagnose | Schema 2 mit Audio, unbearbeitetem Kandidaten, Modell-/Quellhashes, Parametern, Laufprotokollen und Undo/Redo; Schema 1 weiterhin im Browser lesbar. Manuell speichern |
-| Fehlerfälle/Ressourcen | Fehlende/korrupte Modelle, Abbruch und Stille getestet; tatsächlich 60-s-Eingabe verarbeitet; keine erfundenen Noten aus Stille; kein externer Request im Modellbrowsertest |
+1. **Musikalische KI-Abnahme offen:** Das neuronale Modell liefert Audio-Notenkandidaten und kann vorhandene MIDI selektiv mit Audio gegenprüfen. Ein echter Modell-Browsertest korrigiert nach ausdrücklicher Bestätigung einen synthetischen Oktavfehler und bestätigt Undo/Rhythmuserhalt. Die musikalische Kontextanalyse und Reparaturhypothesen sind transparente Regeln, kein abgenommenes KI-Modell für Melodie/Motivik/Harmonik. Keine erfundene KI-Freigabe.
+2. **A09 offen:** Dorico und MuseScore sind in der Arbeitsumgebung nicht installiert; echter Import-/Satztest dort fehlt. Verovio/music21 sind unabhängige technische Prüfungen, kein Ersatz für diese Abnahme.
+3. **A11 musikalisch offen:** Keine bereitgestellte echte Referenzaufnahme „Graziler Tanz“ und keine menschliche A/B/C-Hörfreigabe. Im synthetischen Basic-Pitch-Test weiterhin Oktav-/Auslassungsfehler (7 passende von 8 Referenznoten, 9 Modellnoten).
+4. Native Tablet-/Safari-/Firefox-Abnahme fehlt. Score-Handteilung ist heuristisch; kein Triole-/Rubato-/Phrasierungsautomatismus. Pedal wird nicht aus Audio rekonstruiert. Keine automatische Tempoausrichtung. Kein automatisches Spielbarkeitsurteil.
 
-**Prüfstand:** 25/25 Kerntests bestanden, M1- und M2-Browserregression in Chromium 138.0.7204.0 bestanden, unabhängige mido-Exportprüfungen bestanden. `npm ci`/Build reproduziert. `TEST_RESULTS.md`, Maschinenberichte/Screenshots unter `test-results/` und Quellfingerabdrücke dokumentieren den Stand.
+## Betrieb und Fortsetzung
 
-## Modellqualität – ausdrücklich begrenzt
+`python3 -m http.server 8000 --bind 127.0.0.1`, dann `http://localhost:8000`. Kein zusätzlicher Modelldownload für die Benutzung. Globale Standards, AGENTS, Pflichtenheft, diesen Stand und `ACCEPTANCE.md` lesen. `npm test` ausführen. Neue Module `analysis.js` und `score.js`; Testwerkzeuge music21/Verovio sind keine Produktabhängigkeiten.
 
-Der synthetische Test mit 8 Referenznoten ergibt 9 Modellnoten, davon 7 zu passenden Referenznoten zugeordnet. Oktavfehler sind vorhanden. Das ist ein technischer Funktionsnachweis und **keine Freigabe für reale Klaviermusik**. Keine Schwellenanpassung oder stille musikalische Nachkorrektur. Basic Pitch erkennt kein Pedal; 120 BPM im Kandidaten ist nur Transport für Sekundenzeiten, kein erkanntes musikalisches Tempo. Velocity ist Modellaktivierung, keine gemessene Anschlagsdynamik. Weitere Grenzen und Lizenz-/Modellvergleich: `TRANSCRIPTION_DECISION.md`.
-
-## Start / Code
-
-`python3 -m http.server 8000 --bind 127.0.0.1`, dann `http://localhost:8000`. Modell und Worker sind mitgeliefert; zum Benutzen kein npm-/KI-Dienst erforderlich. Entwicklung: `npm ci`, `npm run build`, `npm test`. Einstieg `index.html`, MIDI `midi.js`, Änderungen `model.js`, Wiedergabe `player.js`, Transkription `transcription.js`/`transcription-worker.js`/`model-spec.js`, reproduzierbare Assets `scripts/build-transcription.js` → `vendor/`.
-
-## Offen
-
-- Menschliche A/B/C-Hörprüfung einer echten Klavieraufnahme sowie Referenz „Graziler Tanz“ fehlen mangels bereitgestellter Testdaten. A11 ist technisch vorbereitet, musikalisch nicht abgenommen.
-- Native Tablet-/Safari-/Firefox-Tests, Hintergrundtab-/Langaufnahme-/Spitzen-RAM-Prüfung fehlen. Transkriptionspassage auf 0,1–60 s begrenzt; fünf Minuten Laufzeitlimit.
-- M3: musikalische Fehlerdiagnose und selektive KI-Reparatur fehlen. Aktuelle Diagnose ist heuristisch, keine Harmonie-/Stimmenanalyse.
-- M4: Score-Modell, MusicXML und reale Dorico-/MuseScore-Prüfung fehlen.
-- Vergleichssynthesizer bleibt vereinfacht; zusätzliche Controller/Programme bleiben im MIDI erhalten, werden nicht vollständig gerendert. Kein automatisches oder Mehrpunkt-Audioalignment.
-
-## Nächster einzelner Schritt
-
-Den neuen Audio-only-Kandidaten mit einer rechtmäßig verfügbaren echten Klavierpassage im menschlichen A/B/C-Hörvergleich prüfen und Fehler dokumentieren. Die nachgewiesenen Oktav-/Auslassungsfehler als Ausgangspunkt für M3 verwenden; keine pauschale Korrektur oder musikalische Freigabe aus den synthetischen Kennzahlen ableiten. „Graziler Tanz“ nur nach tatsächlicher Bereitstellung verwenden.
-
-## Übergabe
-
-Globale Standards, `AGENTS.md`, diese Datei, `TODO.md`, Pflichtenheft, Architektur-/Transkriptionsentscheidung, Testergebnisse und Code lesen. GitHub ist maßgeblich. Mit `npm test` beginnen. Lokale Modellversuche sind protokolliert, externe/zahlbare KI-Aufrufe: null.
+Nächste Abnahmeschritte: echte Klavierpassage mit menschlichem Hörvergleich, MusicXML in beiden Zielprogrammen prüfen und die begrenzte F07/F08-Musikqualität separat validieren und bei Bedarf erweitern. Keine umfassende automatische Korrektur ohne Einzelfreigabe und keine kostenpflichtigen KI-Aufrufe ohne Zustimmung. Kostenpflichtige/Cloud-Modellaufrufe bisher null.
