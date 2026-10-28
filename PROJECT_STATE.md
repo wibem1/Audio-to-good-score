@@ -1,6 +1,6 @@
 # Projektstand – Audio to Good Score
 
-Stand: 28.10.2026. **Technisch geprüfter Entwicklungsstand; V0.1 nicht vollständig abgenommen.** GitHub `wibem1/Audio-to-Good-Score`, `main`, ist maßgeblich. Vorige gesicherte Stände bleiben in der Historie: M1 `6458b6d`, Audio-only `0b3bcf7`, Notenausblendung `b48547c`.
+Stand: 28.10.2026. **Meilenstein 1 technisch abgeschlossen; V0.1 nicht vollständig abgenommen.** Siehe `MILESTONE_1.md`. GitHub `wibem1/Audio-to-Good-Score`, `main`, ist maßgeblich. Vorige gesicherte Stände bleiben in der Historie: M1 `6458b6d`, Audio-only `0b3bcf7`, Notenausblendung `b48547c`.
 
 ## Nachgewiesene Funktionen
 
@@ -13,7 +13,7 @@ Stand: 28.10.2026. **Technisch geprüfter Entwicklungsstand; V0.1 nicht vollstä
 
 ## Prüfgrundlage
 
-31/31 Kerntests bestanden. Reale Chromium-Prüfung einschließlich Ergänzen, Projektwiederherstellung, Kontext-UI, MusicXML-/Mapping-Export; lokale Modellregression weiterhin bestanden. Unabhängige mido-Prüfungen bestätigen Ereignis-/Rhythmuserhalt. MusicXML durch music21 9.9.1 erneut gelesen: alle zehn Testnoten einschließlich quantisierter Start-/Dauerwerte nach Tie-Zusammenführung gleich. Jede Stimme füllt jeden Takt. Verovio 5.7.0 rendert zwei Systeme; SVG visuell geprüft. Kein XSD-Validierungsnachweis und noch keine Dorico-Abnahme. Einzelheiten: `TEST_RESULTS.md`, `ACCEPTANCE.md`, `test-results/`.
+33/33 Kerntests bestanden. Abschlusskorrektur verhindert verspätetes Starten nach Pause und doppelte Wiedergabe bei überholenden Audioaktivierungen. Vollständige Browser-/Modellregression und vier unabhängige MIDI-Prüfungen nach der Korrektur erneut bestanden (`test-results/final/`). Reale Chromium-Prüfung einschließlich Ergänzen, Projektwiederherstellung, Kontext-UI, MusicXML-/Mapping-Export; lokale Modellregression weiterhin bestanden. Unabhängige mido-Prüfungen bestätigen Ereignis-/Rhythmuserhalt. MusicXML durch music21 9.9.1 erneut gelesen: alle zehn Testnoten einschließlich quantisierter Start-/Dauerwerte nach Tie-Zusammenführung gleich. Jede Stimme füllt jeden Takt. Verovio 5.7.0 rendert zwei Systeme; SVG visuell geprüft. Kein XSD-Validierungsnachweis und noch keine Dorico-Abnahme. Einzelheiten: `TEST_RESULTS.md`, `ACCEPTANCE.md`, `test-results/`.
 
 ## Verbleibende Lücken für vollständige V0.1
 

@@ -1,0 +1,41 @@
+✔ no-edit export is byte-identical, including tempo, metadata, pedal, SysEx (4.208502ms)
+✔ dense tempo integration and inverse conversion preserve absolute times (3.965072ms)
+✔ pitch/velocity correction leaves every onset, duration, tempo and non-note event untouched (4.617904ms)
+✔ section isolation, timing opt-in, reasons, numeric validation and overlap guard (9.630788ms)
+✔ undo/redo fully reversible; new branch clears redo (1.257439ms)
+✔ explicit timing correction changes only selected note, keeps tempo map (0.783759ms)
+✔ running status, velocity-zero note-off and format 0 (0.401298ms)
+✔ unsupported and malformed files rejected without fabricated timing (0.819327ms)
+✔ pedal extends rendering, no changes to exported key-up times (1.499406ms)
+✔ audio-only remains an independent input without fake transcription (0.394122ms)
+✔ diagnosis identifies short and out-of-range notes without altering them (0.626184ms)
+✔ 200 repeated pitch edits and export cycles never introduce rhythm changes (67.793265ms)
+✔ shared audio clock, negative audio offset, and stop cancel scheduled sources (1.808681ms)
+✔ pedal-down after note-off at the same tick must not extend that note (0.304192ms)
+✔ new same-channel overlaps across different tracks are rejected (0.281444ms)
+✔ manual missing note insertion is reversible and preserves all neighbors (17.42782ms)
+✔ context hypotheses never auto-apply and stale proposals are rejected (3.959754ms)
+✔ score is separate from performance, creates two staves and bar ties (4.289129ms)
+✔ independent overlapping voices and duplicate pitch survive score mapping (0.709669ms)
+✔ notation beams and alternate meter remain isolated from expressive MIDI (0.676085ms)
+✔ neural countercheck never invents deletions or changes timing (4.675319ms)
+✔ selective removal preserves tempo, pedal, other events and remaining rhythmic times (6.450586ms)
+✔ removal requires reason and full-section containment; all notes can be removed safely (5.263407ms)
+✔ pause during pending audio activation prevents a late restart (2.953177ms)
+✔ latest play wins even when older audio activation resolves last (1.502845ms)
+✔ candidate preserves expressive seconds within 0.25 ms, full-audio offset and notes (5.358238ms)
+✔ overlapping identical pitch retains exact durations through separate MIDI channels (5.050584ms)
+✔ candidate boundary clipping is reported, invalid model data rejected (0.912246ms)
+✔ audio selection honors manual offset and refuses overlong or empty input (0.502288ms)
+✔ candidate manual correction, undo and export do not quantize existing event times (10.171496ms)
+✔ worker results and progress resolved exactly once; resources released (3.303571ms)
+✔ cancel terminates worker and rejects promise, no stale result accepted (3.057456ms)
+✔ worker failure and messaging failure clean up without MIDI results (0.755096ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 273.376641

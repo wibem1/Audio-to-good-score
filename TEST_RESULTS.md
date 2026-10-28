@@ -113,3 +113,13 @@ Alle sechs zuvor beschriebenen Fälle bestehen den tatsächlichen MusicXML→MSC
 Die AppImage erzwingt hier einen Anzeigeweg; bloßes Offscreen-Environment genügte nicht. Test erfolgreich unter isoliertem Xvfb 21.1.12 via TCP-Loopback/xcb im selben Prozessraum; systemweites Installieren nicht erforderlich. MuseScore 4 unterstützt das alte `-s` nicht; der gemeinsame Test verwendet daher nur `-o`. Qt/DBus-/Pipewire-/Audiomeldungen sind in den vollständigen Protokollen erhalten. Alle 13 Konvertierungen/Renderaufrufe erfolgreich. Version wird tatsächlich aus `--version` gelesen; das MuseScore-4-Prüffeld ist nicht mehr pauschal falsch.
 
 Belege: `test-results/musescore4/` mit Versions-/Quellnachweis, JSON-Bericht, CLI-Protokollen, nativer Datei, MusicXML-Rückexport und Notenbild. 31/31 Kerntests erneut bestanden. Produktcode unverändert, keine kostenpflichtigen KI-Aufrufe. Dorico und menschliche musikalische Hörabnahme bleiben offen. Die frühere MuseScore-4-Lücke ist mit diesem Abschnitt geschlossen.
+
+## Abschluss Meilenstein 1 – 28.10.2026
+
+33/33 Kerntests bestanden. Zwei neue Tests reproduzierten vor der Korrektur verspätetes Wiederstarten nach Pause bzw. überholende `AudioContext.resume()`-Zusagen. Ein Generationenzähler verwirft überholte Starts nach `stop()`/weiterem `play()`; abgebrochene Starts melden keinen laufenden Playerstatus mehr. Keine Performance-/Exportdatenänderung. Beide Regressionen nach Korrektur bestanden.
+
+Vollständiger echter Chromium-138.0.7204.0-Bedienungstest und echte lokale Modellregression erneut bestanden. A/B/C/Mix, echte MP3/WAV-Dekodierung, Einzelnotenänderung/Ausblendung/Ergänzung, Projektwiederherstellung, MusicXML und neuronale Audio-Gegenprüfung erfolgreich. Vier unabhängige mido-1.3.3-Prüfungen bestätigen Ereignis-/Tick-/Tempoerhalt, selektive Entfernung, neuronale Pitchkorrektur und Audio-only-Kandidatenexport. Modell weiterhin 7 passende Referenznoten von 8, insgesamt 9 Kandidaten im synthetischen Test; kein neuer allgemeiner Qualitätswert. 60 Sekunden Stille erfolgreich, null Noten. Aktuelle vollständige Berichte: `test-results/final/`.
+
+Zusätzlicher realer Firefox-153.0-Versuch: Browser/Seite starten, aber der WAV-Ladevorgang beendet sich nicht innerhalb 30 Sekunden. Auch isolierter Medienprozess-/Sandboxversuch behebt das nicht. Kein Firefox-Erfolgsnachweis; experimentelle Runneränderungen verworfen. Standard-Chromiumdownload war unbrauchbar; der erfolgreiche Test nutzte wieder das isolierte npm-Testbrowserpaket @sparticuz/chromium 138.0.2. Keine neuen Produktabhängigkeiten.
+
+`MILESTONE_1.md` trennt jetzt den abgeschlossenen technischen Prototypauftrag von der noch offenen vollständigen V0.1-Abnahme. Keine behauptete menschliche Hörprüfung, keine kostenpflichtigen KI-Aufrufe.

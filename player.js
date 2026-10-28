@@ -10,13 +10,13 @@ export function notePlan(midi,notes){
   }).sort((a,b)=>a.start-b.start);
 }
 export class Player {
-  constructor(context){this.ctx=context;this.nodes=new Set();this.running=false;this.position=0;
+  constructor(context){this.ctx=context;this.nodes=new Set();this.running=false;this.position=0;this.generation=0;
     this.master=context.createGain();this.master.gain.value=0.7;
     const compressor=context.createDynamicsCompressor();this.master.connect(compressor);compressor.connect(context.destination);
   }
-  stop(){if(this.running)this.position=Math.min(this.end,this.from+Math.max(0,this.ctx.currentTime-this.anchor));this.running=false;clearInterval(this.timer);for(const n of this.nodes){try{n.stop();}catch{}}this.nodes.clear();}
+  stop(){this.generation++;if(this.running)this.position=Math.min(this.end,this.from+Math.max(0,this.ctx.currentTime-this.anchor));this.running=false;clearInterval(this.timer);for(const n of this.nodes){try{n.stop();}catch{}}this.nodes.clear();}
   async play({from,end,mode,buffer,offset=0,midi,notes}){
-    this.stop();await this.ctx.resume();this.from=from;this.end=end;this.position=from;this.anchor=this.ctx.currentTime+0.06;this.running=true;
+    this.stop();const generation=this.generation;await this.ctx.resume();if(generation!==this.generation)return false;this.from=from;this.end=end;this.position=from;this.anchor=this.ctx.currentTime+0.06;this.running=true;
     if((mode==='audio'||mode==='mix')&&buffer){
       const audioAt=from+offset, delay=Math.max(0,-audioAt), start=Math.max(0,audioAt), duration=Math.min(end-from-delay,buffer.duration-start);
       if(duration>0){const src=this.ctx.createBufferSource();src.buffer=buffer;src.connect(this.master);src.start(this.anchor+delay,start,duration);this.nodes.add(src);src.onended=()=>{this.nodes.delete(src);src.disconnect();};}
@@ -34,6 +34,6 @@ export class Player {
       }
       this.position=from+Math.max(0,now-this.anchor);
       if(this.position>=end)this.stop();
-    };schedule();this.timer=setInterval(schedule,40);
+    };schedule();this.timer=setInterval(schedule,40);return true;
   }
 }

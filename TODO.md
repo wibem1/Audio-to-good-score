@@ -1,4 +1,6 @@
-# Verbleibende Aufgaben
+# Meilenstein 1 technisch abgeschlossen; verbleibende V0.1-Aufgaben
+
+Abschluss und Startanleitung: `MILESTONE_1.md`.
 
 - [x] Audio/MIDI/Audio-only, Wiedergabe, Pianorolle und Abschnitt technisch prüfen
 - [x] Nicht-destruktive Änderungen, Ausblenden, manuelles Ergänzen, Undo/Redo und MIDI-Export prüfen
@@ -14,4 +16,4 @@
 - [ ] Echte Referenzpassage / „Graziler Tanz“ und menschlicher A/B/C-Hörtest
 - [ ] Native Tablet-/Safari-/Firefox-Abnahme
 
-31 Kerntests bestanden. Detaillierte Funktions-/Abnahmegrenzen: `ACCEPTANCE.md`. V0.1 nicht freigegeben. Keine kostenpflichtigen KI-Aufrufe.
+33 Kerntests bestanden. Wiedergabe-Race behoben; vollständige Chromium-/Modellregression und unabhängige MIDI-Prüfungen wiederholt. Detaillierte Funktions-/Abnahmegrenzen: `ACCEPTANCE.md`. V0.1 nicht freigegeben. Keine kostenpflichtigen KI-Aufrufe.

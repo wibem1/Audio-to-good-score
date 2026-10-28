@@ -1,0 +1,14 @@
+{
+  "firefox": {
+    "version": "153.0",
+    "passed": false,
+    "stage": "WAV import/decode did not complete within 30s",
+    "scope": "isolated test environment; not evidence of general Firefox support or incompatibility",
+    "attempts": "Normal headless plus sandbox/media-process isolation; both timed out. Experimental runner changes discarded."
+  },
+  "nativeSafariTested": false,
+  "nativeTabletTested": false,
+  "doricoAvailable": false,
+  "humanListeningApproval": false,
+  "paidAICalls": 0
+}
