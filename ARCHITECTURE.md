@@ -1,6 +1,6 @@
 # Architekturentscheidung – Meilenstein 1
 
-Stand: 28.10.2026. Technisch geprüfter Prototyp, keine Freigabe der Gesamtversion 0.1.
+Stand: 28.10.2026. Die folgenden Abschnitte dokumentieren die ursprüngliche M1-Entscheidung. **Aktueller M2-Zusatz:** Lokale Browsertranskription mit mitgeliefertem Basic Pitch/TensorFlow-WASM; siehe `TRANSCRIPTION_DECISION.md`. M1 bleibt nutzbar, Gesamtversion 0.1 ist nicht freigegeben.
 
 ## Entscheidung
 
@@ -15,9 +15,9 @@ Audio-Versatz: `Audiozeit = MIDI-/Projektzeit + Versatz`. Beide Player beginnen 
 
 ## Audio-only als gleichrangiger Eingang
 
-`inputPath` unterscheidet Audio allein, Audio+MIDI und MIDI allein. Audio allein kann schon importiert, abgespielt, markiert und mit Original im Projekt gespeichert werden. `transcriptionProvider` ist ausdrücklich nicht installiert. Für M2 liefert ein Provider einen SMF-Kandidaten samt Modellversion, Konfiguration, Unsicherheit und Kostenprotokoll; dieser wird durch denselben Import, dieselbe Änderungsverwaltung und denselben Hörvergleich geführt. MIDI ist keine Voraussetzung für den Audioeingang.
+`inputPath` unterscheidet Audio allein, Audio+MIDI und MIDI allein. Audio allein kann schon importiert, abgespielt, markiert und mit Original im Projekt gespeichert werden. Im ursprünglichen M1-Stand war noch kein Provider installiert. Der aktuelle Stand verwendet `LocalTranscriber` und einen abbrechbaren Basic-Pitch-Worker, siehe `TRANSCRIPTION_DECISION.md`. Für M2 liefert ein Provider einen SMF-Kandidaten samt Modellversion, Konfiguration, Unsicherheit und Kostenprotokoll; dieser wird durch denselben Import, dieselbe Änderungsverwaltung und denselben Hörvergleich geführt. MIDI ist keine Voraussetzung für den Audioeingang.
 
-Ein späterer Transkriptionsprozess gehört in einen Worker oder lokalen Backendprozess; Audio-Dekodierung/Modelle dürfen die UI nicht blockieren. Kein kostenpflichtiger Provider ohne ausdrückliche Genehmigung. Auswahl und Gewichte müssen vor Integration neu auf Lizenz, Hardwarebedarf und polyphone Klaviereignung geprüft werden. Basic Pitch, spezialisierte Klaviermodelle und ein möglicher Python-Stack sind in M1 weder installiert noch als geeignet bestätigt. Score-Modell und MusicXML bleiben von der Performance getrennt.
+Ein späterer Transkriptionsprozess gehört in einen Worker oder lokalen Backendprozess; Audio-Dekodierung/Modelle dürfen die UI nicht blockieren. Kein kostenpflichtiger Provider ohne ausdrückliche Genehmigung. Auswahl und Gewichte müssen vor Integration neu auf Lizenz, Hardwarebedarf und polyphone Klaviereignung geprüft werden. Im historischen M1-Stand waren Basic Pitch, spezialisierte Klaviermodelle und ein möglicher Python-Stack weder installiert noch bestätigt. Der aktuelle M2-Stand bestätigt nur den technisch geprüften Basic-Pitch-Browserweg; kein musikalischer Eignungsnachweis. Score-Modell und MusicXML bleiben von der Performance getrennt.
 
 ## Abhängigkeiten und Lizenzen
 

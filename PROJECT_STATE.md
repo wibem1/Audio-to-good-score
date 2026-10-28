@@ -1,47 +1,48 @@
 # Projektstand – Audio to Good Score
 
 **Stand:** 28.10.2026  
-**Phase:** Meilenstein 1 als technisch geprüfter Web-App-Prototyp implementiert.  
-**Zielversion:** V0.1 bleibt geplant und ist **nicht als Gesamtversion freigegeben**.  
-**Repository:** `wibem1/Audio-to-Good-Score`, Branch `main`. Der Commit, der diesen Stand enthält, ist der reproduzierbare M1-Stand; Tests und Quellfingerabdrücke liegen gemeinsam im Repository.
+**Phase:** M1 technisch geprüft; M2 als lokaler polyphoner Audio-only-Kandidatenweg implementiert und mit echtem Modell technisch geprüft. **Musikalische Abnahme offen.**  
+**Zielversion:** V0.1 insgesamt nicht freigegeben.  
+**Repository:** `wibem1/Audio-to-Good-Score`, `main`. Code, Modellassets, Testnachweise und Übergabe liegen gemeinsam im Commit dieses Dokuments. Letzter M1-Stand bleibt als Commit `6458b6db070652821d2ead96a947b64ebbffe0be` erhalten.
 
-## Ziel und verbindliche Entscheidungen
+## Verbindliche Leitplanken
 
-Drei gleichrangige Eingänge: Audio allein, Audio+MIDI, MIDI allein. Soloklavier, Standard **Musikalisch ausgewogen**. Originale erhalten, einzelne Änderungen begründen, sichtbar machen und rückgängig machen. Performance-Ticks und Tempokurve bleiben von späterer Score-/MusicXML-Zeitdarstellung getrennt. Technische Validität ersetzt keine musikalische Prüfung. Keine kostenpflichtigen KI-Aufrufe ohne Zustimmung.
+Audio allein, Audio+MIDI und MIDI allein sind gleichrangige Eingänge. Standard **Musikalisch ausgewogen**. Originale nicht überschreiben; Korrekturen einzeln begründen, sichtbar machen, vergleichen und rückgängig machen. Performance und spätere Score-Zeiten getrennt. Keine pauschale Quantisierung. Keine kostenpflichtigen KI-Aufrufe ohne Zustimmung. Technische Tests ersetzen keine musikalische Hörfreigabe.
 
-## Nachgewiesener Stand
+## Aktuell nachgewiesen
 
-| Funktion | Status / Prüfgrundlage |
+| Bereich | Nachweis / Grenzen |
 |---|---|
-| WAV/MP3 und SMF 0/1 importieren | Im Chromium-Browser mit synthetischen Dateien getestet; SMF-0/1-Kerntests |
-| Audio-only als eigener Eingang | Im Browser ohne MIDI importiert und abgespielt; Transkription noch nicht implementiert (M2) |
-| Manuelles Alignment, gemeinsame Zeitachse | Audio-Versatz, Navigation und Mix mit gemeinsamer Web-Audio-Uhr technisch getestet; kein automatisches oder elastisches Alignment |
-| Abschnitt/Pianorolle | SVG, Notenauswahl und Abschnittsmarkierung per Maus sowie Zahlenfelder im Browser getestet |
-| Nicht-destruktive Einzelnotenbearbeitung | Tonhöhe/Velocity, ausdrücklich freizugebende Start-/Endticks, Begründung, Abschnittsschutz, Überlappungsschutz und Export-Roundtrip getestet |
-| Undo/Redo und Projektsicherung | Browser-Roundtrip inklusive eingebetteten Originalen und wiederherstellbarer Änderung getestet; manuelle Projektdatei speichern, keine automatische dauerhafte Speicherung |
-| A/B/C und synchroner Mix | Echter Browser, gestartete Audio-/Synthesizerknoten und erzeugtes Audiosignal nachgewiesen; **kein menschlicher Hörtest** |
-| MIDI-Export | Eigener Reimport plus unabhängiger mido-1.3.3-Parser; ursprüngliche Zeiten, Tempowechsel, CC64, Spuren und SysEx bei Testkorrekturen erhalten |
-| Diagnose und JSON-Export | Unsichere Längen-/Klavierumfang-/Überlappungshinweise, Quell-SHA-256, Änderungen, Begründungen, Prüflücken und null KI-Aufrufe getestet |
+| M1 Import, Pianorolle, Passage, manuelles Alignment | Echte Chromium-Regression für WAV/MP3/SMF 0/1, Mausmarkierung, gemeinsame Web-Audio-Uhr; keine automatische Tempoausrichtung |
+| Einzelnoten, Undo/Redo, MIDI-Export | Abschnitts-/Timingfreigabe-/Überlappungsschutz und Export-Roundtrip; ursprüngliche Tempokarte/Ereignisse erhalten; unabhängige mido-Prüfung |
+| Audio-only → MIDI-Kandidat | Basic Pitch 1.0.1 / ICASSP 2022 mit TensorFlow-WASM direkt im Browser. Kein vorheriges MIDI, kein Backend, keine Cloud. WAV/MP3 einschließlich Stereo-Resampling mit echtem Modell geprüft |
+| Kandidatensicherheit | Separates Ergebnis, Übernehmen/Verwerfen; vorhandene MIDI blockiert Neu-Transkription; Abbruch terminiert Worker, Quellenwechsel invalidiert Ergebnisse, Modellhashes vor Ausführung geprüft |
+| Vergleich und Korrektur | A Originalaudio, B unbearbeiteter Kandidat, C manuell bearbeiteter Kandidat; reale Audioknoten gestartet, Zeiten nach Korrektur unverändert; kein behaupteter menschlicher Hörtest |
+| Projekt/Diagnose | Schema 2 mit Audio, unbearbeitetem Kandidaten, Modell-/Quellhashes, Parametern, Laufprotokollen und Undo/Redo; Schema 1 weiterhin im Browser lesbar. Manuell speichern |
+| Fehlerfälle/Ressourcen | Fehlende/korrupte Modelle, Abbruch und Stille getestet; tatsächlich 60-s-Eingabe verarbeitet; keine erfundenen Noten aus Stille; kein externer Request im Modellbrowsertest |
 
-**Tests:** 15/15 automatisierte Kerntests bestanden; Browserregression in Chromium 138.0.7204.0 ohne JavaScript-Seitenfehler; unabhängige MIDI-Prüfung bestanden. Details und Grenzen: `TEST_RESULTS.md`. Desktop- und mobile Viewport-Screenshots visuell geprüft. Dies belegt keine native Tablet-/Safari-Kompatibilität oder musikalische Qualität.
+**Prüfstand:** 23/23 Kerntests bestanden, M1- und M2-Browserregression in Chromium 138.0.7204.0 bestanden, unabhängige mido-Exportprüfungen bestanden. `npm ci`/Build reproduziert. `TEST_RESULTS.md`, Maschinenberichte/Screenshots unter `test-results/` und Quellfingerabdrücke dokumentieren den Stand.
 
-## Start und Architektur
+## Modellqualität – ausdrücklich begrenzt
 
-`python3 -m http.server 8000 --bind 127.0.0.1`, dann `http://localhost:8000`. Kein Produkt-Build, keine Laufzeitpakete, kein KI-/Backenddienst. Einstieg `index.html`, Performance/Import `midi.js`, Änderungen `model.js`, Audio `player.js`, UI `app.js`. Begründung, Lizenzprüfung und Transkriptionsvertrag: `ARCHITECTURE.md`. Prüfkommandos: `README.md`.
+Der synthetische Test mit 8 Referenznoten ergibt 9 Modellnoten, davon 7 zu passenden Referenznoten zugeordnet. Oktavfehler sind vorhanden. Das ist ein technischer Funktionsnachweis und **keine Freigabe für reale Klaviermusik**. Keine Schwellenanpassung oder stille musikalische Nachkorrektur. Basic Pitch erkennt kein Pedal; 120 BPM im Kandidaten ist nur Transport für Sekundenzeiten, kein erkanntes musikalisches Tempo. Velocity ist Modellaktivierung, keine gemessene Anschlagsdynamik. Weitere Grenzen und Lizenz-/Modellvergleich: `TRANSCRIPTION_DECISION.md`.
 
-## Grenzen / offene Prüfungen
+## Start / Code
 
-- „Graziler Tanz“ wurde nicht bereitgestellt: kein Referenz-Abnahmetest und keine behauptete Hörfreigabe.
-- Der Synthesizer ist ein technischer Vergleichsklang, kein realistisches Klavier. CC64 wird gerendert; weitere Controller, Programme und Pitchbend bleiben im Export, sind im Klang nicht vollständig umgesetzt.
-- Audio-only-Transkription, KI-Analyse/-Reparatur und MusicXML fehlen planmäßig bis M2–M4. Kein Modell und keine Modellgewichte geprüft oder installiert.
-- Kein automatisches Alignment; konstante Audio-Verschiebung kann Tempodrift nicht lösen.
-- SMPTE und SMF Typ 2 werden abgelehnt. Dateigrößen-/Ereignisgrenzen siehe Architektur. Keine Langaufnahme-/Lastprüfung.
-- Menschlicher musikalischer B/C-Hörtest, native Safari-/Firefox-/Tabletprüfung und später echte Dorico-/MuseScore-Importtests stehen aus.
+`python3 -m http.server 8000 --bind 127.0.0.1`, dann `http://localhost:8000`. Modell und Worker sind mitgeliefert; zum Benutzen kein npm-/KI-Dienst erforderlich. Entwicklung: `npm ci`, `npm run build`, `npm test`. Einstieg `index.html`, MIDI `midi.js`, Änderungen `model.js`, Wiedergabe `player.js`, Transkription `transcription.js`/`transcription-worker.js`/`model-spec.js`, reproduzierbare Assets `scripts/build-transcription.js` → `vendor/`.
+
+## Offen
+
+- Menschliche A/B/C-Hörprüfung einer echten Klavieraufnahme sowie Referenz „Graziler Tanz“ fehlen mangels bereitgestellter Testdaten. A11 ist technisch vorbereitet, musikalisch nicht abgenommen.
+- Native Tablet-/Safari-/Firefox-Tests, Hintergrundtab-/Langaufnahme-/Spitzen-RAM-Prüfung fehlen. Transkriptionspassage auf 0,1–60 s begrenzt; fünf Minuten Laufzeitlimit.
+- M3: musikalische Fehlerdiagnose und selektive KI-Reparatur fehlen. Aktuelle Diagnose ist heuristisch, keine Harmonie-/Stimmenanalyse.
+- M4: Score-Modell, MusicXML und reale Dorico-/MuseScore-Prüfung fehlen.
+- Vergleichssynthesizer bleibt vereinfacht; zusätzliche Controller/Programme bleiben im MIDI erhalten, werden nicht vollständig gerendert. Kein automatisches oder Mehrpunkt-Audioalignment.
 
 ## Nächster einzelner Schritt
 
-M1 anhand einer rechtmäßig verfügbaren echten Klavierpassage musikalisch im A/B/C-Vergleich prüfen und Befunde dokumentieren. Danach M2: Modell-/Lizenz-/Hardwareprüfung für den unabhängigen Audio-only-Transkriptionsprovider, bevor ein Kandidat integriert wird. Ohne Zustimmung keine kostenpflichtigen Modellaufrufe.
+Den neuen Audio-only-Kandidaten mit einer rechtmäßig verfügbaren echten Klavierpassage im menschlichen A/B/C-Hörvergleich prüfen und Fehler dokumentieren. Die nachgewiesenen Oktav-/Auslassungsfehler als Ausgangspunkt für M3 verwenden; keine pauschale Korrektur oder musikalische Freigabe aus den synthetischen Kennzahlen ableiten. „Graziler Tanz“ nur nach tatsächlicher Bereitstellung verwenden.
 
 ## Übergabe
 
-Globale Standards und `AGENTS.md` lesen, dann diese Datei, `TODO.md`, `PFLICHTENHEFT_V0.1.md`, `ARCHITECTURE.md`, `TEST_RESULTS.md` und Code. Mit `npm test` beginnen. Keine Arbeitsstände aus Chat-Erinnerungen ableiten und keine musikalische Freigabe aus technischen Testerfolgen behaupten.
+Globale Standards, `AGENTS.md`, diese Datei, `TODO.md`, Pflichtenheft, Architektur-/Transkriptionsentscheidung, Testergebnisse und Code lesen. GitHub ist maßgeblich. Mit `npm test` beginnen. Lokale Modellversuche sind protokolliert, externe/zahlbare KI-Aufrufe: null.

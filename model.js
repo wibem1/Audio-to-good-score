@@ -41,4 +41,3 @@ export class Session {
 }
 // Shared input contract: audio-only is a first-class source, never a fake MIDI result.
 export function inputPath(audio,midi){return audio?(midi?'audio+midi':'audio-only'):(midi?'midi-only':'empty');}
-export const transcriptionProvider={id:null,status:'not-installed',async transcribe(){throw Error('Audio-only-Transkription ist für Meilenstein 2 vorgesehen; noch kein geprüfter Anbieter installiert.');}};

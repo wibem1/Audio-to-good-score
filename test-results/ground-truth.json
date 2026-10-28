@@ -1,0 +1,42 @@
+[
+  {
+    "pitch": 48,
+    "start": 0.25,
+    "end": 1.4
+  },
+  {
+    "pitch": 60,
+    "start": 0.25,
+    "end": 1.4
+  },
+  {
+    "pitch": 64,
+    "start": 0.25,
+    "end": 1.4
+  },
+  {
+    "pitch": 67,
+    "start": 0.25,
+    "end": 1.4
+  },
+  {
+    "pitch": 50,
+    "start": 2,
+    "end": 3.2
+  },
+  {
+    "pitch": 62,
+    "start": 2,
+    "end": 3.2
+  },
+  {
+    "pitch": 65,
+    "start": 2,
+    "end": 3.2
+  },
+  {
+    "pitch": 69,
+    "start": 2,
+    "end": 3.2
+  }
+]

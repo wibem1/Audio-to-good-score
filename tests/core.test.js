@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {parseMidi,exportMidi,tickToSeconds,secondsToTick,vlq} from '../midi.js';
-import {Session,inputPath,transcriptionProvider} from '../model.js';
+import {Session,inputPath} from '../model.js';
 import {notePlan,Player} from '../player.js';
 import {demoMidi} from '../demo.js';
 import {smf,fixture} from './fixtures.js';
@@ -14,7 +14,7 @@ test('explicit timing correction changes only selected note, keeps tempo map',()
 test('running status, velocity-zero note-off and format 0',()=>{const m=parseMidi(smf([[[0,144,60,90],[240,60,0],[480,255,47,0]]],0));assert.equal(m.notes[0].end,240);const s=new Session(m);s.edit(s.notes[0].id,{pitch:65},[0,480],'test');assert.equal(parseMidi(exportMidi(m,s.notes)).notes[0].pitch,65);});
 test('unsupported and malformed files rejected without fabricated timing',()=>{for(const f of [new Uint8Array(),demoMidi().slice(0,-1),smf([[[0,255,47,0]]],2),smf([[[0,255,47,0]]],0,0xE728),smf([[[0,255,81,3,0,0,0],[1,255,47,0]]],0),smf([[[0,144,128,90],[1,255,47,0]]],0)])assert.throws(()=>parseMidi(f));});
 test('pedal extends rendering, no changes to exported key-up times',()=>{const m=parseMidi(fixture()),plan=notePlan(m,m.notes);assert.equal(plan[0].end,tickToSeconds(m,720));assert.equal(plan[1].end,tickToSeconds(m,720));assert.equal(m.notes[0].end,240);});
-test('audio-only remains an independent input without fake transcription',async()=>{assert.equal(inputPath(true,false),'audio-only');assert.equal(inputPath(true,true),'audio+midi');assert.equal(inputPath(false,true),'midi-only');await assert.rejects(transcriptionProvider.transcribe());});
+test('audio-only remains an independent input without fake transcription',async()=>{assert.equal(inputPath(true,false),'audio-only');assert.equal(inputPath(true,true),'audio+midi');assert.equal(inputPath(false,true),'midi-only');});
 test('diagnosis identifies short and out-of-range notes without altering them',()=>{const m=parseMidi(smf([[[0,144,10,80],[1,128,10,0],[480,255,47,0]]],0)),s=new Session(m),before=structuredClone(s.notes);assert.equal(s.diagnose().length,2);assert.deepEqual(s.notes,before);});
 test('200 repeated pitch edits and export cycles never introduce rhythm changes',()=>{const m=parseMidi(fixture()),s=new Session(m);for(let i=0;i<200;i++){s.edit(s.notes[0].id,{pitch:60+i%3},[0,960],'Regression');const p=parseMidi(exportMidi(m,s.notes));assert.deepEqual(p.notes.map(n=>[tickToSeconds(p,n.start),tickToSeconds(p,n.end)]),m.notes.map(n=>[tickToSeconds(m,n.start),tickToSeconds(m,n.end)]));}});
 test('shared audio clock, negative audio offset, and stop cancel scheduled sources',async()=>{const calls=[],node=()=>({gain:{value:0,setValueAtTime(){},linearRampToValueAtTime(){},setTargetAtTime(){}},frequency:{value:0},connect(){},disconnect(){},start(...args){calls.push(['start',...args]);},stop(){calls.push(['stop']);}});const c={currentTime:2,destination:{},createGain:node,createDynamicsCompressor:node,createBufferSource:node,createOscillator:node,async resume(){}};const p=new Player(c);await p.play({from:0,end:2,mode:'audio',buffer:{duration:4},offset:-.5});assert.deepEqual(calls[0],['start',2.56,0,1.5]);p.stop();assert.equal(p.running,false);assert(calls.some(x=>x[0]==='stop'));});

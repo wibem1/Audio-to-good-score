@@ -2,8 +2,11 @@ import {parseMidi,exportMidi,tickToSeconds,secondsToTick,midiDuration} from './m
 import {Session,inputPath} from './model.js';
 import {Player} from './player.js';
 import {demoMidi} from './demo.js';
+import {LocalTranscriber,TRANSCRIPTION_PARAMETERS,audioRange,candidateMidi,resamplePassage} from './transcription.js';
+import {MODEL_SPEC} from './model-spec.js';
 const $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
 let session=null,audio=null,audioBytes=null,audioName='',midiName='',context,player,selected='',duration=4,drag=null,loadBusy=false;
+const transcriber=new LocalTranscriber();let transcribing=false,pendingCandidate=null,provenance=null,sourceEpoch=0,inferenceLog=[];
 function ctx(){if(!context){context=new AudioContext();player=new Player(context);}return context;}
 function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('error',error);}
 function action(id,fn,event='click'){$(id).addEventListener(event,async e=>{try{await fn(e);}catch(error){status(error.message,true);}});}
@@ -11,7 +14,7 @@ function number(id){const v=$(id).valueAsNumber;if(!Number.isFinite(v))throw Err
 function section(){const from=number('from'),to=number('to');if(from<0||to<=from||to>duration+0.001)throw Error('Passage muss innerhalb des Stücks liegen und eine positive Länge haben.');return [from,to];}
 function stop(){player?.stop();}
 function confirmReplace(){return !session?.history.length||confirm('Neue Quelle ersetzt die aktuelle MIDI-Bearbeitung. Projekt zuvor gespeichert?');}
-function installMidi(bytes,name){const midi=parseMidi(bytes);session=new Session(midi);midiName=name;selected=midi.notes[0]?.id||'';stop();resetRange();render();status('MIDI geladen; Original und expressive Zeiten erhalten.');}
+function installMidi(bytes,name){const midi=parseMidi(bytes);invalidateTranscription();provenance=null;session=new Session(midi);midiName=name;selected=midi.notes[0]?.id||'';stop();resetRange();render();status('MIDI geladen; Original und expressive Zeiten erhalten.');}
 function resetRange(){duration=Math.max(audio?audio.duration-number('offset'):0,session?midiDuration(session.midi,session.notes):0,0.01);$('from').value=0;$('to').value=duration.toFixed(4);$('seek').max=duration;$('seek').value=0;}
 function svgNode(tag,attrs,parent,text){const node=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))node.setAttribute(k,v);if(text!==undefined)node.textContent=text;parent.append(node);return node;}
 function draw(){
@@ -32,14 +35,14 @@ function draw(){
   const wave=$('wave');wave.replaceChildren();if(audio){const data=audio.getChannelData(0),points=[];for(let i=0;i<1140;i++){const t=i/1140*duration+number('offset');let peak=0;const a=Math.floor(t*audio.sampleRate),b=Math.min(data.length,a+Math.ceil(duration*audio.sampleRate/1140));for(let j=Math.max(0,a);j<b;j+=Math.max(1,Math.floor((b-a)/50)))peak=Math.max(peak,Math.abs(data[j]));points.push(`M${i+50},${35-peak*30}v${peak*60}`);}svgNode('path',{d:points.join(''),stroke:'#78c6d0','stroke-width':1},wave);}
 }
 function render(){
-  const path=inputPath(audio,session);$('sources').textContent=`Audio: ${audioName||'—'} · MIDI: ${midiName||'—'}`;
-  $('path').textContent=path==='audio-only'?'Eingang: Audio allein. Abspielen und Abschnitte wählen ist möglich. Ein MIDI-Kandidat entsteht erst mit der Transkription in Meilenstein 2.':`Eingang: ${path}`;
+  const path=provenance?'audio-only':inputPath(audio,session);$('sources').textContent=`Audio: ${audioName||'—'} · MIDI: ${midiName||'—'}`;
+  $('path').textContent=path==='audio-only'?(provenance?'Eingang: Audio allein → lokaler MIDI-Kandidat. Zum Prüfen A/B/C vergleichen.':'Eingang: Audio allein. Markierte Passage lokal transkribieren und Kandidat prüfen.'):`Eingang: ${path}`;
   for(const id of ['originalMidi','export'])$(id).disabled=!session; $('originalAudio').disabled=!audio;
   $('undo').disabled=!session?.history.length;$('redo').disabled=!session?.future.length;
   $('note').replaceChildren();for(const n of session?.notes||[]){const option=document.createElement('option');option.value=n.id;option.textContent=`Spur ${n.track+1} · Kanal ${n.channel+1} · ${n.id} · Ton ${n.pitch} · ${tickToSeconds(session.midi,n.start).toFixed(3)} s`;$('note').append(option);}
   $('note').value=selected;$('apply').disabled=!session?.notes.length;
   $('changes').textContent=session?`${session.history.length} aktive Änderungen · ${session.future.length} wiederherstellbar · keine automatische Quantisierung.`:'';
-  fillNote();draw();diagnose();
+  fillNote();draw();diagnose();updateTranscriptionControls();
 }
 function fillNote(){const n=session?.notes.find(n=>n.id===selected);for(const id of ['pitch','velocity','start','end'])$(id).value=n?.[id]??'';$('timing').checked=false;
   const o=session?.midi.notes.find(n=>n.id===selected);$('before').textContent=o?`Original: Ton ${o.pitch}, Velocity ${o.velocity}, Start ${o.start}, Ende ${o.end} Ticks. Zeitbasis ${session.midi.ppq} Ticks/Viertel; Tempokurve bleibt unverändert.`:'';
@@ -50,13 +53,14 @@ function unb64(text){return Uint8Array.from(atob(text),c=>c.charCodeAt(0));}
 async function hash(bytes){if(!bytes)return null;return [...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(n=>n.toString(16).padStart(2,'0')).join('');}
 function diagnose(){const list=$('findings');list.replaceChildren();const findings=session?.diagnose()||[];
   const messages=[...findings,{kind:'Prüfstatus',message:'Technische Prüfungen siehe TEST_RESULTS.md. Musikalische Hörfreigabe und Referenztest „Graziler Tanz“ fehlen.'},{kind:'Wiedergabe',message:'MIDI-Vergleich mit Tonhöhe, Velocity, Tempokurve und CC64-Pedal. Programmwechsel, Pitchbend und weitere Controller sind im Export erhalten, im einfachen Synthesizer nicht klanggetreu dargestellt.'}];
+  if(provenance)messages.push({kind:'Transkriptionsunsicherheit',message:'Basic Pitch ist instrumentenübergreifend. Keine Pedalerkennung, keine musikalische Tempokurve; Modell-Amplituden sind keine kalibrierten Vertrauenswerte. Jeder Ton bleibt ein ungeprüfter Kandidat.'});
   if(!audio)messages.push({kind:'Unsicherheit',message:'Kein Referenzaudio: vermutete Tonhöhenfehler nicht verifizierbar.'});
   for(const f of messages){const li=document.createElement('li');if(f.id){const b=document.createElement('button');b.textContent=f.id;b.onclick=()=>{selected=f.id;$('note').value=selected;fillNote();draw();};li.append(b);}li.append(document.createTextNode(`${f.kind}: ${f.message}`));list.append(li);}
   return findings;
 }
 async function play(from){if(loadBusy)throw Error('Quelle wird noch geladen.');const [a,b]=section(),mode=$('mode').value;if((mode==='audio'||mode==='mix')&&!audio)throw Error('Bitte Audio laden.');if(mode!=='audio'&&!session)throw Error('Bitte MIDI laden.');ctx();await player.play({from:Math.max(a,Math.min(from,b-0.001)),end:b,mode,buffer:audio,offset:number('offset'),midi:session?.midi,notes:mode==='original'?session?.midi.notes:session?.notes});status('Wiedergabe läuft. Hörvergleich ist keine automatische Freigabe.');}
 action('midi',async e=>{const f=e.target.files[0];e.target.value='';if(!f||!confirmReplace())return;if(f.size>10*1024*1024)throw Error('MIDI maximal 10 MiB.');installMidi(await f.arrayBuffer(),f.name);},'change');
-action('audio',async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;if(!/\.(wav|mp3)$/i.test(f.name))throw Error('Bitte WAV oder MP3 wählen.');if(f.size>50*1024*1024)throw Error('Audio maximal 50 MiB im Prototyp.');loadBusy=true;stop();try{const bytes=new Uint8Array(await f.arrayBuffer()),decoded=await ctx().decodeAudioData(bytes.slice().buffer);audioBytes=bytes;audio=decoded;audioName=f.name;resetRange();render();status('Audio vollständig dekodiert. Versatz bei Bedarf manuell einstellen.');}finally{loadBusy=false;}},'change');
+action('audio',async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;if(!/\.(wav|mp3)$/i.test(f.name))throw Error('Bitte WAV oder MP3 wählen.');if(f.size>50*1024*1024)throw Error('Audio maximal 50 MiB im Prototyp.');invalidateTranscription();loadBusy=true;stop();try{const bytes=new Uint8Array(await f.arrayBuffer()),decoded=await ctx().decodeAudioData(bytes.slice().buffer);if(provenance)provenance={...provenance,referenceAudioChanged:true};audioBytes=bytes;audio=decoded;audioName=f.name;resetRange();render();status('Audio vollständig dekodiert. Versatz bei Bedarf manuell einstellen.');}finally{loadBusy=false;updateTranscriptionControls();}},'change');
 action('demo',()=>{if(confirmReplace())installMidi(demoMidi(),'Synthetische Tonfolge.mid');});
 action('note',()=>{selected=$('note').value;fillNote();draw();},'change');
 action('apply',()=>{if(!session)return;stop();const [a,b]=section();session.edit(selected,Object.fromEntries(['pitch','velocity','start','end'].map(id=>[id,number(id)])),[secondsToTick(session.midi,a),secondsToTick(session.midi,b)],$('reason').value,$('timing').checked);render();status('Änderung übernommen. Bitte B/C vergleichen; musikalisch noch ungeprüft.');});
@@ -69,17 +73,63 @@ action('offset',()=>{number('offset');stop();resetRange();draw();},'change');act
 action('export',()=>{if(session)download(exportMidi(session.midi,session.notes),'bearbeitung.mid','audio/midi');});
 action('originalMidi',()=>download(new Uint8Array(session.midi.original),'original.mid','audio/midi'));
 action('originalAudio',()=>download(audioBytes,audioName,'application/octet-stream'));action('diagnose',()=>{diagnose();status('Diagnose aktualisiert; Hinweise führen zu keiner automatischen Änderung.');});
-action('report',async()=>{const report={schema:1,mode:'Musikalisch ausgewogen',input:inputPath(audio,session),sources:{audio:{name:audioName,sha256:await hash(audioBytes)},midi:{name:midiName,sha256:await hash(session?new Uint8Array(session.midi.original):null)}},offset:number('offset'),section:section(),changes:session?.history||[],redo:session?.future||[],findings:diagnose(),ai:{calls:0,cost:0,provider:null},validation:{musicalApproval:false,humanListeningApproval:false,technical:'See TEST_RESULTS.md; per-edit SMF round-trip validation enabled',tempo:'Original tempo map retained',quantization:'none'}};download(JSON.stringify(report,null,2),'diagnose.json','application/json');});
-action('save',()=>{const project={schema:1,audio:audioBytes?{name:audioName,base64:b64(audioBytes)}:null,midi:session?{name:midiName,base64:b64(new Uint8Array(session.midi.original)),history:session.history,future:session.future}:null,offset:number('offset'),section:section()};download(JSON.stringify(project),'audio-to-good-score.projekt.json','application/json');status('Projektdatei zum Speichern erstellt; enthält Originalquellen und Änderungsverlauf.');});
-action('project',async e=>{const f=e.target.files[0];e.target.value='';if(!f||!confirmReplace())return;if(f.size>85*1024*1024)throw Error('Projekt zu groß.');loadBusy=true;stop();try{
-  const p=JSON.parse(await f.text());if(p.schema!==1||!Number.isFinite(p.offset)||!Array.isArray(p.section)||p.section.length!==2||!p.section.every(Number.isFinite))throw Error('Ungültiges Projekt.');
+action('report',async()=>{const report={schema:1,mode:'Musikalisch ausgewogen',input:provenance?'audio-only':inputPath(audio,session),transcription:provenance,localInference:inferenceLog,sources:{audio:{name:audioName,sha256:await hash(audioBytes)},midi:{name:midiName,sha256:await hash(session?new Uint8Array(session.midi.original):null)}},offset:number('offset'),section:section(),changes:session?.history||[],redo:session?.future||[],findings:diagnose(),ai:{calls:0,scope:'external services',paidCalls:0,cost:0,provider:null,localModelRuns:inferenceLog.length},validation:{musicalApproval:false,humanListeningApproval:false,technical:'See TEST_RESULTS.md; per-edit SMF round-trip validation enabled',tempo:'Original tempo map retained',quantization:'none'}};download(JSON.stringify(report,null,2),'diagnose.json','application/json');});
+action('save',()=>{const project={schema:2,transcription:provenance,localInference:inferenceLog,audio:audioBytes?{name:audioName,base64:b64(audioBytes)}:null,midi:session?{name:midiName,base64:b64(new Uint8Array(session.midi.original)),history:session.history,future:session.future}:null,offset:number('offset'),section:section()};download(JSON.stringify(project),'audio-to-good-score.projekt.json','application/json');status('Projektdatei zum Speichern erstellt; enthält Originalquellen und Änderungsverlauf.');});
+action('project',async e=>{const f=e.target.files[0];e.target.value='';if(!f||!confirmReplace())return;if(f.size>85*1024*1024)throw Error('Projekt zu groß.');invalidateTranscription();loadBusy=true;stop();try{
+  const p=JSON.parse(await f.text());if(![1,2].includes(p.schema)||!Number.isFinite(p.offset)||!Array.isArray(p.section)||p.section.length!==2||!p.section.every(Number.isFinite))throw Error('Ungültiges Projekt.');
   let s=null,ab=null,decoded=null;if(p.midi){s=new Session(parseMidi(unb64(p.midi.base64)));const replay=c=>{s.edit(c.id,{pitch:c.after.pitch,velocity:c.after.velocity,start:c.after.start,end:c.after.end},[0,Number.MAX_SAFE_INTEGER],c.reason,true);if(s.history.length&&typeof c.at==='string')s.history.at(-1).at=c.at;};for(const c of p.midi.history)replay(c);const active=s.history.length;for(const c of [...p.midi.future].reverse())replay(c);while(s.history.length>active)s.undo();}
   if(p.audio){ab=unb64(p.audio.base64);if(ab.length>50*1024*1024)throw Error('Audio zu groß.');decoded=await ctx().decodeAudioData(ab.slice().buffer);}
   const total=Math.max(decoded?decoded.duration-p.offset:0,s?midiDuration(s.midi,s.notes):0,.01);if(p.section[0]<0||p.section[1]<=p.section[0]||p.section[1]>total+.001)throw Error('Ungültige Projektpassage.');
-  session=s;audioBytes=ab;audio=decoded;audioName=p.audio?.name||'';midiName=p.midi?.name||'';$('offset').value=p.offset;selected=s?.notes[0]?.id||'';resetRange();$('from').value=p.section[0];$('to').value=p.section[1];render();status('Projekt einschließlich Originalen und Undo/Redo-Verlauf geladen.');
-}finally{loadBusy=false;}},'change');
+  if(p.transcription&&(!s||!decoded||p.transcription.provider!==MODEL_SPEC.provider||p.transcription.packageVersion!==MODEL_SPEC.packageVersion||!Array.isArray(p.transcription.audioRange)||!p.transcription.audioRange.every(Number.isFinite)))throw Error('Ungültige Transkriptionsherkunft.');
+  if(p.transcription&&p.transcription.candidateMidiSha256!==await hash(new Uint8Array(s.midi.original)))throw Error('Transkriptionsherkunft passt nicht zum gespeicherten MIDI-Kandidaten.');
+  provenance=p.transcription?{...p.transcription,referenceAudioChanged:p.transcription.referenceAudioChanged||p.transcription.sourceAudioSha256!==await hash(ab)}:null;inferenceLog=Array.isArray(p.localInference)?p.localInference.slice(-100):[];session=s;audioBytes=ab;audio=decoded;audioName=p.audio?.name||'';midiName=p.midi?.name||'';$('offset').value=p.offset;selected=s?.notes[0]?.id||'';resetRange();$('from').value=p.section[0];$('to').value=p.section[1];render();status('Projekt einschließlich Originalen und Undo/Redo-Verlauf geladen.');
+}finally{loadBusy=false;updateTranscriptionControls();}},'change');
+
+function invalidateTranscription(){sourceEpoch++;transcriber.cancel();pendingCandidate=null;$('transcriptionProgress').value=0;$('transcriptionStatus').textContent='Quelle gewechselt; kein aktiver Kandidat.';updateTranscriptionControls();}
+function updateTranscriptionControls(){
+  $('transcribe').disabled=!audio||!!session||transcribing||loadBusy;
+  $('cancelTranscription').disabled=!transcribing;
+  $('candidate').hidden=!pendingCandidate;
+  $('acceptCandidate').disabled=transcribing||!pendingCandidate?.noteCount;
+  $('originalMidi').textContent=provenance?'Unbearbeiteten Kandidaten sichern':'Original-MIDI sichern';$('mode').querySelector('[value=original]').textContent=provenance?'B · Unbearbeiteter Kandidat':'B · Ausgangs-MIDI';
+  if(provenance&&!transcribing&&!pendingCandidate)$('transcriptionStatus').textContent='Kandidat im Projekt. Musikalische Prüfung steht aus.';
+  $('provenance').textContent=provenance?`Kandidat: Basic Pitch ${provenance.packageVersion} · ${provenance.noteCount} Noten · Ursprung Audio allein · musikalisch ungeprüft.${provenance.referenceAudioChanged?' Referenzaudio wurde gewechselt; Zuordnung erneut prüfen.':''}`:'';
+  for(const id of ['audio','midi','project','demo','from','to','offset','all','save'])$(id).disabled=transcribing;
+  if(transcribing)for(const id of ['apply','undo','redo'])$(id).disabled=true;
+}
+action('transcribe',async()=>{
+  if(!audio||session||loadBusy||transcribing)throw Error('Transkription benötigt einen Audio-only-Arbeitsbereich.');
+  const range=audioRange(section(),number('offset'),audio.duration),epoch=sourceEpoch,source=audio,sourceBytes=audioBytes;
+  stop();transcribing=true;pendingCandidate=null;updateTranscriptionControls();$('transcriptionProgress').value=0;
+  const run={provider:MODEL_SPEC.provider,model:MODEL_SPEC,parameters:{...TRANSCRIPTION_PARAMETERS},audioRange:range,startedAt:new Date().toISOString(),state:'preparing',cost:0,remoteCalls:0};inferenceLog.push(run);inferenceLog=inferenceLog.slice(-100);const start=performance.now();
+  try{
+    $('transcriptionStatus').textContent='Audio vorbereiten …';
+    const samples=await resamplePassage(source,range);if(epoch!==sourceEpoch||!transcribing)throw new DOMException('Transkription abgebrochen.','AbortError');
+    run.sourceAudioSha256=await hash(sourceBytes);if(epoch!==sourceEpoch)throw new DOMException('Transkription abgebrochen.','AbortError');run.state='running';
+    const result=await transcriber.run(samples,p=>{$('transcriptionProgress').value=p.value;$('transcriptionStatus').textContent=`${p.phase} · ${Math.round(p.value*100)} %`;});
+    if(epoch!==sourceEpoch)throw new DOMException('Quelle wurde gewechselt.','AbortError');
+    const candidate=candidateMidi(result.notes,range[0],range[1]-range[0]);run.candidateMidiSha256=await hash(candidate.bytes);
+    Object.assign(run,{state:'completed',elapsedMs:Math.round(performance.now()-start),backend:result.backend,tensorBytes:result.tensorBytes,noteCount:candidate.noteCount,clipped:candidate.clipped,overlapChannels:candidate.overlapChannels});
+    pendingCandidate={...candidate,provenance:{...run,packageVersion:MODEL_SPEC.packageVersion,uncertainty:'Ungeprüfte Modellhypothese; Amplituden nicht als Wahrscheinlichkeit kalibriert.',noteActivations:result.notes}};
+    $('candidateInfo').textContent=`${candidate.noteCount} vorgeschlagene Noten für Audio ${range[0].toFixed(2)}–${range[1].toFixed(2)} s. ${candidate.clipped} Notengrenzen an den Analyseabschnitt angepasst. Kein Pedal rekonstruiert. Mit Übernehmen wird der Kandidat zur bearbeitbaren Vergleichsversion; das Audio bleibt unverändert.`;
+    $('transcriptionStatus').textContent=candidate.noteCount?'Kandidat bereit. Vor musikalischer Freigabe anhören und prüfen.':'Keine Noten erkannt. Quelle bleibt unverändert; anderen Abschnitt prüfen.';
+    status('Lokale Transkription abgeschlossen; Kandidat noch nicht übernommen.');
+  }catch(error){run.state=error.name==='AbortError'?'cancelled':'failed';run.message=error.message;run.elapsedMs=Math.round(performance.now()-start);$('transcriptionStatus').textContent=error.message;status(error.message,error.name!=='AbortError');}
+  finally{transcribing=false;updateTranscriptionControls();}
+});
+action('cancelTranscription',()=>{sourceEpoch++;transcriber.cancel();updateTranscriptionControls();$('cancelTranscription').disabled=true;$('transcriptionStatus').textContent='Transkription abgebrochen. Quellen unverändert.';});
+action('acceptCandidate',()=>{
+  if(!pendingCandidate?.noteCount||transcribing)throw Error('Kein Notenkandidat vorhanden.');
+  const candidate=pendingCandidate,parsed=parseMidi(candidate.bytes);
+  session=new Session(parsed);provenance=structuredClone(candidate.provenance);midiName=`${audioName} – MIDI-Kandidat.mid`;selected=parsed.notes[0]?.id||'';pendingCandidate=null;
+  stop();$('offset').value=0;resetRange();$('from').value=provenance.audioRange[0];$('to').value=provenance.audioRange[1];$('mode').value='edited';render();
+  $('transcriptionStatus').textContent='Kandidat übernommen. Musikalische Prüfung steht aus.';
+  status('MIDI-Kandidat übernommen. A: Originalaudio · B: unbearbeiteter Kandidat · C: manuelle Bearbeitung. Bitte anhören.');
+});
+action('discardCandidate',()=>{pendingCandidate=null;updateTranscriptionControls();$('transcriptionStatus').textContent='Kandidat verworfen. Originalaudio unverändert.';});
+
 const timeAt=e=>{const r=$('roll').getBoundingClientRect();return Math.max(0,Math.min(duration,((e.clientX-r.left)/r.width*1200-50)/1140*duration));};
-$('roll').addEventListener('pointerdown',e=>{drag={x:e.clientX,at:timeAt(e),id:e.target.dataset.id};$('roll').setPointerCapture(e.pointerId);});
+$('roll').addEventListener('pointerdown',e=>{if(transcribing)return;drag={x:e.clientX,at:timeAt(e),id:e.target.dataset.id};$('roll').setPointerCapture(e.pointerId);});
 $('roll').addEventListener('pointerup',e=>{if(!drag)return;if(Math.abs(e.clientX-drag.x)<5&&drag.id){selected=drag.id;$('note').value=selected;fillNote();}else if(Math.abs(e.clientX-drag.x)>=5){stop();$('from').value=Math.min(drag.at,timeAt(e)).toFixed(4);$('to').value=Math.max(drag.at,timeAt(e)).toFixed(4);}drag=null;draw();});
 $('roll').addEventListener('pointercancel',()=>{drag=null;});
 window.addEventListener('beforeunload',e=>{if(session?.history.length||audio){e.preventDefault();e.returnValue='';}});

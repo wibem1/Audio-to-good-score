@@ -1,6 +1,6 @@
 # Pflichtenheft – Audio to Good Score, Zielversion 0.1
 
-**Status:** verbindliche Anforderungsbasis. Meilenstein 1 als technisch geprüfter Prototyp umgesetzt; Einzelstatus siehe `PROJECT_STATE.md`. V0.1 ist nicht freigegeben.  
+**Status:** verbindliche Anforderungsbasis. Meilenstein 1 und der lokale Audio-only-Kandidatenweg aus Meilenstein 2 technisch geprüft, musikalische Abnahme offen; Einzelstatus siehe `PROJECT_STATE.md`. V0.1 ist nicht freigegeben.  
 **Plattform:** Web-App, nutzbar auf Windows/macOS/Tablets.  
 **Zielgruppe:** Musiker, die aus Audio oder fehlerhaften Transkriptionen klanglich überzeugende MIDI und lesbare MusicXML erzeugen wollen.  
 **Startumfang:** Soloklavier. **Referenz:** „Graziler Tanz“ (Audio + erste MIDI, nur wenn Testdateien verfügbar).  
