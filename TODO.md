@@ -8,7 +8,8 @@
 - [ ] M1/M2: Menschlicher musikalischer Hörtest einer echten Klavierpassage; native Tablet-/Safari-/Firefox-Prüfung
 - [ ] Referenz „Graziler Tanz“ nach rechtmäßiger Bereitstellung prüfen
 - [ ] M2: Musikalische Eignung der Baseline prüfen; bei Bedarf klavierspezifischen Provider separat evaluieren
+- [x] Selektives reversibles Ausblenden zusätzlicher Töne, Projekt Schema 3 und Rhythmuserhalt prüfen
 - [ ] M3: Musikalische Fehlerdiagnose und selektive Reparatur mit Kontext, Gründen und Unsicherheit
 - [ ] M4: Performance-/Score-Trennung, zweisystemiger MusicXML-Export, echte Dorico-/MuseScore-Importtests
 
-23 Kerntests, zwei Browserregressionen und unabhängige Exportprüfungen bestanden. Oktav-/Auslassungsfehler im synthetischen Modelltest offen dokumentiert. Keine musikalische oder gesamte V0.1-Freigabe. Lokale Modellläufe erfolgt; keine externen oder kostenpflichtigen KI-Aufrufe.
+25 Kerntests, zwei Browserregressionen und unabhängige Exportprüfungen bestanden. Oktav-/Auslassungsfehler im synthetischen Modelltest offen dokumentiert. Keine musikalische oder gesamte V0.1-Freigabe. Lokale Modellläufe erfolgt; keine externen oder kostenpflichtigen KI-Aufrufe.

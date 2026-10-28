@@ -11,6 +11,7 @@
     "MIDI export rhythm equality",
     "diagnosis hash and zero AI calls",
     "project reload including originals and redo",
+    "selective note exclusion, export, project restore and undo/redo",
     "desktop and mobile layout"
   ],
   "audioNodeStarts": 6,

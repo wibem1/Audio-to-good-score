@@ -1,6 +1,10 @@
+# Ergänzung: selektives Ausblenden, 28.10.2026
+
+25 Kerntests bestanden. Echte Chromium-Browserprüfung ergänzt um Ausblenden, MIDI-Export, Schema-3-Projektwiederherstellung und Undo/Redo. `test-results/independent-mute-results.json`: unabhängiger mido-Parser bestätigt genau zwei entfernte Ereignisse; alle verbleibenden MIDI-Ereignisse und absoluten Ticks stimmen überein. Original/B bleibt unverändert, C rendert aktive Noten. Alle Noten können ausgeblendet werden, ohne Tempo/Pedal/Metadaten zu verlieren. Die zusätzliche Reparatur ist manuell begründet, keine automatische KI-Entscheidung und keine menschliche Hörfreigabe. Historische Schema-2-Angaben unten beziehen sich auf den vorigen M2-Stand; neue Projekte sind Schema 3, Schema 1/2 bleiben lesbar.
+
 # Prüfbericht – aktueller Stand M1 + technischer M2-Weg
 
-28.10.2026. **23/23 Kerntests bestanden**; beide echten Chromium-Browserregressionen und beide unabhängigen mido-Prüfungen bestanden. Nach Installation aus `package-lock.json` mit `npm ci` erfolgreich neu gebaut und geprüft. Keine Cloud-/kostenpflichtigen Modellaufrufe. Keine menschliche Hörfreigabe.
+28.10.2026. **25/25 Kerntests bestanden**; beide echten Chromium-Browserregressionen und beide unabhängigen mido-Prüfungen bestanden. Nach Installation aus `package-lock.json` mit `npm ci` erfolgreich neu gebaut und geprüft. Keine Cloud-/kostenpflichtigen Modellaufrufe. Keine menschliche Hörfreigabe.
 
 ## Audio-only – echte Modellinferenz
 

@@ -63,12 +63,12 @@ export function secondsToTick(midi,seconds){
 export function exportMidi(midi,notes=midi.notes){
   if(JSON.stringify(notes)===JSON.stringify(midi.notes)) return new Uint8Array(midi.original);
   const tracks=structuredClone(midi.tracks);
-  for(const n of notes){const on=tracks[n.track][n.on],off=tracks[n.track][n.off];on.tick=n.start;on.data=[n.pitch,n.velocity];off.tick=n.end;off.data[0]=n.pitch;}
+  for(const n of notes){const on=tracks[n.track][n.on],off=tracks[n.track][n.off];if(n.muted){on.omitted=true;off.omitted=true;}on.tick=n.start;on.data=[n.pitch,n.velocity];off.tick=n.end;off.data[0]=n.pitch;}
   const result=[77,84,104,100,...u32(6),...u16(midi.format),...u16(tracks.length),...u16(midi.ppq)];
   for(const events of tracks){
     const eot=events.find(e=>e.status===255&&e.meta===47);
     eot.tick=events.reduce((end,e)=>Math.max(end,e.tick),eot.tick);
-    const sorted=events.filter(e=>e!==eot).sort((a,b)=>a.tick-b.tick||a.order-b.order); sorted.push(eot);
+    const sorted=events.filter(e=>e!==eot&&!e.omitted).sort((a,b)=>a.tick-b.tick||a.order-b.order); sorted.push(eot);
     const data=[];let previous=0;
     for(const e of sorted){const prefix=[...vlq(e.tick-previous),e.status];previous=e.tick;
       if(e.status===255) prefix.push(e.meta,...vlq(e.data.length));

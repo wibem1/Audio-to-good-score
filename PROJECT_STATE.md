@@ -9,6 +9,10 @@
 
 Audio allein, Audio+MIDI und MIDI allein sind gleichrangige Eingänge. Standard **Musikalisch ausgewogen**. Originale nicht überschreiben; Korrekturen einzeln begründen, sichtbar machen, vergleichen und rückgängig machen. Performance und spätere Score-Zeiten getrennt. Keine pauschale Quantisierung. Keine kostenpflichtigen KI-Aufrufe ohne Zustimmung. Technische Tests ersetzen keine musikalische Hörfreigabe.
 
+## Ergänzung: selektive manuelle Reparatur
+
+Noten lassen sich mit Begründung und Abschnittsschutz reversibel aus C und dem Export ausblenden. Original/B bleibt erhalten, keine Zeitverschiebung anderer Noten. Wiedergabe, Export, Undo/Redo und Projekt Schema 3 geprüft; Schema 1/2 weiterhin lesbar. Unabhängiger mido-Test bestätigt ausschließlich zwei entfernte Ereignisse bei unveränderten absoluten Zeiten der übrigen Ereignisse. M3 bleibt hinsichtlich musikalischer KI-Diagnose und automatischer Reparatur offen.
+
 ## Aktuell nachgewiesen
 
 | Bereich | Nachweis / Grenzen |
@@ -21,7 +25,7 @@ Audio allein, Audio+MIDI und MIDI allein sind gleichrangige Eingänge. Standard 
 | Projekt/Diagnose | Schema 2 mit Audio, unbearbeitetem Kandidaten, Modell-/Quellhashes, Parametern, Laufprotokollen und Undo/Redo; Schema 1 weiterhin im Browser lesbar. Manuell speichern |
 | Fehlerfälle/Ressourcen | Fehlende/korrupte Modelle, Abbruch und Stille getestet; tatsächlich 60-s-Eingabe verarbeitet; keine erfundenen Noten aus Stille; kein externer Request im Modellbrowsertest |
 
-**Prüfstand:** 23/23 Kerntests bestanden, M1- und M2-Browserregression in Chromium 138.0.7204.0 bestanden, unabhängige mido-Exportprüfungen bestanden. `npm ci`/Build reproduziert. `TEST_RESULTS.md`, Maschinenberichte/Screenshots unter `test-results/` und Quellfingerabdrücke dokumentieren den Stand.
+**Prüfstand:** 25/25 Kerntests bestanden, M1- und M2-Browserregression in Chromium 138.0.7204.0 bestanden, unabhängige mido-Exportprüfungen bestanden. `npm ci`/Build reproduziert. `TEST_RESULTS.md`, Maschinenberichte/Screenshots unter `test-results/` und Quellfingerabdrücke dokumentieren den Stand.
 
 ## Modellqualität – ausdrücklich begrenzt
 

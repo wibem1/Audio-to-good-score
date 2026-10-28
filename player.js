@@ -1,7 +1,7 @@
 import {tickToSeconds} from './midi.js';
 export function notePlan(midi,notes){
   const pedals=midi.tracks.flatMap((track,t)=>track.filter(e=>(e.status>>4)===11&&e.data[0]===64).map(e=>({time:tickToSeconds(midi,e.tick),channel:e.status&15,value:e.data[1],track:t,order:e.order}))).sort((a,b)=>a.time-b.time||a.track-b.track||a.order-b.order);
-  return notes.map(n=>{
+  return notes.filter(n=>!n.muted).map(n=>{
     const start=tickToSeconds(midi,n.start);let end=tickToSeconds(midi,n.end),down=false;
     const beforeOff=p=>p.time<end||(p.time===end&&(p.track<n.track||(p.track===n.track&&p.order<n.off)));
     for(const p of pedals)if(p.channel===n.channel&&beforeOff(p))down=p.value>=64;

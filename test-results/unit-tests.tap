@@ -2,147 +2,159 @@ TAP version 13
 # Subtest: no-edit export is byte-identical, including tempo, metadata, pedal, SysEx
 ok 1 - no-edit export is byte-identical, including tempo, metadata, pedal, SysEx
   ---
-  duration_ms: 2.979696
+  duration_ms: 3.467815
   type: 'test'
   ...
 # Subtest: dense tempo integration and inverse conversion preserve absolute times
 ok 2 - dense tempo integration and inverse conversion preserve absolute times
   ---
-  duration_ms: 3.543533
+  duration_ms: 2.254934
   type: 'test'
   ...
 # Subtest: pitch/velocity correction leaves every onset, duration, tempo and non-note event untouched
 ok 3 - pitch/velocity correction leaves every onset, duration, tempo and non-note event untouched
   ---
-  duration_ms: 2.473255
+  duration_ms: 2.455415
   type: 'test'
   ...
 # Subtest: section isolation, timing opt-in, reasons, numeric validation and overlap guard
 ok 4 - section isolation, timing opt-in, reasons, numeric validation and overlap guard
   ---
-  duration_ms: 2.386855
+  duration_ms: 2.605761
   type: 'test'
   ...
 # Subtest: undo/redo fully reversible; new branch clears redo
 ok 5 - undo/redo fully reversible; new branch clears redo
   ---
-  duration_ms: 1.307133
+  duration_ms: 1.284538
   type: 'test'
   ...
 # Subtest: explicit timing correction changes only selected note, keeps tempo map
 ok 6 - explicit timing correction changes only selected note, keeps tempo map
   ---
-  duration_ms: 0.695474
+  duration_ms: 0.637757
   type: 'test'
   ...
 # Subtest: running status, velocity-zero note-off and format 0
 ok 7 - running status, velocity-zero note-off and format 0
   ---
-  duration_ms: 0.444808
+  duration_ms: 0.470426
   type: 'test'
   ...
 # Subtest: unsupported and malformed files rejected without fabricated timing
 ok 8 - unsupported and malformed files rejected without fabricated timing
   ---
-  duration_ms: 0.61849
+  duration_ms: 0.605188
   type: 'test'
   ...
 # Subtest: pedal extends rendering, no changes to exported key-up times
 ok 9 - pedal extends rendering, no changes to exported key-up times
   ---
-  duration_ms: 0.71244
+  duration_ms: 0.664337
   type: 'test'
   ...
 # Subtest: audio-only remains an independent input without fake transcription
 ok 10 - audio-only remains an independent input without fake transcription
   ---
-  duration_ms: 0.327672
+  duration_ms: 0.392709
   type: 'test'
   ...
 # Subtest: diagnosis identifies short and out-of-range notes without altering them
 ok 11 - diagnosis identifies short and out-of-range notes without altering them
   ---
-  duration_ms: 0.511589
+  duration_ms: 0.469945
   type: 'test'
   ...
 # Subtest: 200 repeated pitch edits and export cycles never introduce rhythm changes
 ok 12 - 200 repeated pitch edits and export cycles never introduce rhythm changes
   ---
-  duration_ms: 30.121376
+  duration_ms: 28.375184
   type: 'test'
   ...
 # Subtest: shared audio clock, negative audio offset, and stop cancel scheduled sources
 ok 13 - shared audio clock, negative audio offset, and stop cancel scheduled sources
   ---
-  duration_ms: 0.81909
+  duration_ms: 0.795453
   type: 'test'
   ...
 # Subtest: pedal-down after note-off at the same tick must not extend that note
 ok 14 - pedal-down after note-off at the same tick must not extend that note
   ---
-  duration_ms: 0.207532
+  duration_ms: 0.191948
   type: 'test'
   ...
 # Subtest: new same-channel overlaps across different tracks are rejected
 ok 15 - new same-channel overlaps across different tracks are rejected
   ---
-  duration_ms: 0.382464
+  duration_ms: 0.250486
+  type: 'test'
+  ...
+# Subtest: selective removal preserves tempo, pedal, other events and remaining rhythmic times
+ok 16 - selective removal preserves tempo, pedal, other events and remaining rhythmic times
+  ---
+  duration_ms: 5.367676
+  type: 'test'
+  ...
+# Subtest: removal requires reason and full-section containment; all notes can be removed safely
+ok 17 - removal requires reason and full-section containment; all notes can be removed safely
+  ---
+  duration_ms: 5.753364
   type: 'test'
   ...
 # Subtest: candidate preserves expressive seconds within 0.25 ms, full-audio offset and notes
-ok 16 - candidate preserves expressive seconds within 0.25 ms, full-audio offset and notes
+ok 18 - candidate preserves expressive seconds within 0.25 ms, full-audio offset and notes
   ---
-  duration_ms: 2.195738
+  duration_ms: 2.124359
   type: 'test'
   ...
 # Subtest: overlapping identical pitch retains exact durations through separate MIDI channels
-ok 17 - overlapping identical pitch retains exact durations through separate MIDI channels
+ok 19 - overlapping identical pitch retains exact durations through separate MIDI channels
   ---
-  duration_ms: 1.114565
+  duration_ms: 0.941553
   type: 'test'
   ...
 # Subtest: candidate boundary clipping is reported, invalid model data rejected
-ok 18 - candidate boundary clipping is reported, invalid model data rejected
+ok 20 - candidate boundary clipping is reported, invalid model data rejected
   ---
-  duration_ms: 0.985971
+  duration_ms: 0.863346
   type: 'test'
   ...
 # Subtest: audio selection honors manual offset and refuses overlong or empty input
-ok 19 - audio selection honors manual offset and refuses overlong or empty input
+ok 21 - audio selection honors manual offset and refuses overlong or empty input
   ---
-  duration_ms: 0.33298
+  duration_ms: 0.247472
   type: 'test'
   ...
 # Subtest: candidate manual correction, undo and export do not quantize existing event times
-ok 20 - candidate manual correction, undo and export do not quantize existing event times
+ok 22 - candidate manual correction, undo and export do not quantize existing event times
   ---
-  duration_ms: 2.598694
+  duration_ms: 2.457749
   type: 'test'
   ...
 # Subtest: worker results and progress resolved exactly once; resources released
-ok 21 - worker results and progress resolved exactly once; resources released
+ok 23 - worker results and progress resolved exactly once; resources released
   ---
-  duration_ms: 0.704228
+  duration_ms: 0.517647
   type: 'test'
   ...
 # Subtest: cancel terminates worker and rejects promise, no stale result accepted
-ok 22 - cancel terminates worker and rejects promise, no stale result accepted
+ok 24 - cancel terminates worker and rejects promise, no stale result accepted
   ---
-  duration_ms: 0.57926
+  duration_ms: 0.502955
   type: 'test'
   ...
 # Subtest: worker failure and messaging failure clean up without MIDI results
-ok 23 - worker failure and messaging failure clean up without MIDI results
+ok 25 - worker failure and messaging failure clean up without MIDI results
   ---
-  duration_ms: 0.729305
+  duration_ms: 0.411087
   type: 'test'
   ...
-1..23
-# tests 23
+1..25
+# tests 25
 # suites 0
-# pass 23
+# pass 25
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 151.394098
+# duration_ms 154.149151

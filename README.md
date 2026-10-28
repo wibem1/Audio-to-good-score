@@ -28,7 +28,7 @@ Der synthetische Test zeigt diese Grenzen ausdrücklich: 7 von 8 erwarteten Note
 
 WAV/MP3 und/oder SMF 0/1 importieren, bei Audio+MIDI den konstanten Audio-Versatz einstellen. Positive Werte überspringen den entsprechenden Audioanfang; Tempodrift erfordert ein späteres Mehrpunkt-Alignment. Passage per Feldern oder Ziehen auf der Pianorolle markieren. Note anklicken oder in der Liste wählen, Tonhöhe/Velocity ändern und begründen. Start-/Endticks erfordern eine ausdrückliche Freigabe. Nur vollständig in der Passage liegende Noten werden bearbeitet; es gibt keine pauschale Quantisierung.
 
-Originale sind separat herunterladbar. B/C vergleichen, rückgängig machen/wiederherstellen, MIDI und Diagnose exportieren. **Vor dem Schließen Projekt speichern**; keine automatische dauerhafte Speicherung. Projekte aus Meilenstein 1 (Schema 1) lassen sich weiterhin öffnen, neue Projekte benutzen Schema 2. Der Vergleichssynthesizer ist kein gesampeltes Klavier; Programme, Pitchbend und weitere Controller sind im Export erhalten, im Klang vereinfacht.
+Originale sind separat herunterladbar. B/C vergleichen, rückgängig machen/wiederherstellen, MIDI und Diagnose exportieren. **Vor dem Schließen Projekt speichern**; keine automatische dauerhafte Speicherung. Projekte aus Meilenstein 1 (Schema 1) lassen sich weiterhin öffnen, neue Projekte benutzen Schema 3 (ältere Versionen sollen Ausblendungen nicht stillschweigend verlieren). Der Vergleichssynthesizer ist kein gesampeltes Klavier; Programme, Pitchbend und weitere Controller sind im Export erhalten, im Klang vereinfacht.
 
 ## Entwicklung und Prüfungen
 
@@ -57,3 +57,5 @@ python3 tests/independent_transcription.py
 Testdaten sind synthetisch und werden automatisch erzeugt. Standardausgaben: `/tmp/ags-browser-results` und `/tmp/ags-transcription-results`. Mit `TEST_OUTPUT_DIR` änderbar; unter Windows einen beschreibbaren Pfad wählen und für die zusammengehörenden Browser-/Python-Tests denselben Pfad benutzen. Optional vorhandenen Browser mit `CHROMIUM_EXECUTABLE` und Playwright mit `PLAYWRIGHT_MODULE` wählen. Tatsächlich getestet wurde Chromium 138.0.7204.0; keine native Tablet-/Safari-Freigabe.
 
 Siehe [PROJECT_STATE.md](PROJECT_STATE.md), [TEST_RESULTS.md](TEST_RESULTS.md), [ARCHITECTURE.md](ARCHITECTURE.md), [TRANSCRIPTION_DECISION.md](TRANSCRIPTION_DECISION.md) und [PFLICHTENHEFT_V0.1.md](PFLICHTENHEFT_V0.1.md).
+
+Einzelnoten ausblenden: Note wählen, „Note aus Bearbeitung ausblenden“ ankreuzen, begründen und übernehmen. B und Originaldatei bleiben vollständig; C und MIDI-Export lassen nur diese Note weg. Ausgeblendete Noten bleiben blass sichtbar und lassen sich per Undo/Redo oder durch Aufheben des Häkchens wieder aufnehmen. Projekt Schema 3 speichert diesen Zustand, Schema 1/2 bleibt lesbar. Zusätzlicher Test: `python3 tests/independent_mute.py` nach dem M1-Browsertest.
