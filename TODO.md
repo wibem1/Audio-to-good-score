@@ -9,7 +9,8 @@
 - [x] Echte lokale neuronale Audio-Gegenprüfung für explizite Oktavkorrekturen, Undo und unveränderte MIDI-Zeiten testen
 - [ ] F07/F08 musikalisch validieren/bei Bedarf erweitern; Kontextregeln nicht als umfassende semantische KI-Analyse ausgeben
 - [x] Reale MusicXML-Importe in MuseScore 3.2.3, natives Speichern/Öffnen, Rückexport und Rendering in sechs Fällen
-- [ ] Reale MusicXML-Importe in Dorico; MuseScore 4 separat prüfen
+- [x] MuseScore 4.7.6: sechs echte Import-/Native-Speicher-/Rückexportfälle und Rendering
+- [ ] Reale MusicXML-Importe in Dorico
 - [ ] Echte Referenzpassage / „Graziler Tanz“ und menschlicher A/B/C-Hörtest
 - [ ] Native Tablet-/Safari-/Firefox-Abnahme
 

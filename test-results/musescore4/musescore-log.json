@@ -1,0 +1,91 @@
+[
+  {
+    "case": "piano",
+    "output": "piano.mscx",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "piano",
+    "output": "piano-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "compound",
+    "output": "compound.mscx",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "compound",
+    "output": "compound-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "three-four",
+    "output": "three-four.mscx",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "three-four",
+    "output": "three-four-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "duplicate-pitch",
+    "output": "duplicate-pitch.mscx",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "duplicate-pitch",
+    "output": "duplicate-pitch-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "seconds-tempo",
+    "output": "seconds-tempo.mscx",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "seconds-tempo",
+    "output": "seconds-tempo-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "empty",
+    "output": "empty.mscx",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "empty",
+    "output": "empty-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n",
+    "stdout": ""
+  },
+  {
+    "case": "render",
+    "returncode": 0,
+    "stderr": "/lib/x86_64-linux-gnu/libOpenGL.so.0\n/lib/x86_64-linux-gnu/libjack.so.0\n/lib/x86_64-linux-gnu/libnss3.so\nfindlib: libpipewire-0.3.so.0: cannot open shared object file: No such file or directory\n/tmp/ags-ms4/squashfs-root/AppRun: Using fallback for library 'libpipewire-0.3.so.0'\n/lib/x86_64-linux-gnu/libsystemd.so.0\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\nqt.qpa.theme.dbus: Session DBus not running.\nqt.qpa.theme.dbus: Application will not react to setting changes.\n Check your DBus installation.\nqt.qpa.theme.gnome: dbus connection failed. Last error:  QDBusError(\"org.freedesktop.DBus.Error.Spawn.ExecFailed\", \"/usr/bin/dbus-launch terminated abnormally without any error message\")\n"
+  }
+]

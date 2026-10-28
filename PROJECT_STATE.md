@@ -18,7 +18,7 @@ Stand: 28.10.2026. **Technisch geprüfter Entwicklungsstand; V0.1 nicht vollstä
 ## Verbleibende Lücken für vollständige V0.1
 
 1. **Musikalische KI-Abnahme offen:** Das neuronale Modell liefert Audio-Notenkandidaten und kann vorhandene MIDI selektiv mit Audio gegenprüfen. Ein echter Modell-Browsertest korrigiert nach ausdrücklicher Bestätigung einen synthetischen Oktavfehler und bestätigt Undo/Rhythmuserhalt. Die musikalische Kontextanalyse und Reparaturhypothesen sind transparente Regeln, kein abgenommenes KI-Modell für Melodie/Motivik/Harmonik. Keine erfundene KI-Freigabe.
-2. **A09 offen:** MuseScore 3.2.3 ist jetzt in sechs Fällen mit echtem MusicXML-Import, nativem Speichern/Öffnen, Rückexport und PNG-Rendering geprüft. Alle Noten-Tonhöhen, Einsätze, Dauern und Systeme bleiben erhalten. Dorico und MuseScore 4 bleiben ungeprüft; A09 ist insgesamt noch offen.
+2. **A09 offen:** MuseScore 3.2.3 ist jetzt in sechs Fällen mit echtem MusicXML-Import, nativem Speichern/Öffnen, Rückexport und PNG-Rendering geprüft. Alle Noten-Tonhöhen, Einsätze, Dauern und Systeme bleiben erhalten. MuseScore 4.7.6 besteht dieselben sechs Fälle ebenfalls; Dorico bleibt ungeprüft; A09 ist insgesamt noch offen.
 3. **A11 musikalisch offen:** Keine bereitgestellte echte Referenzaufnahme „Graziler Tanz“ und keine menschliche A/B/C-Hörfreigabe. Im synthetischen Basic-Pitch-Test weiterhin Oktav-/Auslassungsfehler (7 passende von 8 Referenznoten, 9 Modellnoten).
 4. Native Tablet-/Safari-/Firefox-Abnahme fehlt. Score-Handteilung ist heuristisch; kein Triole-/Rubato-/Phrasierungsautomatismus. Pedal wird nicht aus Audio rekonstruiert. Keine automatische Tempoausrichtung. Kein automatisches Spielbarkeitsurteil.
 
@@ -30,4 +30,4 @@ Nächste Abnahmeschritte: echte Klavierpassage mit menschlichem Hörvergleich, M
 
 ## MuseScore-Nachweis
 
-Echte Ubuntu-MuseScore-Version 3.2.3, isoliert als Testwerkzeug bereitgestellt, keine Produktabhängigkeit. Sechs Import-/Native-Speicher-/Rückexportfälle bestanden; PNG visuell geprüft. Dies ist keine pauschale Satzqualitätsfreigabe oder Hörprüfung. Reproduzierbarer Test: `tests/musescore-fixtures.js`, `tests/musescore_import.py`; Berichte/native Beispieldatei/Notenbild: `test-results/musescore/`.
+Echte MuseScore-Versionen 3.2.3 (Ubuntu) und 4.7.6 (offizielle AppImage), isoliert als Testwerkzeug bereitgestellt, keine Produktabhängigkeit. Sechs Import-/Native-Speicher-/Rückexportfälle bestanden; PNG visuell geprüft. Dies ist keine pauschale Satzqualitätsfreigabe oder Hörprüfung. Reproduzierbarer Test: `tests/musescore-fixtures.js`, `tests/musescore_import.py`; Berichte/native Beispieldatei/Notenbild: `test-results/musescore/` und `test-results/musescore4/`.

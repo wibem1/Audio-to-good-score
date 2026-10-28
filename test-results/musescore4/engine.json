@@ -1,0 +1,7 @@
+{
+  "release": "https://github.com/musescore/MuseScore/releases/tag/v4.7.6",
+  "asset": "MuseScore-Studio-4.7.6.261022093-x86_64.AppImage",
+  "sha256": "5fcbd1f292270eca5c3867d56b767c31a173a155216a415f5caee22553f8e7a6",
+  "display": "Xvfb 21.1.12, xcb, TCP loopback, no audio/listening approval",
+  "render": "Original engine PNG, white background and reduced to maximum 1400x1900 for evidence."
+}

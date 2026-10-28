@@ -88,3 +88,14 @@ MUSESCORE_EXECUTABLE=/pfad/zu/musescore3 python3 tests/musescore_import.py
 ```
 
 Unter Windows die Umgebungsvariable entsprechend der Shell setzen. Der Test erzeugt sechs synthetische Notationsfälle und prüft echten Import, natives Speichern/Öffnen, Rückexport und PNG-Rendering. Er benötigt nur Python-Standardbibliothek plus Node für die vorhandenen Projektmodule. Ausgaben standardmäßig `/tmp/ags-musescore-results`, durch `TEST_OUTPUT_DIR` änderbar. Keine MuseScore-Installation für die Benutzung der Web-App nötig. Dorico-Abnahme und menschliche musikalische Freigabe fehlen weiterhin.
+
+### MuseScore 4 prüfen
+
+Derselbe Importtest unterstützt echte MuseScore-3- und MuseScore-4-Installationen. MuseScore 4.7.6 wurde mit sechs Fällen geprüft; Belege unter `test-results/musescore4/`. Bei einer laufenden X11-Anzeige beispielsweise:
+
+```sh
+TEST_OUTPUT_DIR=/tmp/ags-musescore4-results node tests/musescore-fixtures.js
+QT_QPA_PLATFORM=xcb TEST_OUTPUT_DIR=/tmp/ags-musescore4-results MUSESCORE_EXECUTABLE=/path/to/MuseScore/AppRun python3 tests/musescore_import.py
+```
+
+`DISPLAY` muss auf die vorhandene Anzeige zeigen; in einer Headless-Umgebung wird ein separat bereitgestelltes Xvfb benötigt. Die getestete AppImage benötigt hier auch dann eine Anzeige, wenn Qt auf offscreen gesetzt wird. MuseScore ist ausschließlich ein externes Testwerkzeug.

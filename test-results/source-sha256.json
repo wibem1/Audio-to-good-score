@@ -100,5 +100,5 @@
   "vendor/wasm/tfjs-backend-wasm-simd.wasm": "918e97b89039305394e9987088249bacee5ef09111ae9f9384c06bec564e2d7b",
   "vendor/wasm/tfjs-backend-wasm.wasm": "3fdde0b7f76782146ed7a5212bca394d1e59e1bfb8768531c72480d6f10aee1f",
   "tests/musescore-fixtures.js": "3340a9dc3c710703446bd8f6e0fe5d68650e8e053081c68a07c58420c94631d7",
-  "tests/musescore_import.py": "d63cfb1550ab95dac5c9f5fe300ae3252f947bbb849f50228b573ee22d52cc64"
+  "tests/musescore_import.py": "5604fa3ae14d47fe0a8268c76a913262c87e30b3e408902ae11a36575acee35d"
 }

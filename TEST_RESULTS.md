@@ -103,3 +103,13 @@ Sechs synthetische Fälle: zweisystemiger Satz mit unabhängigen Stimmen und Tak
 `test-results/musescore/` enthält JSON-Bericht, vollständige CLI-Protokolle, native MSCX, Rückexport und Notenbild. Protokollierte AF_NETLINK-Meldungen stammen aus der eingeschränkten Arbeitsumgebung; alle eigentlichen Konvertierungen erfolgreich. Test verwendete isolierte offizielle Pakete, nachdem normale Paketinstallation an Umgebungseinschränkungen scheiterte.
 
 Der Nachweis gilt nur für MuseScore 3.2.3 und diese Fälle. MuseScore 4, Dorico, reale Referenz „Graziler Tanz“ und menschliche Hörfreigabe bleiben offen. Bestehende ältere Aussagen über fehlenden MuseScore-Test oben sind historisch durch diesen Abschnitt ergänzt. Keine App-Quellcodeänderung und keine kostenpflichtigen KI-Aufrufe.
+
+## Echter MuseScore-4-Import – 28.10.2026
+
+Offizielle MuseScore Studio 4.7.6 AppImage (Build 261022093, x86_64), Release `https://github.com/musescore/MuseScore/releases/tag/v4.7.6`. SHA-256 `5fcbd1f292270eca5c3867d56b767c31a173a155216a415f5caee22553f8e7a6` stimmt mit der offiziellen Release-Metadatenangabe überein. Keine zusätzliche Produktabhängigkeit.
+
+Alle sechs zuvor beschriebenen Fälle bestehen den tatsächlichen MusicXML→MSCX→MusicXML-Durchlauf mit identischen Tonhöhen, rationalen Einsätzen, Dauern und Systemzuordnungen nach Bindungszusammenführung. Je zwei native Systeme. Engine-PNG visuell geprüft: zwei Klaviersysteme, Stimmen/Pausen und Bindungen sichtbar. Für den abgelegten Sichtbeleg wurde nur weißer Hintergrund ergänzt und verkleinert; keine Noteninhalte verändert. Keine umfassende Layout- oder Hörfreigabe.
+
+Die AppImage erzwingt hier einen Anzeigeweg; bloßes Offscreen-Environment genügte nicht. Test erfolgreich unter isoliertem Xvfb 21.1.12 via TCP-Loopback/xcb im selben Prozessraum; systemweites Installieren nicht erforderlich. MuseScore 4 unterstützt das alte `-s` nicht; der gemeinsame Test verwendet daher nur `-o`. Qt/DBus-/Pipewire-/Audiomeldungen sind in den vollständigen Protokollen erhalten. Alle 13 Konvertierungen/Renderaufrufe erfolgreich. Version wird tatsächlich aus `--version` gelesen; das MuseScore-4-Prüffeld ist nicht mehr pauschal falsch.
+
+Belege: `test-results/musescore4/` mit Versions-/Quellnachweis, JSON-Bericht, CLI-Protokollen, nativer Datei, MusicXML-Rückexport und Notenbild. 31/31 Kerntests erneut bestanden. Produktcode unverändert, keine kostenpflichtigen KI-Aufrufe. Dorico und menschliche musikalische Hörabnahme bleiben offen. Die frühere MuseScore-4-Lücke ist mit diesem Abschnitt geschlossen.
