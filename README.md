@@ -1,6 +1,6 @@
 # Audio to Good Score
 
-**Meilenstein 1 technisch abgeschlossen.** Umfang, aktuelle Tests und Benutzung: [MILESTONE_1.md](MILESTONE_1.md).
+**Meilenstein 1 zur Nutzung freigegeben (technisch geprüfte Vorabversion).** [Freigabehinweise](RELEASE_M1.md). Umfang, aktuelle Tests und Benutzung: [MILESTONE_1.md](MILESTONE_1.md).
 
 Lokale Web-App für **V0.1 – technischer Workflow aus Import, Transkription, selektiver Reparatur und Klaviernotation**. Standard: **Musikalisch ausgewogen**. Keine musikalische oder vollständige V0.1-Freigabe.
 

@@ -1,6 +1,6 @@
 # Projektstand – Audio to Good Score
 
-Stand: 28.10.2026. **Meilenstein 1 technisch abgeschlossen; V0.1 nicht vollständig abgenommen.** Siehe `MILESTONE_1.md`. GitHub `wibem1/Audio-to-Good-Score`, `main`, ist maßgeblich. Vorige gesicherte Stände bleiben in der Historie: M1 `6458b6d`, Audio-only `0b3bcf7`, Notenausblendung `b48547c`.
+Stand: 28.10.2026. **Meilenstein 1 als technisch geprüfte Vorabversion zur Nutzung freigegeben; V0.1 nicht vollständig abgenommen.** Freigabe am 28.10.2026 auf ausdrücklichen Auftrag, Zweig `release/v0.1-m1`, geprüfter Produktcode `d40b6058b5125fff89cdf6da3d16498a3e62c720`. Siehe `RELEASE_M1.md`. Siehe `MILESTONE_1.md`. GitHub `wibem1/Audio-to-Good-Score`, `main`, ist maßgeblich. Vorige gesicherte Stände bleiben in der Historie: M1 `6458b6d`, Audio-only `0b3bcf7`, Notenausblendung `b48547c`.
 
 ## Nachgewiesene Funktionen
 
