@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: no-edit export is byte-identical, including tempo, metadata, pedal, SysEx
+ok 1 - no-edit export is byte-identical, including tempo, metadata, pedal, SysEx
+  ---
+  duration_ms: 2.847494
+  type: 'test'
+  ...
+# Subtest: dense tempo integration and inverse conversion preserve absolute times
+ok 2 - dense tempo integration and inverse conversion preserve absolute times
+  ---
+  duration_ms: 2.729872
+  type: 'test'
+  ...
+# Subtest: pitch/velocity correction leaves every onset, duration, tempo and non-note event untouched
+ok 3 - pitch/velocity correction leaves every onset, duration, tempo and non-note event untouched
+  ---
+  duration_ms: 2.204849
+  type: 'test'
+  ...
+# Subtest: section isolation, timing opt-in, reasons, numeric validation and overlap guard
+ok 4 - section isolation, timing opt-in, reasons, numeric validation and overlap guard
+  ---
+  duration_ms: 2.408926
+  type: 'test'
+  ...
+# Subtest: undo/redo fully reversible; new branch clears redo
+ok 5 - undo/redo fully reversible; new branch clears redo
+  ---
+  duration_ms: 0.92592
+  type: 'test'
+  ...
+# Subtest: explicit timing correction changes only selected note, keeps tempo map
+ok 6 - explicit timing correction changes only selected note, keeps tempo map
+  ---
+  duration_ms: 0.524678
+  type: 'test'
+  ...
+# Subtest: running status, velocity-zero note-off and format 0
+ok 7 - running status, velocity-zero note-off and format 0
+  ---
+  duration_ms: 0.300331
+  type: 'test'
+  ...
+# Subtest: unsupported and malformed files rejected without fabricated timing
+ok 8 - unsupported and malformed files rejected without fabricated timing
+  ---
+  duration_ms: 0.373451
+  type: 'test'
+  ...
+# Subtest: pedal extends rendering, no changes to exported key-up times
+ok 9 - pedal extends rendering, no changes to exported key-up times
+  ---
+  duration_ms: 0.517427
+  type: 'test'
+  ...
+# Subtest: audio-only remains an independent input without fake transcription
+ok 10 - audio-only remains an independent input without fake transcription
+  ---
+  duration_ms: 0.460422
+  type: 'test'
+  ...
+# Subtest: diagnosis identifies short and out-of-range notes without altering them
+ok 11 - diagnosis identifies short and out-of-range notes without altering them
+  ---
+  duration_ms: 0.41347
+  type: 'test'
+  ...
+# Subtest: 200 repeated pitch edits and export cycles never introduce rhythm changes
+ok 12 - 200 repeated pitch edits and export cycles never introduce rhythm changes
+  ---
+  duration_ms: 29.602706
+  type: 'test'
+  ...
+# Subtest: shared audio clock, negative audio offset, and stop cancel scheduled sources
+ok 13 - shared audio clock, negative audio offset, and stop cancel scheduled sources
+  ---
+  duration_ms: 0.915785
+  type: 'test'
+  ...
+# Subtest: pedal-down after note-off at the same tick must not extend that note
+ok 14 - pedal-down after note-off at the same tick must not extend that note
+  ---
+  duration_ms: 0.136054
+  type: 'test'
+  ...
+# Subtest: new same-channel overlaps across different tracks are rejected
+ok 15 - new same-channel overlaps across different tracks are rejected
+  ---
+  duration_ms: 0.187401
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 143.317987

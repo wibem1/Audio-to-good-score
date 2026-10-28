@@ -13,3 +13,4 @@ Vor jedem Entwicklungsauftrag zuerst die globalen Regeln [DEVELOPMENT_STANDARDS.
 - Kostenpflichtige KI-Aufrufe nur kontrolliert und protokolliert.
 
 Siehe [PFLICHTENHEFT_V0.1.md](PFLICHTENHEFT_V0.1.md) für detaillierte Kriterien, Funktionen und Abnahmetests.
+

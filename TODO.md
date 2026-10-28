@@ -1,12 +1,15 @@
 # Aufgaben – Audio to Good Score
 
-- [ ] Meilenstein 1: Architekturentscheidung auf Grundlage des Pflichtenhefts und Prüfung von Abhängigkeiten/Lizenzen
-- [ ] Audio- und MIDI-Import plus gemeinsame navigierbare Zeitachse
-- [ ] Abschnittsmarkierung, nicht-destruktive Notenreparatur und Undo/Redo
-- [ ] MIDI-Export und synchroner Hörvergleich
-- [ ] Meilenstein 2: Audio-only-Klaviertranskription als eigenständiger Eingang
-- [ ] Meilenstein 3: Musikalische Fehlerdiagnose und selektive KI-Reparatur mit Begründungen
-- [ ] Meilenstein 4: Performance-/Score-Trennung, zweisystemiger MusicXML-Export, realer Importtest in Dorico und MuseScore
-- [ ] Abnahmetests anhand „Graziler Tanz“; Testdaten erst nach zulässiger Bereitstellung hinzufügen
+- [x] M1: Architektur und tatsächlich benötigte Abhängigkeiten/Lizenzen prüfen (`ARCHITECTURE.md`)
+- [x] Audio-/MIDI-Import und gemeinsame navigierbare Zeitachse technisch testen
+- [x] Abschnittsmarkierung, nicht-destruktive Notenreparatur und Undo/Redo technisch testen
+- [x] MIDI-Export, manuelles Alignment und synchronen A/B/C-Vergleich technisch testen
+- [x] Heuristische Diagnose, Diagnoseexport und lokale Projektdatei mit Originalen/Verlauf
+- [x] Rhythmuserhalt mit Tempowechseln und unabhängigen Parserprüfungen nachweisen
+- [ ] M1: Menschlicher musikalischer Hörtest einer echten Klavierpassage; native Tablet-/Safari-/Firefox-Prüfung
+- [ ] Referenzfall „Graziler Tanz“ nach rechtmäßiger Bereitstellung prüfen
+- [ ] M2: Modell-/Lizenz-/Hardwareprüfung, dann Audio-only-Klaviertranskription integrieren und per Hörvergleich prüfen
+- [ ] M3: Musikalische Fehlerdiagnose und selektive KI-Reparatur mit Begründungen und Unsicherheit
+- [ ] M4: Performance-/Score-Trennung, zweisystemiger MusicXML-Export, realer Import in Dorico und MuseScore
 
-Keine der Aufgaben ist derzeit als implementiert oder geprüft bestätigt.
+M1 ist technisch geprüft; Gesamtversion V0.1 und musikalische Qualität sind nicht freigegeben. Keine kostenpflichtigen KI-Aufrufe erfolgt.

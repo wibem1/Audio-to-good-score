@@ -1,6 +1,6 @@
 # Pflichtenheft – Audio to Good Score, Zielversion 0.1
 
-**Status:** verbindliche Konzeptbasis, **nicht implementiert**.  
+**Status:** verbindliche Anforderungsbasis. Meilenstein 1 als technisch geprüfter Prototyp umgesetzt; Einzelstatus siehe `PROJECT_STATE.md`. V0.1 ist nicht freigegeben.  
 **Plattform:** Web-App, nutzbar auf Windows/macOS/Tablets.  
 **Zielgruppe:** Musiker, die aus Audio oder fehlerhaften Transkriptionen klanglich überzeugende MIDI und lesbare MusicXML erzeugen wollen.  
 **Startumfang:** Soloklavier. **Referenz:** „Graziler Tanz“ (Audio + erste MIDI, nur wenn Testdateien verfügbar).  
@@ -90,4 +90,5 @@ Alle Meilensteine gehören zum Zielumfang V0.1; keine pauschale Freigabe vor den
 Orchester-/Mehrinstrumenten-Arrangement, perfekter Notenrekonstruktionsanspruch, eigener Modell-Trainingsprozess, vollständiger Noteneditor, ungenehmigte umfassende Neukomposition.
 
 ## 11. Versions-/Kostenregeln
-Keine als funktionsfähig veröffentlichte V0.1 ohne tatsächliche Kernprüfungen. Kostenpflichtige Modellaufrufe nur nachvollziehbar, mit Limits und Diagnose. Nach jedem nachgewiesenen Schritt PROJECT_STATE aktualisieren. Der aktuelle Stand ist **nur Konzept und Dokumentation**.
+Keine als funktionsfähig veröffentlichte V0.1 ohne tatsächliche Kernprüfungen. Kostenpflichtige Modellaufrufe nur nachvollziehbar, mit Limits und Diagnose. Nach jedem nachgewiesenen Schritt PROJECT_STATE aktualisieren. Der aktuelle nachgewiesene Umsetzungsstand steht verbindlich in `PROJECT_STATE.md`; dies ist keine Freigabe der Gesamtversion V0.1.
+
