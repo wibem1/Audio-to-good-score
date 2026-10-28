@@ -16,4 +16,4 @@ Abschluss und Startanleitung: `MILESTONE_1.md`.
 - [ ] Echte Referenzpassage / „Graziler Tanz“ und menschlicher A/B/C-Hörtest
 - [ ] Native Tablet-/Safari-/Firefox-Abnahme
 
-33 Kerntests bestanden. Wiedergabe-Race behoben; vollständige Chromium-/Modellregression und unabhängige MIDI-Prüfungen wiederholt. Detaillierte Funktions-/Abnahmegrenzen: `ACCEPTANCE.md`. V0.1 nicht freigegeben. Keine kostenpflichtigen KI-Aufrufe.
+35 Kerntests bestanden. Vereinfachter Eingabe-/Abschnittsablauf sowie Schema-5-Sammelbearbeitung technisch geprüft; Nutzerbewertung der neuen Bedienung steht aus. Wiedergabe-Race behoben; vollständige Chromium-/Modellregression und unabhängige MIDI-Prüfungen wiederholt. Detaillierte Funktions-/Abnahmegrenzen: `ACCEPTANCE.md`. V0.1 nicht freigegeben. Keine kostenpflichtigen KI-Aufrufe.

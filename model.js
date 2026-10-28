@@ -32,8 +32,16 @@ export class Session {
     try{this.edit(id,{},section,reason,true);}catch(error){this.notes.pop();throw error;}
     this.history.push({id,before:null,after:structuredClone(n),reason:reason.trim(),uncertainty:'manuell ergänzte Note, musikalisch ungeprüft',at:new Date().toISOString()});this.future=[];return id;
   }
-  undo(){const c=this.history.pop();if(!c)return;this.notes=c.before?this.notes.map(n=>n.id===c.id?structuredClone(c.before):n):this.notes.filter(n=>n.id!==c.id);this.future.push(c);}
-  redo(){const c=this.future.pop();if(!c)return;this.notes=c.before?this.notes.map(n=>n.id===c.id?structuredClone(c.after):n):[...this.notes,structuredClone(c.after)];this.history.push(c);}
+  editBatch(changes,section,reason){
+    if(!Array.isArray(changes)||!changes.length||changes.length>200)throw Error('Bitte 1 bis 200 Vorschläge auswählen.');
+    if(new Set(changes.map(c=>c.id)).size!==changes.length)throw Error('Mehrere Vorschläge für dieselbe Note.');
+    const trial=new Session(this.midi);trial.notes=structuredClone(this.notes);
+    for(const c of changes)trial.edit(c.id,c.patch,section,reason,false);
+    if(!trial.history.length)return;
+    this.notes=trial.notes;this.history.push({batch:trial.history,reason:reason.trim(),at:new Date().toISOString()});this.future=[];
+  }
+  undo(){const c=this.history.pop();if(!c)return;for(const e of [...(c.batch||[c])].reverse())this.notes=e.before?this.notes.map(n=>n.id===e.id?structuredClone(e.before):n):this.notes.filter(n=>n.id!==e.id);this.future.push(c);}
+  redo(){const c=this.future.pop();if(!c)return;for(const e of c.batch||[c])this.notes=e.before?this.notes.map(n=>n.id===e.id?structuredClone(e.after):n):[...this.notes,structuredClone(e.after)];this.history.push(c);}
   diagnose(){
     const findings=this.midi.warnings.map(message=>({kind:'Import',message,certainty:'technisch'}));
     const add=f=>{if(findings.length<200)findings.push(f);};

@@ -13,7 +13,7 @@ Die Anwendung ist ein technisch geprüfter Entwicklungsstand. **V0.1 ist nicht v
 | F09/F10 Undo/Redo/MIDI | Ergänzung, Ausblendung, Notenänderungen und Ereigniserhalt technisch geprüft |
 | F11 MusicXML | Zweihandsystem mit Stimmen/Pausen/Akkorden/Ties/Balken und unabhängiger Importprüfung implementiert; echter MuseScore-3.2.3-Test mit sechs Fällen bestanden; MuseScore 4.7.6 ebenfalls sechs Fälle bestanden; Dorico fehlt |
 | F12 Diagnoseexport | Quellen, Modellhashes, Parameter/Kosten, Änderungen/Gründe, Unsicherheit, Kontextdiagnose und technische Prüflücken; Notationsmapping separat exportierbar |
-| F13 Projekt | Schema 4, Originalbytes/Änderungsjournal/Notationsparameter, ältere Formate lesbar |
+| F13 Projekt | Schema 5, Originalbytes/Änderungsjournal/Notationsparameter, ältere Formate 1–4 lesbar |
 | F14 Audio-only | Reale lokale Modellinferenz technisch geprüft; musikalische Abnahme offen |
 
 ## Tatsächliche Hindernisse für die Freigabe
@@ -23,3 +23,5 @@ Die Anwendung ist ein technisch geprüfter Entwicklungsstand. **V0.1 ist nicht v
 - Der lokale neuronale Gegenprüfungsweg ist implementiert und technisch getestet; seine allgemeine musikalische Zuverlässigkeit ist nicht validiert. Die begleitenden Kontextregeln sind keine umfassende semantische KI-Musikanalyse. Ein bloßer weiterer Modellaufruf würde die notwendige musikalische Validierung nicht ersetzen.
 
 Keine kostenpflichtigen KI-Aufrufe. Keine neue Release-Versionsnummer. Standard bleibt Musikalisch ausgewogen, jede Reparatur explizit und reversibel.
+
+Bedienupdate nach Nutzerrückmeldung: vier Schritte, Original-/Testquelle getrennt, Dateinamen sichtbar, Audio-only-Wechsel und gemeinsam reversible Vorschläge. 35 Kerntests und echte Chromium-Regressionsläufe bestanden. Nutzerabnahme der überarbeiteten Bedienung steht aus; F07/F08-Musikqualität dadurch nicht erweitert.

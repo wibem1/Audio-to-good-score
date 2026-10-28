@@ -1,5 +1,7 @@
 # Audio to Good Score
 
+**Neue Bedienung:** [Vier Schritte zur Bearbeitung](BEDIENUNG.md). Eigene Aufnahme öffnen, Passage anhören, Vorschläge gemeinsam prüfen und Ergebnis speichern. Einzelnotenbearbeitung ist optional.
+
 **Meilenstein 1 zur Nutzung freigegeben (technisch geprüfte Vorabversion).** [Freigabehinweise](RELEASE_M1.md). Umfang, aktuelle Tests und Benutzung: [MILESTONE_1.md](MILESTONE_1.md).
 
 Lokale Web-App für **V0.1 – technischer Workflow aus Import, Transkription, selektiver Reparatur und Klaviernotation**. Standard: **Musikalisch ausgewogen**. Keine musikalische oder vollständige V0.1-Freigabe.
@@ -30,7 +32,7 @@ Der synthetische Test zeigt diese Grenzen ausdrücklich: 7 von 8 erwarteten Note
 
 WAV/MP3 und/oder SMF 0/1 importieren, bei Audio+MIDI den konstanten Audio-Versatz einstellen. Positive Werte überspringen den entsprechenden Audioanfang; Tempodrift erfordert ein späteres Mehrpunkt-Alignment. Passage per Feldern oder Ziehen auf der Pianorolle markieren. Note anklicken oder in der Liste wählen, Tonhöhe/Velocity ändern und begründen. Start-/Endticks erfordern eine ausdrückliche Freigabe. Nur vollständig in der Passage liegende Noten werden bearbeitet; es gibt keine pauschale Quantisierung.
 
-Originale sind separat herunterladbar. B/C vergleichen, rückgängig machen/wiederherstellen, MIDI und Diagnose exportieren. **Vor dem Schließen Projekt speichern**; keine automatische dauerhafte Speicherung. Projekte aus Meilenstein 1 (Schema 1) lassen sich weiterhin öffnen, neue Projekte benutzen Schema 4 (ältere Versionen sollen Ergänzungen/Notationsparameter nicht stillschweigend verlieren). Der Vergleichssynthesizer ist kein gesampeltes Klavier; Programme, Pitchbend und weitere Controller sind im Export erhalten, im Klang vereinfacht.
+Originale sind separat herunterladbar. B/C vergleichen, rückgängig machen/wiederherstellen, MIDI und Diagnose exportieren. **Vor dem Schließen Projekt speichern**; keine automatische dauerhafte Speicherung. Projekte aus Meilenstein 1 (Schema 1) lassen sich weiterhin öffnen, neue Projekte benutzen Schema 5 (ältere Versionen sollen Ergänzungen/Notationsparameter nicht stillschweigend verlieren). Der Vergleichssynthesizer ist kein gesampeltes Klavier; Programme, Pitchbend und weitere Controller sind im Export erhalten, im Klang vereinfacht.
 
 ## Entwicklung und Prüfungen
 
