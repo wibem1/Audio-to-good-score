@@ -1,0 +1,7 @@
+{
+  "parser": "mido 1.3.3",
+  "passed": true,
+  "selected_octaves_removed": 2,
+  "remaining_event_times_and_velocities_unchanged": true,
+  "single_undo_restores_original_bytes": true
+}

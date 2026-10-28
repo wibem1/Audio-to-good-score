@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "engine": "MuseScore4 4.7.6",
+  "cases": [
+    {
+      "case": "piano",
+      "notes_after_tie_rejoin": 10,
+      "all_pitches_onsets_durations_staves_equal": true,
+      "native_format_saved_and_reopened": true,
+      "source_sha256": "7d39234977f7835a93fedf84e7dfd508825535c62eee720e066dc42d5150bf3b"
+    },
+    {
+      "case": "compound",
+      "notes_after_tie_rejoin": 8,
+      "all_pitches_onsets_durations_staves_equal": true,
+      "native_format_saved_and_reopened": true,
+      "source_sha256": "6dd004b09e1206f8a9ebfbe9cecefec7d467647315a406639f162cb6aba5a19f"
+    },
+    {
+      "case": "three-four",
+      "notes_after_tie_rejoin": 9,
+      "all_pitches_onsets_durations_staves_equal": true,
+      "native_format_saved_and_reopened": true,
+      "source_sha256": "6cd6d4ebd4c543d8ba225a8046ac6df3c6e04333696337bd9553eb8a444b1c38"
+    },
+    {
+      "case": "duplicate-pitch",
+      "notes_after_tie_rejoin": 9,
+      "all_pitches_onsets_durations_staves_equal": true,
+      "native_format_saved_and_reopened": true,
+      "source_sha256": "6116ed94bde115a772eaacfebf731c8b71cf576330773268f20d4d479fe9a93f"
+    },
+    {
+      "case": "seconds-tempo",
+      "notes_after_tie_rejoin": 2,
+      "all_pitches_onsets_durations_staves_equal": true,
+      "native_format_saved_and_reopened": true,
+      "source_sha256": "a4b8125f241f58b816da0bbe65dad4a858814a2bf28f4c43e086df36fd2ada43"
+    },
+    {
+      "case": "empty",
+      "notes_after_tie_rejoin": 0,
+      "all_pitches_onsets_durations_staves_equal": true,
+      "native_format_saved_and_reopened": true,
+      "source_sha256": "d424fe56794cdb0b2b27d118a15111cc5c6ba303dc92ef19e06740b3998bf76a"
+    }
+  ],
+  "rendered_png": true,
+  "human_listening_approval": false,
+  "dorico_tested": false,
+  "musescore4_tested": true
+}

@@ -1,0 +1,51 @@
+
+> test
+> node --test tests/*.test.js
+
+✔ passage batch is atomic, one-step reversible and preserves all times (6.062593ms)
+✔ a failing batch leaves notes, history and redo untouched (4.470041ms)
+✔ no-edit export is byte-identical, including tempo, metadata, pedal, SysEx (3.916115ms)
+✔ dense tempo integration and inverse conversion preserve absolute times (4.512455ms)
+✔ pitch/velocity correction leaves every onset, duration, tempo and non-note event untouched (2.405278ms)
+✔ section isolation, timing opt-in, reasons, numeric validation and overlap guard (2.889117ms)
+✔ undo/redo fully reversible; new branch clears redo (1.67058ms)
+✔ explicit timing correction changes only selected note, keeps tempo map (0.486323ms)
+✔ running status, velocity-zero note-off and format 0 (0.602379ms)
+✔ unsupported and malformed files rejected without fabricated timing (0.29142ms)
+✔ pedal extends rendering, no changes to exported key-up times (0.744933ms)
+✔ audio-only remains an independent input without fake transcription (0.236296ms)
+✔ diagnosis identifies short and out-of-range notes without altering them (0.751583ms)
+✔ 200 repeated pitch edits and export cycles never introduce rhythm changes (73.156894ms)
+✔ shared audio clock, negative audio offset, and stop cancel scheduled sources (0.960809ms)
+✔ pedal-down after note-off at the same tick must not extend that note (0.33165ms)
+✔ new same-channel overlaps across different tracks are rejected (0.214403ms)
+✔ manual missing note insertion is reversible and preserves all neighbors (9.782282ms)
+✔ context hypotheses never auto-apply and stale proposals are rejected (3.402932ms)
+✔ score is separate from performance, creates two staves and bar ties (2.956438ms)
+✔ independent overlapping voices and duplicate pitch survive score mapping (0.748548ms)
+✔ notation beams and alternate meter remain isolated from expressive MIDI (2.518868ms)
+✔ neural countercheck never invents deletions or changes timing (1.447382ms)
+✔ selective removal preserves tempo, pedal, other events and remaining rhythmic times (12.189452ms)
+✔ removal requires reason and full-section containment; all notes can be removed safely (15.421718ms)
+✔ pause during pending audio activation prevents a late restart (1.711ms)
+✔ latest play wins even when older audio activation resolves last (0.492693ms)
+✔ notation pulse reports ambiguity rather than changing performance or meter (35.357321ms)
+✔ attack notation groups ringing chord tones and keeps all pitches without performance mutation (1.641134ms)
+✔ dotted values and explicit score tempo avoid gratuitous ties and default playback tempo (1.638991ms)
+✔ notation parameters reject invalid origin and style; exact durations remain separate (0.579644ms)
+✔ candidate preserves expressive seconds within 0.25 ms, full-audio offset and notes (3.429081ms)
+✔ overlapping identical pitch retains exact durations through separate MIDI channels (2.102291ms)
+✔ candidate boundary clipping is reported, invalid model data rejected (1.119479ms)
+✔ audio selection honors manual offset and refuses overlong or empty input (0.51719ms)
+✔ candidate manual correction, undo and export do not quantize existing event times (4.528179ms)
+✔ worker results and progress resolved exactly once; resources released (0.729901ms)
+✔ cancel terminates worker and rejects promise, no stale result accepted (0.602228ms)
+✔ worker failure and messaging failure clean up without MIDI results (0.564231ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 328.810731

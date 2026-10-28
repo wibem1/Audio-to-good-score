@@ -1,0 +1,60 @@
+{
+  "audio_duration_seconds": 164.39997916666667,
+  "midi_duration_seconds": 60.000000000000036,
+  "note_attacks": 578,
+  "audio_analysis_limit_seconds": 61,
+  "audio_hop_seconds": 0.008,
+  "audio_windows": [
+    {
+      "range_seconds": [
+        0,
+        15
+      ],
+      "audio_peak_count": 84,
+      "period_seconds": 0.1779999999999969,
+      "periodicity_not_a_probability": 0.9882927168706018
+    },
+    {
+      "range_seconds": [
+        15,
+        30
+      ],
+      "audio_peak_count": 66,
+      "period_seconds": 0.1788999999999968,
+      "periodicity_not_a_probability": 0.8600752933349867
+    },
+    {
+      "range_seconds": [
+        30,
+        45
+      ],
+      "audio_peak_count": 62,
+      "period_seconds": 0.1779999999999969,
+      "periodicity_not_a_probability": 0.9838121181883828
+    },
+    {
+      "range_seconds": [
+        45,
+        60
+      ],
+      "audio_peak_count": 77,
+      "period_seconds": 0.1779999999999969,
+      "periodicity_not_a_probability": 0.8631999919143442
+    }
+  ],
+  "nearest_audio_peak_errors_seconds": {
+    "p25": 0.003125000000002487,
+    "median": 0.007000000000006779,
+    "p75": 0.014500000000030155,
+    "p90": 0.05415000000003086,
+    "p95": 0.08664999999995862
+  },
+  "attacks_over_50ms_from_detected_peak": 60,
+  "warning": "Global audio peaks are not pitch-specific ground truth. An unmatched MIDI attack is not a confirmed error.",
+  "input_sha256": {
+    "audio": "1ba2ad64cce409cc6e94aadb921141c624ce2af7b735b283e0e424ff5179eafd",
+    "midi": "5f4b7511f94b2b6126c497342619936868511821873e4179c4a6c1d96fa39393"
+  },
+  "performance_modified": false,
+  "human_listening_approval": false
+}

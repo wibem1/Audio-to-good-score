@@ -103,3 +103,19 @@ QT_QPA_PLATFORM=xcb TEST_OUTPUT_DIR=/tmp/ags-musescore4-results MUSESCORE_EXECUT
 ```
 
 `DISPLAY` muss auf die vorhandene Anzeige zeigen; in einer Headless-Umgebung wird ein separat bereitgestelltes Xvfb benötigt. Die getestete AppImage benötigt hier auch dann eine Anzeige, wenn Qt auf offscreen gesetzt wird. MuseScore ist ausschließlich ein externes Testwerkzeug.
+
+## Notationspuls und lesbare Anschlagsfassung
+
+Ein Speichertempo (z.B. 120 BPM eines Audio-Kandidaten) ist kein erkannter musikalischer Puls. Im optionalen Notationsbereich „Lesbare Notation vorbereiten“ wählen: Die App schlägt aus den MIDI-Einsätzen eine Unterteilung, Tempoalternativen und den Taktanfang vor. Taktart bleibt unverändert und muss musikalisch geprüft werden. Bei Zeitbasis Audiosekunden ist die ausdrückliche Bestätigung von Tempo/Taktart/Taktanfang vor dem Export erforderlich.
+
+„Lesbare Anschlagsfassung“ gruppiert gleiche notierte Einsätze als Akkorde und verkürzt/verlängert deren Notationsdauern bis zum nächsten Anschlag derselben Hand. Das verhindert, dass bloßes Ausklingen zahlreiche Zusatzstimmen erzeugt. **Bewusste Vereinfachung, keine vollständige Stimmen- oder Tastendauerrekonstruktion.** „Erkannte Dauern beibehalten“ bleibt als Alternative erhalten. Punktierte Werte und explizite Tempoangaben werden als MusicXML exportiert. Die Performance-MIDI bleibt unverändert.
+
+Realer Referenztest und Grenzen: `test-results/reference-score/`. Externe Referenzdateien werden nicht mit dem Repository veröffentlicht. Reproduktion mit eigenen Dateien:
+
+```sh
+node tests/generate-reference-score.js /path/to/source.mid /tmp/reference-score 3
+python3 tests/check_reference_score.py /path/to/source.mid /tmp/reference-score/mapping.json /tmp/reference-score/reference.musicxml
+python3 scripts/reference-diagnosis.py /path/to/audio.wav /path/to/source.mid /tmp/reference-diagnosis.json
+```
+
+Die `3` ist eine ausdrücklich gewählte Taktannahme, keine erkannte Taktart. Referenzdiagnose braucht nur als Testwerkzeuge mido, NumPy und SciPy, der Parservergleich music21. Keine neuen Produktabhängigkeiten. Audio-Onset-Abstände sind kein Beweis für Tonhöhenfehler.

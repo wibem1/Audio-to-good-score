@@ -1,0 +1,14 @@
+{
+  "parser": "mido 1.3.3",
+  "passed": true,
+  "events": 19,
+  "changed_events": [
+    "note_on",
+    "note_off"
+  ],
+  "all_absolute_ticks_unchanged": true,
+  "duration_seconds": 4.0,
+  "variable_tempo_duration_seconds": 1.05,
+  "tempo_pedal_sysex_tracks_preserved": true,
+  "independent_seconds_equal": true
+}

@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "source_midi_sha256": "5f4b7511f94b2b6126c497342619936868511821873e4179c4a6c1d96fa39393",
+  "source_note_attacks": 578,
+  "cases": [
+    {
+      "file_role": "generated",
+      "note_attacks_after_tie_join": 578,
+      "all_pitches_staves_notated_starts_durations_equal_plan": true
+    },
+    {
+      "file_role": "native_roundtrip",
+      "note_attacks_after_tie_join": 578,
+      "all_pitches_staves_notated_starts_durations_equal_plan": true
+    }
+  ],
+  "performance_midi_modified": false,
+  "human_listening_approval": false
+}

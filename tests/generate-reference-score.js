@@ -1,0 +1,6 @@
+// External real MIDI stays outside the repository. Meter is explicitly supplied, not inferred.
+// node tests/generate-reference-score.js SOURCE.mid OUTPUT_DIRECTORY BEATS
+import fs from 'node:fs';import path from 'node:path';import {parseMidi,exportMidi} from '../midi.js';import {createScore,scoreToMusicXML} from '../score.js';import {suggestNotationPulse} from '../rhythm.js';
+const [file,out,meter]=process.argv.slice(2);if(!file||!out||!meter)throw Error('SOURCE.mid OUTPUT_DIRECTORY BEATS required; meter must be reviewed.');
+const bytes=fs.readFileSync(file),m=parseMidi(bytes),pulse=suggestNotationPulse(m,m.notes),score=createScore(m,m.notes,{timeBasis:'seconds',bpm:pulse.bpm,originSeconds:pulse.origin,beats:Number(meter),notationStyle:'onsets',title:'Rhythmische Arbeitsfassung - Parameter prüfen'});
+if(!Buffer.from(exportMidi(m,m.notes)).equals(bytes))throw Error('Source preservation failed.');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'reference.musicxml'),scoreToMusicXML(score));fs.writeFileSync(path.join(out,'mapping.json'),JSON.stringify(score,null,2));fs.writeFileSync(path.join(out,'pulse.json'),JSON.stringify(pulse,null,2));console.log(JSON.stringify({notes:m.notes.length,voices:score.voices.map(h=>h.length),bars:score.measures,pulse,meterVerified:false,performanceUnchanged:true},null,2));

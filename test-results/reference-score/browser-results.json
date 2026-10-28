@@ -1,0 +1,30 @@
+{
+  "browser": "138.0.7204.0",
+  "passed": [
+    "notation pulse with tempo ambiguity, reviewed-parameter export guard and project roundtrip",
+    "clear source names, demo guard, audio-only reset",
+    "passage selection with shared adoption and one-step Undo/Redo, schema 5 reopen",
+    "WAV import and audio-only playback",
+    "MP3 decode",
+    "SMF file import",
+    "pitch edit and timing protection",
+    "Undo/Redo",
+    "B/C playback, pause/resume, synchronized mix",
+    "independent original download identity",
+    "MIDI export rhythm equality",
+    "diagnosis hash and zero AI calls",
+    "project reload including originals and redo",
+    "selective note exclusion, export, project restore and undo/redo",
+    "manual insertion and schema-4 restore",
+    "MusicXML and mapping export",
+    "context analysis UI",
+    "real neural audio countercheck with explicit octave correction and undo",
+    "desktop and mobile layout"
+  ],
+  "audioNodeStarts": 6,
+  "renderedAudio": {
+    "peak": 0.041848018765449524,
+    "first": 0.06603174603174604
+  },
+  "pageErrors": []
+}

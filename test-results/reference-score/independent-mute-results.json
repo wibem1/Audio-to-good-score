@@ -1,0 +1,6 @@
+{
+  "parser": "mido 1.3.3",
+  "passed": true,
+  "removed_events": 2,
+  "all_remaining_events_and_absolute_ticks_unchanged": true
+}

@@ -1,0 +1,10 @@
+{
+  "parser": "mido 1.3.3",
+  "passed": true,
+  "note_count": 9,
+  "changed_note_on_velocities": 1,
+  "unchanged_absolute_times": true,
+  "unchanged_tempo": true,
+  "original_audio_and_candidate_hashes_verified": true,
+  "duration_seconds": 4.0
+}

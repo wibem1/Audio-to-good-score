@@ -13,7 +13,10 @@ Abschluss und Startanleitung: `MILESTONE_1.md`.
 - [x] Reale MusicXML-Importe in MuseScore 3.2.3, natives Speichern/Öffnen, Rückexport und Rendering in sechs Fällen
 - [x] MuseScore 4.7.6: sechs echte Import-/Native-Speicher-/Rückexportfälle und Rendering
 - [ ] Reale MusicXML-Importe in Dorico
-- [ ] Echte Referenzpassage / „Graziler Tanz“ und menschlicher A/B/C-Hörtest
+- [x] Reale Referenz „Etüde Piano“ mit Audio/MIDI/MusicXML analysieren; Notationsfehler reproduziert
+- [x] Vereinfachte Anschlagsfassung separat erzeugen, MuseScore-4-Roundtrip, Parser- und Sichtprüfung
+- [ ] MIDI-Stolperer der echten Referenz gezielt verifizieren und schonend korrigieren; musikalische A/B-Abnahme
+- [ ] Vollständige Stimmen-/Takt-/Ausdrucksrekonstruktion; Anschlagsfassung ist kein fertiger Klaviersatz
 - [ ] Native Tablet-/Safari-/Firefox-Abnahme
 
-35 Kerntests bestanden. Vereinfachter Eingabe-/Abschnittsablauf sowie Schema-5-Sammelbearbeitung technisch geprüft; Nutzerbewertung der neuen Bedienung steht aus. Wiedergabe-Race behoben; vollständige Chromium-/Modellregression und unabhängige MIDI-Prüfungen wiederholt. Detaillierte Funktions-/Abnahmegrenzen: `ACCEPTANCE.md`. V0.1 nicht freigegeben. Keine kostenpflichtigen KI-Aufrufe.
+39 Kerntests bestanden. Vereinfachter Eingabe-/Abschnittsablauf sowie Schema-5-Sammelbearbeitung technisch geprüft; Nutzerbewertung der neuen Bedienung steht aus. Wiedergabe-Race behoben; vollständige Chromium-/Modellregression und unabhängige MIDI-Prüfungen wiederholt. Detaillierte Funktions-/Abnahmegrenzen: `ACCEPTANCE.md`. V0.1 nicht freigegeben. Keine kostenpflichtigen KI-Aufrufe.

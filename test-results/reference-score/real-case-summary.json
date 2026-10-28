@@ -1,0 +1,38 @@
+{
+  "source_audio_seconds": 164.39997916666667,
+  "source_midi_seconds": 60,
+  "source_notes": 578,
+  "old_score": {
+    "note": 1770,
+    "rest": 572,
+    "tie": 1240,
+    "voice_count": 10
+  },
+  "new_score": {
+    "note": 661,
+    "rest": 2,
+    "tie": 162,
+    "voice_count": 2
+  },
+  "notation_only": true,
+  "midi_tempo_is_storage_placeholder_bpm": 120,
+  "notation_hypothesis": {
+    "bpm": 84.17508417508418,
+    "alternative_bpm": 168.35016835016836,
+    "beats": 3,
+    "beatType": 4,
+    "origin_seconds": 0.09127524616392431,
+    "meter_confirmed": false,
+    "durations": "simplified to next attack in hand"
+  },
+  "native_validation": {
+    "engine": "MuseScore 4.7.6",
+    "official_asset_sha256": "5fcbd1f292270eca5c3867d56b767c31a173a155216a415f5caee22553f8e7a6",
+    "import_native_reopen_and_pdf_passed": true,
+    "pdf_pages": 2,
+    "pages_visually_checked": true
+  },
+  "original_user_files_uploaded_to_github": false,
+  "remaining": "MIDI stumbling/pitch errors and complete meter/voice/expressive reconstruction remain unapproved. No hearing approval.",
+  "paid_ai_calls": 0
+}

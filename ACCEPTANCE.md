@@ -24,4 +24,6 @@ Die Anwendung ist ein technisch geprüfter Entwicklungsstand. **V0.1 ist nicht v
 
 Keine kostenpflichtigen KI-Aufrufe. Keine neue Release-Versionsnummer. Standard bleibt Musikalisch ausgewogen, jede Reparatur explizit und reversibel.
 
-Bedienupdate nach Nutzerrückmeldung: vier Schritte, Original-/Testquelle getrennt, Dateinamen sichtbar, Audio-only-Wechsel und gemeinsam reversible Vorschläge. 35 Kerntests und echte Chromium-Regressionsläufe bestanden. Nutzerabnahme der überarbeiteten Bedienung steht aus; F07/F08-Musikqualität dadurch nicht erweitert.
+Bedienupdate nach Nutzerrückmeldung: vier Schritte, Original-/Testquelle getrennt, Dateinamen sichtbar, Audio-only-Wechsel und gemeinsam reversible Vorschläge. 39 Kerntests und echte Chromium-Regressionsläufe bestanden. Nutzerabnahme der überarbeiteten Bedienung steht aus; F07/F08-Musikqualität dadurch nicht erweitert.
+
+Realer Nutzertest „Etüde Piano“: bisherige Notations-/Musikqualität nicht bestanden. Neue vereinfachte Anschlagsfassung für erste 60 s als Arbeitsfassung geprüft: 578 Tonansätze, zwei Stimmen, MusicXML→MuseScore 4.7.6→Native→MusicXML identisch zum geplanten Score, PDF auf zwei Seiten visuell geprüft. Bewusst vereinfachte Dauern, 3/4 und 84,2 BPM unbestätigte Notationshypothese; keine positive Hörabnahme oder Behauptung reparierter MIDI-Stolperer.

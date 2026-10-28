@@ -12,3 +12,7 @@ Eine MIDI versehentlich geladen? „MIDI entfernen · nur Audio verwenden“ erh
 Die Anwendung bleibt ein Prototyp: lokale Modelle können Noten verwechseln, vergessen oder ergänzen. Die Audio-Gegenprüfung macht derzeit nur begrenzte Oktavvorschläge; Kontextanalyse liefert einfache Hypothesen. Dies ist keine umfassende automatische musikalische Reparatur. Originale bleiben erhalten; keine kostenpflichtigen KI-Aufrufe.
 
 Neue Projekte verwenden Schema 5 für gemeinsam rückgängig machbare Änderungen. Ältere Projekte (Schema 1–4) lassen sich weiter öffnen; Schema-5-Projekte benötigen diesen neuen Programmstand. Start wie im README über einen lokalen Webserver.
+
+## Wenn das Notenbild zerfällt
+
+Klaviernotation aufklappen und „Lesbare Notation vorbereiten“ wählen. Tempoalternativen, Taktart und Anfang des ersten Taktes kontrollieren. Dann die Prüfung bestätigen und MusicXML exportieren. „Lesbare Anschlagsfassung“ vereinfacht nur die notierten Dauern; sie repariert keine unklaren Tonhöhen oder hörbaren MIDI-Stolperer. Eine ausführliche Einzelnotenreparatur ist dafür nicht erforderlich.
