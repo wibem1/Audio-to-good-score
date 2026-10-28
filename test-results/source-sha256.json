@@ -98,5 +98,7 @@
   "vendor/transcription-worker.js": "d75b79d772842b6bfef5d308f7fb2ad5e9c574a735a29246aa862d1435204b12",
   "vendor/transcription-worker.js.LEGAL.txt": "6964667f9e0e4543c1903e245eb41a1e3baf55a270f6ec1a9c6dcd3b7900138b",
   "vendor/wasm/tfjs-backend-wasm-simd.wasm": "918e97b89039305394e9987088249bacee5ef09111ae9f9384c06bec564e2d7b",
-  "vendor/wasm/tfjs-backend-wasm.wasm": "3fdde0b7f76782146ed7a5212bca394d1e59e1bfb8768531c72480d6f10aee1f"
+  "vendor/wasm/tfjs-backend-wasm.wasm": "3fdde0b7f76782146ed7a5212bca394d1e59e1bfb8768531c72480d6f10aee1f",
+  "tests/musescore-fixtures.js": "3340a9dc3c710703446bd8f6e0fe5d68650e8e053081c68a07c58420c94631d7",
+  "tests/musescore_import.py": "d63cfb1550ab95dac5c9f5fe300ae3252f947bbb849f50228b573ee22d52cc64"
 }

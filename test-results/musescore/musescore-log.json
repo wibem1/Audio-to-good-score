@@ -1,0 +1,91 @@
+[
+  {
+    "case": "piano",
+    "output": "piano.mscx",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/piano.musicxml>...\n\tto </tmp/ags-musescore-results/piano.mscx>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "piano",
+    "output": "piano-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/piano.mscx>...\n\tto </tmp/ags-musescore-results/piano-roundtrip.musicxml>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "compound",
+    "output": "compound.mscx",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/compound.musicxml>...\n\tto </tmp/ags-musescore-results/compound.mscx>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "compound",
+    "output": "compound-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/compound.mscx>...\n\tto </tmp/ags-musescore-results/compound-roundtrip.musicxml>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "three-four",
+    "output": "three-four.mscx",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/three-four.musicxml>...\n\tto </tmp/ags-musescore-results/three-four.mscx>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "three-four",
+    "output": "three-four-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/three-four.mscx>...\n\tto </tmp/ags-musescore-results/three-four-roundtrip.musicxml>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "duplicate-pitch",
+    "output": "duplicate-pitch.mscx",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/duplicate-pitch.musicxml>...\n\tto </tmp/ags-musescore-results/duplicate-pitch.mscx>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "duplicate-pitch",
+    "output": "duplicate-pitch-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/duplicate-pitch.mscx>...\n\tto </tmp/ags-musescore-results/duplicate-pitch-roundtrip.musicxml>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "seconds-tempo",
+    "output": "seconds-tempo.mscx",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/seconds-tempo.musicxml>...\n\tto </tmp/ags-musescore-results/seconds-tempo.mscx>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "seconds-tempo",
+    "output": "seconds-tempo-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/seconds-tempo.mscx>...\n\tto </tmp/ags-musescore-results/seconds-tempo-roundtrip.musicxml>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "empty",
+    "output": "empty.mscx",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/empty.musicxml>...\n\tto </tmp/ags-musescore-results/empty.mscx>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "empty",
+    "output": "empty-roundtrip.musicxml",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/empty.mscx>...\n\tto </tmp/ags-musescore-results/empty-roundtrip.musicxml>\n... success!\n",
+    "stdout": ""
+  },
+  {
+    "case": "render",
+    "returncode": 0,
+    "stderr": "QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nCould not create AF_NETLINK socket (Operation not permitted)\nconvert </tmp/ags-musescore-results/piano.mscx>...\n\tto </tmp/ags-musescore-results/musescore-render.png>\n... success!\n"
+  }
+]

@@ -1,0 +1,5 @@
+import {mkdirSync,writeFileSync} from 'node:fs';import {createScore,scoreToMusicXML} from '../score.js';import {parseMidi} from '../midi.js';import {demoMidi} from '../demo.js';import {fixture} from './fixtures.js';
+const dir=process.env.TEST_OUTPUT_DIR||'/tmp/ags-musescore-results';mkdirSync(dir,{recursive:true});const m=parseMidi(demoMidi()),base=m.notes;
+const cases=[['piano',m,[...base,{...base[0],id:'bass',pitch:48,end:3000},{...base[0],id:'voice',pitch:76,start:240,end:900}],{}],['compound',m,base.map((n,i)=>({...n,start:i*240,end:i*240+210})),{beats:6,beatType:8}],['three-four',m,[...base,{...base[0],id:'held',pitch:48,end:3300}],{beats:3,beatType:4}],['duplicate-pitch',m,[...base,{...base[0],id:'duplicate'}],{}],['seconds-tempo',parseMidi(fixture()),parseMidi(fixture()).notes,{timeBasis:'seconds',bpm:90}],['empty',m,base.map(n=>({...n,muted:true})),{}]];
+for(const [name,midi,notes,settings]of cases){const score=createScore(midi,notes,settings);writeFileSync(`${dir}/${name}.musicxml`,scoreToMusicXML(score));writeFileSync(`${dir}/${name}.json`,JSON.stringify(score,null,2));}
+writeFileSync(`${dir}/cases.json`,JSON.stringify(cases.map(c=>c[0])));

@@ -13,12 +13,12 @@ Stand: 28.10.2026. **Technisch geprüfter Entwicklungsstand; V0.1 nicht vollstä
 
 ## Prüfgrundlage
 
-31/31 Kerntests bestanden. Reale Chromium-Prüfung einschließlich Ergänzen, Projektwiederherstellung, Kontext-UI, MusicXML-/Mapping-Export; lokale Modellregression weiterhin bestanden. Unabhängige mido-Prüfungen bestätigen Ereignis-/Rhythmuserhalt. MusicXML durch music21 9.9.1 erneut gelesen: alle zehn Testnoten einschließlich quantisierter Start-/Dauerwerte nach Tie-Zusammenführung gleich. Jede Stimme füllt jeden Takt. Verovio 5.7.0 rendert zwei Systeme; SVG visuell geprüft. Kein XSD-Validierungsnachweis und keine Dorico-/MuseScore-Abnahme. Einzelheiten: `TEST_RESULTS.md`, `ACCEPTANCE.md`, `test-results/`.
+31/31 Kerntests bestanden. Reale Chromium-Prüfung einschließlich Ergänzen, Projektwiederherstellung, Kontext-UI, MusicXML-/Mapping-Export; lokale Modellregression weiterhin bestanden. Unabhängige mido-Prüfungen bestätigen Ereignis-/Rhythmuserhalt. MusicXML durch music21 9.9.1 erneut gelesen: alle zehn Testnoten einschließlich quantisierter Start-/Dauerwerte nach Tie-Zusammenführung gleich. Jede Stimme füllt jeden Takt. Verovio 5.7.0 rendert zwei Systeme; SVG visuell geprüft. Kein XSD-Validierungsnachweis und noch keine Dorico-Abnahme. Einzelheiten: `TEST_RESULTS.md`, `ACCEPTANCE.md`, `test-results/`.
 
 ## Verbleibende Lücken für vollständige V0.1
 
 1. **Musikalische KI-Abnahme offen:** Das neuronale Modell liefert Audio-Notenkandidaten und kann vorhandene MIDI selektiv mit Audio gegenprüfen. Ein echter Modell-Browsertest korrigiert nach ausdrücklicher Bestätigung einen synthetischen Oktavfehler und bestätigt Undo/Rhythmuserhalt. Die musikalische Kontextanalyse und Reparaturhypothesen sind transparente Regeln, kein abgenommenes KI-Modell für Melodie/Motivik/Harmonik. Keine erfundene KI-Freigabe.
-2. **A09 offen:** Dorico und MuseScore sind in der Arbeitsumgebung nicht installiert; echter Import-/Satztest dort fehlt. Verovio/music21 sind unabhängige technische Prüfungen, kein Ersatz für diese Abnahme.
+2. **A09 offen:** MuseScore 3.2.3 ist jetzt in sechs Fällen mit echtem MusicXML-Import, nativem Speichern/Öffnen, Rückexport und PNG-Rendering geprüft. Alle Noten-Tonhöhen, Einsätze, Dauern und Systeme bleiben erhalten. Dorico und MuseScore 4 bleiben ungeprüft; A09 ist insgesamt noch offen.
 3. **A11 musikalisch offen:** Keine bereitgestellte echte Referenzaufnahme „Graziler Tanz“ und keine menschliche A/B/C-Hörfreigabe. Im synthetischen Basic-Pitch-Test weiterhin Oktav-/Auslassungsfehler (7 passende von 8 Referenznoten, 9 Modellnoten).
 4. Native Tablet-/Safari-/Firefox-Abnahme fehlt. Score-Handteilung ist heuristisch; kein Triole-/Rubato-/Phrasierungsautomatismus. Pedal wird nicht aus Audio rekonstruiert. Keine automatische Tempoausrichtung. Kein automatisches Spielbarkeitsurteil.
 
@@ -27,3 +27,7 @@ Stand: 28.10.2026. **Technisch geprüfter Entwicklungsstand; V0.1 nicht vollstä
 `python3 -m http.server 8000 --bind 127.0.0.1`, dann `http://localhost:8000`. Kein zusätzlicher Modelldownload für die Benutzung. Globale Standards, AGENTS, Pflichtenheft, diesen Stand und `ACCEPTANCE.md` lesen. `npm test` ausführen. Neue Module `analysis.js` und `score.js`; Testwerkzeuge music21/Verovio sind keine Produktabhängigkeiten.
 
 Nächste Abnahmeschritte: echte Klavierpassage mit menschlichem Hörvergleich, MusicXML in beiden Zielprogrammen prüfen und die begrenzte F07/F08-Musikqualität separat validieren und bei Bedarf erweitern. Keine umfassende automatische Korrektur ohne Einzelfreigabe und keine kostenpflichtigen KI-Aufrufe ohne Zustimmung. Kostenpflichtige/Cloud-Modellaufrufe bisher null.
+
+## MuseScore-Nachweis
+
+Echte Ubuntu-MuseScore-Version 3.2.3, isoliert als Testwerkzeug bereitgestellt, keine Produktabhängigkeit. Sechs Import-/Native-Speicher-/Rückexportfälle bestanden; PNG visuell geprüft. Dies ist keine pauschale Satzqualitätsfreigabe oder Hörprüfung. Reproduzierbarer Test: `tests/musescore-fixtures.js`, `tests/musescore_import.py`; Berichte/native Beispieldatei/Notenbild: `test-results/musescore/`.

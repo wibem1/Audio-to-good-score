@@ -93,3 +93,13 @@ Keine XSD-Validierung behauptet: der versuchte Zugriff auf das verschobene W3C-G
 ## Neuronale selektive Gegenprüfung
 
 Echtes lokales Basic-Pitch-WASM-Modell gegen synthetischen C4-Audioton und MIDI-C5 geprüft: Vorschlag erscheint ohne Änderung; fehlende Prüfbegründung verhindert Übernahme; explizite Übernahme korrigiert nur 72→60; Undo stellt 72 wieder her. Unabhängiger mido-Test bestätigt nur zwei geänderte Pitch-Ereignisse, keine veränderten Ereigniszeiten. Modellevidenz und Aktivierungsunsicherheit sind im Kontextbericht, Modell-/Audiohash und Parameter im lokalen Laufprotokoll. Kein Cloud-/kostenpflichtiger Aufruf.
+
+## Echter MuseScore-Import – 28.10.2026
+
+MuseScore3 3.2.3 aus den offiziellen Ubuntu-Noble-Snapshotpaketen (Paket 3.2.3+dfsg2-16build5), isoliert mit Qt bereitgestellt. Keine MuseScore-Binärdateien als Produktbestandteil. CLI-Aufrufe mit `-s` und `QT_QPA_PLATFORM=offscreen`: MusicXML importieren und als MSCX speichern, MSCX erneut öffnen und als MusicXML exportieren, PNG mit der MuseScore-Engine erzeugen. Alle Aufrufe erfolgreich.
+
+Sechs synthetische Fälle: zweisystemiger Satz mit unabhängigen Stimmen und Taktbindungen (10 Noten), 6/8-Balkengruppen (8), 3/4 mit langer Bassnote (9), gleichzeitig gleiche Tonhöhen in verschiedenen Stimmen (9), Sekunden-/BPM-Zeitbasis bei Tempowechseln (2), leere Partitur (0). Unabhängiger XML-Ereignisvergleich mit exakten rationalen Viertelzeiten und zusammengeführten Ties bestätigt jeweils dieselben Tonhöhen, Einsätze, Dauern und Systemzuordnungen nach dem MuseScore-Durchlauf. Native Datei enthält zwei Systeme. Das Notenbild wurde weiß hinterlegt visuell geprüft; keine umfassende Spielbarkeits-/Layoutfreigabe.
+
+`test-results/musescore/` enthält JSON-Bericht, vollständige CLI-Protokolle, native MSCX, Rückexport und Notenbild. Protokollierte AF_NETLINK-Meldungen stammen aus der eingeschränkten Arbeitsumgebung; alle eigentlichen Konvertierungen erfolgreich. Test verwendete isolierte offizielle Pakete, nachdem normale Paketinstallation an Umgebungseinschränkungen scheiterte.
+
+Der Nachweis gilt nur für MuseScore 3.2.3 und diese Fälle. MuseScore 4, Dorico, reale Referenz „Graziler Tanz“ und menschliche Hörfreigabe bleiben offen. Bestehende ältere Aussagen über fehlenden MuseScore-Test oben sind historisch durch diesen Abschnitt ergänzt. Keine App-Quellcodeänderung und keine kostenpflichtigen KI-Aufrufe.

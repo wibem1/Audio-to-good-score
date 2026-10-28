@@ -77,3 +77,14 @@ python3 tests/independent_score.py
 Diese Werkzeuge sind nur Testabhängigkeiten. Quellen: MusicXML-4.0-Referenz https://www.w3.org/2021/06/musicxml40/ und Verovio-Importreferenz https://book.verovio.org/toolkit-reference/input-formats.html. Reale Dorico-/MuseScore-Abnahme und menschlicher Hörvergleich bleiben erforderlich. Der verbindliche Gesamtstatus steht in `ACCEPTANCE.md`.
 
 Die zusätzliche Schaltfläche „Markierte Passage lokal mit Audio gegenprüfen“ benötigt Audio und vorhandene MIDI. Sie verwendet das echte lokale Basic-Pitch-Modell und erzeugt nur eng begrenzte, unsichere Oktavvorschläge. Original und MIDI bleiben zunächst unverändert. Jeder Vorschlag braucht eine eigene Hör-/Prüfbegründung und einzelne Übernahme; keine Löschung aufgrund bloß vom Modell fehlender Noten. Zusatztest: `python3 tests/independent_countercheck.py` nach dem Browserlauf.
+
+## MuseScore-Importprüfung
+
+Mit tatsächlich installiertem MuseScore (hier geprüft: **3.2.3**, nicht MuseScore 4):
+
+```sh
+node tests/musescore-fixtures.js
+MUSESCORE_EXECUTABLE=/pfad/zu/musescore3 python3 tests/musescore_import.py
+```
+
+Unter Windows die Umgebungsvariable entsprechend der Shell setzen. Der Test erzeugt sechs synthetische Notationsfälle und prüft echten Import, natives Speichern/Öffnen, Rückexport und PNG-Rendering. Er benötigt nur Python-Standardbibliothek plus Node für die vorhandenen Projektmodule. Ausgaben standardmäßig `/tmp/ags-musescore-results`, durch `TEST_OUTPUT_DIR` änderbar. Keine MuseScore-Installation für die Benutzung der Web-App nötig. Dorico-Abnahme und menschliche musikalische Freigabe fehlen weiterhin.

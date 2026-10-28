@@ -8,7 +8,8 @@
 - [x] MusicXML mit unabhängigem Parser vergleichen und echter Notensatz-Engine rendern
 - [x] Echte lokale neuronale Audio-Gegenprüfung für explizite Oktavkorrekturen, Undo und unveränderte MIDI-Zeiten testen
 - [ ] F07/F08 musikalisch validieren/bei Bedarf erweitern; Kontextregeln nicht als umfassende semantische KI-Analyse ausgeben
-- [ ] Reale MusicXML-Importe in Dorico und MuseScore
+- [x] Reale MusicXML-Importe in MuseScore 3.2.3, natives Speichern/Öffnen, Rückexport und Rendering in sechs Fällen
+- [ ] Reale MusicXML-Importe in Dorico; MuseScore 4 separat prüfen
 - [ ] Echte Referenzpassage / „Graziler Tanz“ und menschlicher A/B/C-Hörtest
 - [ ] Native Tablet-/Safari-/Firefox-Abnahme
 
