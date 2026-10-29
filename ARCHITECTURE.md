@@ -1,3 +1,9 @@
+# Aktuelle Modul-Beta
+
+Die neue Oberfläche in `web/` nutzt einen lokalen Pyodide-Worker mit dem unveränderten Kernvertrag 0.3. JSON-Daten werden validiert, niemals KI-Code ausgeführt. Der optionale Gemini-Adapter trennt Analyse, Diskussion und Kompositionsauftrag; Dateien bleiben bis zur Einzelzustimmung lokal. Beide Exporte stammen aus demselben geprüften Kompositionsplan. Details und Grenzen: [WEB_BETA.md](WEB_BETA.md).
+
+## Historische Architektur des Reparaturprototyps
+
 # Architekturentscheidung – Meilenstein 1
 
 Stand: 28.10.2026. Die folgenden Abschnitte dokumentieren die ursprüngliche M1-Entscheidung. **Aktueller M2-Zusatz:** Lokale Browsertranskription mit mitgeliefertem Basic Pitch/TensorFlow-WASM; siehe `TRANSCRIPTION_DECISION.md`. M1 bleibt nutzbar, Gesamtversion 0.1 ist nicht freigegeben.

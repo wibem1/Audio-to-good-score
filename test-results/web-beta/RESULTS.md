@@ -13,6 +13,7 @@ Originalprotokolle: `python-tests.txt`, `node-tests.txt`, `unit-0.2.txt`.
 Mit Sites-Vorschau und tatsächlichen Musikbibliotheken, keine selbst gebaute Browsersteuerung:
 
 - Pyodide lädt music21 9.9.1 und exportiert den synthetischen Plan mit 14 Noten. Beide Ausgabeformate werden im Kern gegen den Plan geprüft.
+- Absichtlich lückenhafter Rhythmusplan per Datei importiert: verständliche Ablehnung angezeigt, bisheriger Titel/14 Noten erhalten. Kein beschädigter Export übernommen.
 - Zweiter gültiger Plan per Dateiauswahl importiert; Titelwechsel sichtbar. Rückgängig stellt ursprünglichen Titel wieder her, Wiederherstellen den neuen. Partitur wird bei Fassungswechsel geleert, damit keine alte Fassung angezeigt wird.
 - Verovio 5.7.0 rendert echte MusicXML in ein zweisystemiges SVG mit sichtbarem Tempo. Keine fingierte Notenvorschau.
 - Automatische Wiederherstellung über Seitenneuladen erfolgreich; Fassungen werden erneut durch den Exporter geprüft.

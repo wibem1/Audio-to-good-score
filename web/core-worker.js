@@ -16,4 +16,4 @@ self.onmessage=({data:m})=>{queue=queue.catch(()=>{}).then(async()=>{try{
  runtime??=init();const py=await runtime;py.globals.set('mc_request',JSON.stringify(m));
  const result=JSON.parse(await py.runPythonAsync('json.dumps(dispatch(json.loads(mc_request)),ensure_ascii=False,allow_nan=False)'));
  self.postMessage({id:m.id,result});
- }catch(e){self.postMessage({id:m.id,error:String(e).slice(-5000)});}});};
+ }catch(e){const detail=String(e).split('\n').filter(s=>s.trim()).at(-1).replace(/^[\w.]+(?:Error|Exception):\s*/, '').slice(0,700);const messages={'Voice has an implicit gap; declare rests':'Der Kompositionsplan enthält eine rhythmische Lücke in einer Stimme. Die bisherige Fassung bleibt erhalten.','Stale analysis or digest mismatch':'Der Plan gehört zu einem anderen Analysestand. Bitte die aktuelle Übergabe verwenden.'};self.postMessage({id:m.id,error:messages[detail]||('Verarbeitung abgelehnt: '+detail)});}});};

@@ -6,7 +6,7 @@ Stand: **29.10.2026**. Maßgebliches Repository: **`wibem1/MusicCraft-App`**, `m
 
 Analyse und Komposition sind jetzt als eigenständige Browsermodule an den Kern 0.3 angebunden (`web/`, `musiccraft/web_bridge.py`). Player mit zeitbezogenem A/B, Audio-/MIDI-Import, lokale unsichere Voranalyse, ausführlicher aufklappbarer Bericht, offene Passagen, Nutzerhinweise/Chat, optionaler Gemini-Adapter mit Einzelauftragszustimmung, Fremd-KI-Dateiaustausch, Kompositionsversionen/Undo/Redo, gezielte Taktänderung mit Nachbarpassagenschutz, Projekte/Autosave, direkte Verovio-Partitur sowie validierter MIDI-/MusicXML-Export.
 
-Der Kern läuft über Pyodide lokal im Browser, kein lokaler Python-Server nötig. Eine private Site ist an `.openai/hosting.json` gebunden. Web-Beta-Zugang und Veröffentlichungsnachweis werden im Testbericht geführt. Keine Originalmusik oder Schlüssel veröffentlicht. Kostenpflichtige KI-Aufrufe: null.
+Der Kern läuft über Pyodide lokal im Browser, kein lokaler Python-Server nötig. Eine private Site ist an `.openai/hosting.json` gebunden. Web-Beta veröffentlicht: https://musiccraft-app.wibem1.chatgpt.site/ (privat, ChatGPT-Anmeldung). Veröffentlichung erfolgreich bestätigt; Nachweis in `test-results/web-beta/deployment.json`. Keine Originalmusik oder Schlüssel veröffentlicht. Kostenpflichtige KI-Aufrufe: null.
 
 **Prüfungen:** 45 Python-Tests (38 Kern + 7 Browseradapter), 50 JS-Tests (39 Regression + 11 Provider/Schutz), 12 Einheitenfälle. Browserprüfung mit echten Paketen, Planexport und Verovio; genaue Ergebnisse/Restgrenzen in `test-results/web-beta/`. HTTPS-Produktionszugang verlangt ChatGPT-Anmeldung; automatisierter Browser hatte dort keine Sitzung. Keine musikalische Freigabe und kein behaupteter bestandener Live-KI-Test.
 
