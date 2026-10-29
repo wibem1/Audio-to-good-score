@@ -1,10 +1,24 @@
-# Projektstand – Audio to Good Score
+# Projektstand – MusicCraft App
 
-Stand: 28.10.2026. **Realer Referenztest:** Nutzer meldet unbrauchbares Notenbild und hörbare Stolperer. Etüden-Audio/MIDI/MusicXML liegen vor; bisherige technische Abnahme war keine musikalische Qualitätsabnahme. Neue getrennte Anschlagsfassung mit Puls-/Taktanfangprüfung, punktierten Werten und explizitem Notationstempo implementiert und an dieser Referenz in MuseScore 4 geprüft. MIDI-Stolperer bleiben ungeklärt; Original-MIDI nicht quantisiert. Details: `test-results/reference-score/`.
+Stand: **29.10.2026**. Maßgebliches Repository: **`wibem1/MusicCraft-App`**, `main`; vom Nutzer umbenannt. Letzter technisch geprüfter Produktcode: `f1e5eccbb68c12abdd4b74b0a1c10aaac84aa98f`.
+
+## Aktuelle Entscheidung und nächster Schritt
+
+**In diesem Schritt nur Dokumentation:** Produktname, Pflichtenheft, Agentenanweisungen, README und TODO auf die vereinbarte Ausrichtung gebracht. Kein Produktcode geändert, keine neue App-Version oder Freigabe, keine kostenpflichtigen Aufrufe. Die bisherigen Testnachweise sind historische Nachweise des unten beschriebenen Codes, keine Tests der neuen Zielarchitektur. Dokumentationsprüfung dieses Schritts: fünf Markdown-Dateien auf UTF-8, geschlossene Codeblöcke, vollständige MC01–MC10-Abnahmefälle, Kernkriterien, Statusabgrenzung und lokale Dateiverweise geprüft. Produkt-/Modelltests nicht erneut ausgeführt, da ausschließlich Dokumentation geändert wird.
+
+**Verbindlich geplant:** zwei eigenständige Module **Analyse** und **Komposition**. Audio-only, Audio+MIDI und MIDI-only sind gleichberechtigt. Neue Komposition aus Motiven/Vorgaben ist auch ohne Vorlage möglich. Vorlagenbezogene Imitation erst nach verständlichem Analysebericht und ausdrücklichem Nutzerauftrag. Bericht enthält Kriterienkatalog, Sicherheit je Kriterium und Takt/Zeitabschnitt, offene Fragen, Machbarkeit und begründete Prognose der Vorlagennähe. Details optional aufklappbar; keine bürokratische Einzelnotenabnahme. Siehe `PFLICHTENHEFT_V0.1.md`, Abschnitt 12.
+
+**Nächster einzelner Entwicklungsschritt:** versionierten Analysebericht als Datenmodell und einfache Modulansicht prototypisch umsetzen: Kurzurteil, Kriterien und Takt-/Zeitabschnittsmatrix einschließlich begründeter Unsicherheiten und Nutzerhinweisen. Testfälle für unsichere Taktgrenzen, unterschiedliche Sicherheit innerhalb desselben Takts und eine veränderte Schlussfigur vorsehen. Beispieldaten eindeutig als solche kennzeichnen; kein fingierter KI-Nachweis. Modell-/Kostenentscheidung für echte Analyse separat treffen; bezahlte Aufrufe bleiben zustimmungspflichtig.
+
+**Noch nicht implementiert:** vollständiger semantischer KI-Analysebericht, grafische Sicherheitsmatrix, Machbarkeitsprognose, darauf aufbauende Nachkomposition und freie generative Komposition. Die vorhandene Basic-Pitch-Inferenz und regelbasierte Kontextdiagnose ersetzen diese Funktionen nicht.
+
+## Bisheriger technischer Stand (28.10.2026)
+
+ **Realer Referenztest:** Nutzer meldet unbrauchbares Notenbild und hörbare Stolperer. Etüden-Audio/MIDI/MusicXML liegen vor; bisherige technische Abnahme war keine musikalische Qualitätsabnahme. Neue getrennte Anschlagsfassung mit Puls-/Taktanfangprüfung, punktierten Werten und explizitem Notationstempo implementiert und an dieser Referenz in MuseScore 4 geprüft. MIDI-Stolperer bleiben ungeklärt; Original-MIDI nicht quantisiert. Details: `test-results/reference-score/`.
 
  **Bedienüberarbeitung nach Nutzertest:** vier Schritte, zuverlässige sichtbare Dateinamen, Test-MIDI von eigenen Aufnahmen getrennt, Audio-only-Rückweg und gemeinsame Abschnittsänderung mit einmal Undo. Anleitung: `BEDIENUNG.md`. Vorige M1-Freigabe bleibt in `release/v0.1-m1` unverändert erhalten; diese Überarbeitung ist separat technisch geprüft.
 
- **Meilenstein 1 als technisch geprüfte Vorabversion zur Nutzung freigegeben; V0.1 nicht vollständig abgenommen.** Freigabe am 28.10.2026 auf ausdrücklichen Auftrag, Zweig `release/v0.1-m1`, geprüfter Produktcode `d40b6058b5125fff89cdf6da3d16498a3e62c720`. Siehe `RELEASE_M1.md`. Siehe `MILESTONE_1.md`. GitHub `wibem1/Audio-to-Good-Score`, `main`, ist maßgeblich. Vorige gesicherte Stände bleiben in der Historie: M1 `6458b6d`, Audio-only `0b3bcf7`, Notenausblendung `b48547c`.
+ **Meilenstein 1 als technisch geprüfte Vorabversion zur Nutzung freigegeben; V0.1 nicht vollständig abgenommen.** Freigabe am 28.10.2026 auf ausdrücklichen Auftrag, Zweig `release/v0.1-m1`, geprüfter Produktcode `d40b6058b5125fff89cdf6da3d16498a3e62c720`. Siehe `RELEASE_M1.md`. Siehe `MILESTONE_1.md`. GitHub `wibem1/MusicCraft-App`, `main`, ist maßgeblich. Vorige gesicherte Stände bleiben in der Historie: M1 `6458b6d`, Audio-only `0b3bcf7`, Notenausblendung `b48547c`.
 
 ## Nachgewiesene Funktionen
 
@@ -30,8 +44,9 @@ Stand: 28.10.2026. **Realer Referenztest:** Nutzer meldet unbrauchbares Notenbil
 
 `python3 -m http.server 8000 --bind 127.0.0.1`, dann `http://localhost:8000`. Kein zusätzlicher Modelldownload für die Benutzung. Globale Standards, AGENTS, Pflichtenheft, diesen Stand und `ACCEPTANCE.md` lesen. `npm test` ausführen. Neue Module `analysis.js` und `score.js`; Testwerkzeuge music21/Verovio sind keine Produktabhängigkeiten.
 
-Nächste Abnahmeschritte: echte Klavierpassage mit menschlichem Hörvergleich, MusicXML in beiden Zielprogrammen prüfen und die begrenzte F07/F08-Musikqualität separat validieren und bei Bedarf erweitern. Keine umfassende automatische Korrektur ohne Einzelfreigabe und keine kostenpflichtigen KI-Aufrufe ohne Zustimmung. Kostenpflichtige/Cloud-Modellaufrufe bisher null.
+Offene Abnahmen des bisherigen Prototyps (neben dem oben priorisierten nächsten Entwicklungsschritt): echte Klavierpassage mit menschlichem Hörvergleich, MusicXML in beiden Zielprogrammen prüfen und die begrenzte F07/F08-Musikqualität separat validieren und bei Bedarf erweitern. Keine umfassende automatische Korrektur ohne Einzelfreigabe und keine kostenpflichtigen KI-Aufrufe ohne Zustimmung. Kostenpflichtige/Cloud-Modellaufrufe bisher null.
 
 ## MuseScore-Nachweis
 
 Echte MuseScore-Versionen 3.2.3 (Ubuntu) und 4.7.6 (offizielle AppImage), isoliert als Testwerkzeug bereitgestellt, keine Produktabhängigkeit. Sechs Import-/Native-Speicher-/Rückexportfälle bestanden; PNG visuell geprüft. Dies ist keine pauschale Satzqualitätsfreigabe oder Hörprüfung. Reproduzierbarer Test: `tests/musescore-fixtures.js`, `tests/musescore_import.py`; Berichte/native Beispieldatei/Notenbild: `test-results/musescore/` und `test-results/musescore4/`.
+

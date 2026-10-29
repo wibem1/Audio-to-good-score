@@ -1,3 +1,21 @@
+# MusicCraft App – Aufgaben
+
+## Vereinbarte Neuausrichtung (29.10.2026)
+
+- [x] Umbenanntes GitHub-Repository bestätigen und neue Ausrichtung in Pflichtenheft, PROJECT_STATE, AGENTS und README dokumentieren
+- [ ] **Nächster Schritt:** versioniertes Analysebericht-Modell und einfache Modulansicht mit ausdrücklich gekennzeichneten Beispieldaten; Kriterien/Taktmatrix, Unsicherheiten, Nutzerhinweise und Änderungen zwischen Phrasen testen
+- [ ] Echte musikalische Analyse von Audio-only, MIDI-only und Audio+MIDI integrieren und getrennt validieren; Modellwahl und Kosten kontrollieren, keine bezahlten Aufrufe ohne Zustimmung
+- [ ] Sicherheit je Kriterium und Takt/Zeitabschnitt aus Befunden begründen; Taktart-/Grenzunsicherheit weiterreichen, keine erfundenen Prozentwerte
+- [ ] Kurzurteil zu Eignung und erwartbarer Vorlagennähe; Details aufklappbar, Audiostelle/MIDI-Abschnitt direkt erreichbar
+- [ ] Explizite Beauftragung vor Nachkomposition; versionierte Übergabe aus Quelle, Analyse, Unsicherheiten und Nutzerhinweisen; Änderungen machen abhängige Ergebnisse als veraltet sichtbar
+- [ ] Kompositionsmodul: vorlagennahe Imitation und selektive Überarbeitung, Vergleich/Undo/Redo, MIDI und MusicXML
+- [ ] Kompositionsmodul: eigenständige neue Komposition aus Motiv oder Vorgaben ohne Analysepflicht
+- [ ] Neue Abnahmefälle MC01–MC10 aus dem Pflichtenheft ausführen; technische und musikalische Abnahme getrennt führen
+
+Neue Modularchitektur ist geplant, nicht implementiert. Dokumentationsänderung ist keine Produktfreigabe.
+
+## Offene Prüfungen und Nachweise des bisherigen Prototyps
+
 # Meilenstein 1 technisch abgeschlossen; verbleibende V0.1-Aufgaben
 
 Abschluss und Startanleitung: `MILESTONE_1.md`.
@@ -20,3 +38,4 @@ Abschluss und Startanleitung: `MILESTONE_1.md`.
 - [ ] Native Tablet-/Safari-/Firefox-Abnahme
 
 39 Kerntests bestanden. Vereinfachter Eingabe-/Abschnittsablauf sowie Schema-5-Sammelbearbeitung technisch geprüft; Nutzerbewertung der neuen Bedienung steht aus. Wiedergabe-Race behoben; vollständige Chromium-/Modellregression und unabhängige MIDI-Prüfungen wiederholt. Detaillierte Funktions-/Abnahmegrenzen: `ACCEPTANCE.md`. V0.1 nicht freigegeben. Keine kostenpflichtigen KI-Aufrufe.
+

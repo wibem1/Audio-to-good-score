@@ -1,4 +1,10 @@
-# Audio to Good Score
+# MusicCraft App
+
+Musik analysieren, rekonstruieren und gestalten. Repository: [wibem1/MusicCraft-App](https://github.com/wibem1/MusicCraft-App), ehemals Audio-to-Good-Score.
+
+**Verbindliches Produktziel, noch nicht umgesetzt:** zwei eigenständige Module **Analyse** und **Komposition**. Audio, MIDI oder beides analysieren; Erkennungssicherheit je musikalischem Kriterium und Takt/Zeitabschnitt zeigen; Eignung und erwartbare Vorlagennähe begründen. Erst auf Nutzerauftrag nachkomponieren oder überarbeiten. Eigenständige neue Komposition aus Motiv oder Vorgaben ist ebenfalls Produktziel. Audio to Good Score bleibt ein Anwendungsfall. [Kriterien, Ablauf und Abnahmen](PFLICHTENHEFT_V0.1.md#12-verbindliche-modulspezifikation-musiccraft-app).
+
+Der folgende Bedien- und Teststand beschreibt weiterhin den vorhandenen technischen Prototyp. Er besitzt noch keinen vollständigen semantischen Analysebericht und keine generative Kompositionsfunktion. Die Umbenennung und Dokumentationsänderung sind kein App-Update und keine neue Freigabe.
 
 **Neue Bedienung:** [Vier Schritte zur Bearbeitung](BEDIENUNG.md). Eigene Aufnahme öffnen, Passage anhören, Vorschläge gemeinsam prüfen und Ergebnis speichern. Einzelnotenbearbeitung ist optional.
 
@@ -119,3 +125,4 @@ python3 scripts/reference-diagnosis.py /path/to/audio.wav /path/to/source.mid /t
 ```
 
 Die `3` ist eine ausdrücklich gewählte Taktannahme, keine erkannte Taktart. Referenzdiagnose braucht nur als Testwerkzeuge mido, NumPy und SciPy, der Parservergleich music21. Keine neuen Produktabhängigkeiten. Audio-Onset-Abstände sind kein Beweis für Tonhöhenfehler.
+
