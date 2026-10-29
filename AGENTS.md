@@ -8,7 +8,7 @@ Vor jedem Entwicklungsauftrag zuerst die globalen Regeln [DEVELOPMENT_STANDARDS.
 - Vor jeder vorlagenbezogenen Nachkomposition: Analysebericht mit begründeter Sicherheit je Kriterium und Takt/Zeitabschnitt, Unsicherheiten und erwartbarer Vorlagennähe zeigen. Erst ausdrücklicher Nutzerauftrag löst die Komposition aus. Freie Komposition ohne Vorlage benötigt keine vorgetäuschte Analyse.
 - Jede Phrase erneut prüfen: Wiederholung und Veränderung durch die Quelle begründen. Keine automatische Musterfortsetzung; ungewöhnliche MIDI-Ereignisse nicht allein wegen stilistischer Erwartungen als Fehler entfernen.
 - Einfache Oberfläche: Kurzurteil und Handlungsoptionen zuerst; Kriterien und Taktmatrix aufklappbar. Keine Pflicht, jeden Takt oder jede Note einzeln abzunehmen.
-- Diese Zielarchitektur ist **geplant, nicht implementiert**. Bestehende technische Nachweise sind davon getrennt zu führen. Details und Abnahmefälle: Pflichtenheft Abschnitt 12.
+- Die Modul-Beta ist in `web/` implementiert und mit dem Kern 0.3 verbunden. Live-KI- und musikalische Abnahme sind weiterhin offen. Umfang und Grenzen in `WEB_BETA.md`; historische Nachweise bleiben getrennt. Details und Abnahmefälle: Pflichtenheft Abschnitt 12.
 
 ## Fachliche Leitplanken
 - Die Anwendung unterstützt drei gleichrangige Eingangswege: Audio allein, Audio+MIDI sowie MIDI allein.
@@ -27,3 +27,4 @@ Siehe [PFLICHTENHEFT_V0.1.md](PFLICHTENHEFT_V0.1.md) für detaillierte Kriterien
 ## Übergabe und Export
 
 Vor Schnittstellenarbeit [protocol/HANDOFF_PROTOCOL.md](protocol/HANDOFF_PROTOCOL.md) lesen. Analysebefunde nicht zur vollständigen Partitur zwingen. Composition Plan ist ein eigener Vertrag; keine stillen Tempo-Bezugswechsel. Prüfung tatsächlich ausführen und not_run von passed unterscheiden. `python3 tests/test_handoff_units.py` prüft isolierte Einheitenregeln, nicht den noch ausstehenden Produktionsvalidator oder Exporter.
+

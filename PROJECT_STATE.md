@@ -1,6 +1,16 @@
 # Projektstand – MusicCraft App
 
-Stand: **29.10.2026**. Maßgebliches Repository: **`wibem1/MusicCraft-App`**, `main`; vom Nutzer umbenannt. Letzter technisch geprüfter Produktcode: `f1e5eccbb68c12abdd4b74b0a1c10aaac84aa98f`.
+Stand: **29.10.2026**. Maßgebliches Repository: **`wibem1/MusicCraft-App`**, `main`; vom Nutzer umbenannt. Kern-Ausgangsstand: `f52a6a83528f7782223b27a5a86a22739d25166a`; die Web-Beta baut darauf auf.
+
+## Aktuell: Web-Beta 0.1.0 Beta 1
+
+Analyse und Komposition sind jetzt als eigenständige Browsermodule an den Kern 0.3 angebunden (`web/`, `musiccraft/web_bridge.py`). Player mit zeitbezogenem A/B, Audio-/MIDI-Import, lokale unsichere Voranalyse, ausführlicher aufklappbarer Bericht, offene Passagen, Nutzerhinweise/Chat, optionaler Gemini-Adapter mit Einzelauftragszustimmung, Fremd-KI-Dateiaustausch, Kompositionsversionen/Undo/Redo, gezielte Taktänderung mit Nachbarpassagenschutz, Projekte/Autosave, direkte Verovio-Partitur sowie validierter MIDI-/MusicXML-Export.
+
+Der Kern läuft über Pyodide lokal im Browser, kein lokaler Python-Server nötig. Eine private Site ist an `.openai/hosting.json` gebunden. Web-Beta-Zugang und Veröffentlichungsnachweis werden im Testbericht geführt. Keine Originalmusik oder Schlüssel veröffentlicht. Kostenpflichtige KI-Aufrufe: null.
+
+**Prüfungen:** 45 Python-Tests (38 Kern + 7 Browseradapter), 50 JS-Tests (39 Regression + 11 Provider/Schutz), 12 Einheitenfälle. Browserprüfung mit echten Paketen, Planexport und Verovio; genaue Ergebnisse/Restgrenzen in `test-results/web-beta/`. HTTPS-Produktionszugang verlangt ChatGPT-Anmeldung; automatisierter Browser hatte dort keine Sitzung. Keine musikalische Freigabe und kein behaupteter bestandener Live-KI-Test.
+
+**Offen:** musikalische Audio-/MIDI-/Kombinationsabnahme mit freigegebenem Modell, reale Zielprogramm-Abnahme des neuen Exporters, weitere Browser, zuverlässige modellabhängige Umfangs-/Kostenplanung. Details `WEB_BETA.md`. Die folgenden Abschnitte beschreiben historische Entwicklungsstände.
 
 ## Implementierter Verarbeitungskern 0.3 (29.10.2026)
 

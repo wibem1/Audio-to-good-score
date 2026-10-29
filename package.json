@@ -1,11 +1,12 @@
 {
-  "name": "audio-to-good-score",
+  "name": "musiccraft-app",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.js",
     "start": "python3 -m http.server 8000 --bind 127.0.0.1",
-    "build": "node scripts/build-transcription.js"
+    "build": "node scripts/build-transcription.js",
+    "build:web": "python3 web/build.py"
   },
   "engines": {
     "node": ">=22"

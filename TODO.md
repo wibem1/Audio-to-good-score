@@ -1,5 +1,19 @@
 # MusicCraft App – Aufgaben
 
+## Aktuell: technische Web-Beta
+
+- [x] Eigenständige Analyse-/Kompositionsmodule mit Kern 0.3 verbinden
+- [x] Player, zeitbezogener A/B-Vergleich, Chat/Hinweise, Projekte und Fassungen
+- [x] Gezielte Taktänderung mit geschützten Nachbarpassagen; keine stille Einzelnotenreparatur
+- [x] Direkte Partitur und gemeinsame MIDI-/MusicXML-Exporte
+- [x] Provideradapter mit Einzelauftragszustimmung; andere KIs per validiertem Dateiaustausch
+- [x] Automatisierte Kern-/Adapter-/Provider-/Rhythmusprüfungen
+- [ ] Live-Modelltests und musikalische Abnahme je Eingangspfad mit bewilligtem Kostenrahmen
+- [ ] Produktionsabläufe nach privater ChatGPT-Anmeldung, Browserdownloads und Audio-only unter HTTPS vollständig abnehmen
+- [ ] Dorico/MuseScore mit neuem Exporter und weitere Browser abnehmen
+
+## Historische Aufgabenlisten (nicht als aktueller Implementierungsstand lesen)
+
 ## Verarbeitungskern 0.3
 
 - [x] Inhalt/Gestaltung trennen, JSON-Schemas und semantische Validatoren für das begrenzte Klavierprofil
