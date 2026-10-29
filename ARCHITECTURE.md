@@ -44,3 +44,8 @@ Primärquellen (28.10.2026 geprüft):
 ## Grenzen
 
 Maximal 50 MiB komprimiertes Audio, 10 MiB MIDI, 100.000 MIDI-Ereignisse und 10.000 vollständige Noten. Dekodiertes Audio benötigt wesentlich mehr RAM; kein Langaufnahme-/Stresstest. Keine Mehrinstrumenten-Klangtreue, kein automatisches Timing-Repair, kein automatisches Audioalignment. Wiederholte gleichzeitige Noten derselben Höhe werden beim Import als FIFO-Unsicherheit gekennzeichnet; unsichere Änderungen können am Roundtrip-Schutz scheitern. Diagnose ist keine Stimmen-/Harmonieanalyse. Native Tablet-/Safari-/Firefox-Tests und menschliche Hörfreigabe fehlen. Keine Serverbereitstellung oder als V0.1 freigegebene Veröffentlichung.
+
+## Optionaler MusicCraft-Kern 0.3 (29.10.2026)
+
+Isolierter Python-Kern `musiccraft/`, noch ohne Browser-/Provideranbindung. jsonschema 4.26.0 prüft Verträge, music21 9.9.1 übernimmt Notation und mido 1.3.3 SMF. Gemeinsamer Plan, kontrollierte Performance-Abweichungen, unabhängige ElementTree-Zeitachsenprüfung und Bibliotheks-Roundtrips. Optionale Abhängigkeiten: `requirements-composition.txt`. Kein kopierter Forschungsmodell-/Tokenizer-Code oder Gewichte. Umfang, Lizenzen und Grenzen: `protocol/IMPLEMENTATION_0.3.md`.
+

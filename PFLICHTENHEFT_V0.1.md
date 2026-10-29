@@ -191,3 +191,8 @@ Technische Prototypen mit Beispieldaten sind kein Nachweis echter Erkennungsqual
 ## 13. Übergabeprotokoll 0.2
 
 Normativer experimenteller Vertrag: [protocol/HANDOFF_PROTOCOL.md](protocol/HANDOFF_PROTOCOL.md). Analyse liefert kompakte Befunde mit Unsicherheit, keine spielbare Partitur. Separater Composition Plan trifft erst musikalische Entscheidungen und definiert Exportereignisse. Einheiten und Tempo explizit; Exportprüfung unabhängig von Selbstaussagen. 12 Einheiten-Regressionen geprüft, vollständige Schema-/Exporter-/Modulintegration noch offen. Standardansicht bevorzugt problematische Passagen; vollständige Analyse aufklappbar. Player und Chat in beiden eigenständigen Modulen sowie direkt sichtbare Partitur sind Produktziel, noch nicht umgesetzt.
+
+## 14. Implementiertes begrenztes Kernprofil 0.3
+
+`protocol/analysis.schema.json` und `protocol/composition.schema.json` sind implementierte Strukturen. Analyse bleibt nicht spielbarer Befundbericht mit getrenntem Inhalt/Gestaltung. Der Composition Plan führt zur gemeinsam geprüften MIDI-/MusicXML-Ausgabe. [Umfang und Grenzen](protocol/IMPLEMENTATION_0.3.md). 38 neue Tests bestanden; Browser-/Provideranbindung, musikalisches Ranking, weitere Ausdrucksparameter und Zielprogrammabnahme offen. Keine Freigabe der Gesamtversion.
+

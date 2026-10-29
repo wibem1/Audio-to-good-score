@@ -1,5 +1,8 @@
 # MusicCraft App
 
+**Neuer Verarbeitungskern 0.3 (noch ohne Web-Anbindung):** validierte Analyse-/Kompositionsverträge, Inhalt/Gestaltung getrennt, verlustfreie Tabellen, lokale Unsicherheitsalternativen und gemeinsamer MIDI-/MusicXML-Export mit unabhängiger Prüfung. [Umfang und Grenzen](protocol/IMPLEMENTATION_0.3.md). 38 neue Tests, 12 Einheitenfälle und 39 bestehende Kerntests bestanden. Keine neue Endanwenderfreigabe oder KI-Inferenz.
+
+
 Musik analysieren, rekonstruieren und gestalten. Repository: [wibem1/MusicCraft-App](https://github.com/wibem1/MusicCraft-App), ehemals Audio-to-Good-Score.
 
 **Verbindliches Produktziel, noch nicht umgesetzt:** zwei eigenständige Module **Analyse** und **Komposition**. Audio, MIDI oder beides analysieren; Erkennungssicherheit je musikalischem Kriterium und Takt/Zeitabschnitt zeigen; Eignung und erwartbare Vorlagennähe begründen. Erst auf Nutzerauftrag nachkomponieren oder überarbeiten. Eigenständige neue Komposition aus Motiv oder Vorgaben ist ebenfalls Produktziel. Audio to Good Score bleibt ein Anwendungsfall. [Kriterien, Ablauf und Abnahmen](PFLICHTENHEFT_V0.1.md#12-verbindliche-modulspezifikation-musiccraft-app).
@@ -125,4 +128,3 @@ python3 scripts/reference-diagnosis.py /path/to/audio.wav /path/to/source.mid /t
 ```
 
 Die `3` ist eine ausdrücklich gewählte Taktannahme, keine erkannte Taktart. Referenzdiagnose braucht nur als Testwerkzeuge mido, NumPy und SciPy, der Parservergleich music21. Keine neuen Produktabhängigkeiten. Audio-Onset-Abstände sind kein Beweis für Tonhöhenfehler.
-

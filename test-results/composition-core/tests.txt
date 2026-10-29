@@ -1,0 +1,43 @@
+test_analysis_lossless_unknown (test_composition_core.Compact.test_analysis_lossless_unknown) ... ok
+test_forbid_injected_table_path (test_composition_core.Compact.test_forbid_injected_table_path) ... ok
+test_plan_lossless_optional (test_composition_core.Compact.test_plan_lossless_optional) ... ok
+test_alternatives_limit (test_composition_core.Contracts.test_alternatives_limit) ... ok
+test_alternatives_no_mutation (test_composition_core.Contracts.test_alternatives_no_mutation) ... ok
+test_analysis_unknown_is_not_rest (test_composition_core.Contracts.test_analysis_unknown_is_not_rest) ... ok
+test_bad_tempo_reference (test_composition_core.Contracts.test_bad_tempo_reference) ... ok
+test_bound_analysis_and_stale (test_composition_core.Contracts.test_bound_analysis_and_stale) ... ok
+test_content_style_separate (test_composition_core.Contracts.test_content_style_separate) ... ok
+test_cycle (test_composition_core.Contracts.test_cycle) ... ok
+test_dependent_certainty (test_composition_core.Contracts.test_dependent_certainty) ... ok
+test_fraction_not_reduced (test_composition_core.Contracts.test_fraction_not_reduced) ... ok
+test_free_composition (test_composition_core.Contracts.test_free_composition) ... ok
+test_gap (test_composition_core.Contracts.test_gap) ... ok
+test_imitation_needs_analysis (test_composition_core.Contracts.test_imitation_needs_analysis) ... ok
+test_no_nan (test_composition_core.Contracts.test_no_nan) ... ok
+test_overlap (test_composition_core.Contracts.test_overlap) ... ok
+test_simultaneous_not_alternatives (test_composition_core.Contracts.test_simultaneous_not_alternatives) ... ok
+test_source_range (test_composition_core.Contracts.test_source_range) ... ok
+test_unknown_field (test_composition_core.Contracts.test_unknown_field) ... ok
+test_zero_duration (test_composition_core.Contracts.test_zero_duration) ... ok
+test_dotted (test_composition_core.Exports.test_dotted) ... ok
+test_explicit_rests (test_composition_core.Exports.test_explicit_rests) ... ok
+test_independent_checker_rejects_gemini_classes (test_composition_core.Exports.test_independent_checker_rejects_gemini_classes) ... ok
+test_input_not_mutated (test_composition_core.Exports.test_input_not_mutated) ... ok
+test_meter_change (test_composition_core.Exports.test_meter_change) ... ok
+test_performance_gate (test_composition_core.Exports.test_performance_gate) ... ok
+test_pickup (test_composition_core.Exports.test_pickup) ... ok
+test_reject_insufficient_resolution (test_composition_core.Exports.test_reject_insufficient_resolution) ... ok
+test_reject_performance_overlap (test_composition_core.Exports.test_reject_performance_overlap) ... ok
+test_rejected_export_preserves_existing (test_composition_core.Exports.test_rejected_export_preserves_existing) ... ok
+test_single_hand (test_composition_core.Exports.test_single_hand) ... ok
+test_sixteenth_68 (test_composition_core.Exports.test_sixteenth_68) ... ok
+test_tempo_change (test_composition_core.Exports.test_tempo_change) ... ok
+test_tie_across_bars (test_composition_core.Exports.test_tie_across_bars) ... ok
+test_triplets (test_composition_core.Exports.test_triplets) ... ok
+test_preserve_candidates_and_downgrade_unsupported_certainty (test_composition_core.Migration.test_preserve_candidates_and_downgrade_unsupported_certainty) ... ok
+test_reject_truncated_confidence (test_composition_core.Migration.test_reject_truncated_confidence) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 0.327s
+
+OK

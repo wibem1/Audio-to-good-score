@@ -2,13 +2,23 @@
 
 Stand: **29.10.2026**. Maßgebliches Repository: **`wibem1/MusicCraft-App`**, `main`; vom Nutzer umbenannt. Letzter technisch geprüfter Produktcode: `f1e5eccbb68c12abdd4b74b0a1c10aaac84aa98f`.
 
-## Übergabeprotokoll 0.2 (29.10.2026)
+## Implementierter Verarbeitungskern 0.3 (29.10.2026)
+
+`musiccraft/`: JSON-Schemas und semantische Validatoren; Inhalt/Gestaltung getrennt; explizite 0.2-Migration, kompakte verlustfreie Tabellen und bis zu drei unsichere Kandidaten zur musikalischen Prüfung. Gemeinsamer Composition Plan führt über music21/mido zu MIDI und MusicXML. Ein unabhängiger XML-Prüfer kontrolliert Zeitachsen, Typen, Takt-/Stimmfüllung, Bindungen, Systeme und Tempo; MIDI-Roundtrip gegen Plan bzw. Performance-Zeiten. Stale Analyse, Timingfehler und neue gleiche Tonüberlagerungen werden abgefangen.
+
+**Nachweise:** 38 neue Tests, 12 frühere Einheitenfälle, 39 bestehende JS-Kerntests bestanden. Belege: `test-results/composition-core/`; Reproduktion/Profil: `protocol/IMPLEMENTATION_0.3.md`. Synthetische Verovio-5.7.0-Renderings geprüft, Tempo-Glyphenproblem behoben. Zwei private 0.2-Übergaben mit je 48 Beobachtungen migriert, keine Musikquellen dafür geöffnet oder veröffentlicht.
+
+**Grenzen:** optionaler lokaler Python-Kern, noch keine Browser-/Provideranbindung, kein musikalisches Ranking und keine automatische KI-Nachkomposition. Weitere Ausdrucksparameter und Dorico-/MuseScore-Abnahme des neuen Exporters offen. Keine neue App-Version oder allgemeine musikalische Freigabe. Kostenpflichtige Modellaufrufe null.
+
+**Nächster Schritt:** geprüften Kern mit der eigenständigen Analyse-/Kompositions-Weboberfläche verbinden; danach tatsächliche KI-Aufträge getrennt je Quelle mit kontrollierten Kosten testen. SheetSage/BOSSA/Audio2MIDI wurden nicht installiert.
+
+## Historischer Übergabeprotokoll-Stand 0.2 (29.10.2026)
 
 Protokoll und isolierte Einheiten-Regression implementiert: `protocol/HANDOFF_PROTOCOL.md`, `tests/test_handoff_units.py`; 12/12 Tests bestanden (`test-results/handoff-0.2.txt`). Analyse bleibt lückenhafter Befundbericht; separater Composition Plan legt erst spielbare Ereignisse fest. Sekunden, Viertelnoten-Einheiten, Tempo-Bezugswert und exakte Brüche eindeutig definiert. Tests decken punktiertes Tempo, Taktfüllung, Triolen, Gate-Differenzen und unzureichende MusicXML-Divisionen ab. Kein Produktionsvalidator/Exporter, kein neues App-Release und keine bezahlten Aufrufe.
 
 Explorative private Audio-/MIDI-Übergabe und frischer KI-Kontext waren laut Nutzer im Hören vielversprechend. Nutzer lieferte anschließend Gemini-Code mit inkonsistentem Tempo und MusicXML-Dauern sowie unbelegten Prüfbehauptungen. Diese Fehlerklassen werden lokal arithmetisch reproduziert; Geminis vollständiger Originalcode wurde nicht ausgeführt. Ein erneuter externer Gemini-Test mit 0.2 steht aus. Nutzer-Musikdateien bleiben privat und werden nicht in GitHub aufgenommen.
 
-Nächster einzelner Schritt: 0.2 in frischen Kontexten je Quelle erneut prüfen; danach schema-validierten Composition Plan und gemeinsamen Exporter mit unabhängigem MIDI-/MusicXML-Roundtrip implementieren. Die folgenden früheren UI-Schritte sind nachgeordnet.
+Damals geplanter Schritt: 0.2 in frischen Kontexten je Quelle erneut prüfen; danach schema-validierten Composition Plan und gemeinsamen Exporter mit unabhängigem MIDI-/MusicXML-Roundtrip implementieren. Die folgenden früheren UI-Schritte sind nachgeordnet.
 
 ## Vorige Entscheidung und Entwicklungsplanung
 
@@ -57,4 +67,5 @@ Offene Abnahmen des bisherigen Prototyps (neben dem oben priorisierten nächsten
 ## MuseScore-Nachweis
 
 Echte MuseScore-Versionen 3.2.3 (Ubuntu) und 4.7.6 (offizielle AppImage), isoliert als Testwerkzeug bereitgestellt, keine Produktabhängigkeit. Sechs Import-/Native-Speicher-/Rückexportfälle bestanden; PNG visuell geprüft. Dies ist keine pauschale Satzqualitätsfreigabe oder Hörprüfung. Reproduzierbarer Test: `tests/musescore-fixtures.js`, `tests/musescore_import.py`; Berichte/native Beispieldatei/Notenbild: `test-results/musescore/` und `test-results/musescore4/`.
+
 

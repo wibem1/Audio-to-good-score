@@ -1,0 +1,23 @@
+[
+  {
+    "case": "sixteenths",
+    "renderer": "Verovio 5.7.0",
+    "pages": 1,
+    "event_checks": "passed",
+    "visual_review": "initial rendering reviewed; tempo glyph issue fixed in exporter, final ties case reviewed"
+  },
+  {
+    "case": "ties",
+    "renderer": "Verovio 5.7.0",
+    "pages": 1,
+    "event_checks": "passed",
+    "visual_review": "initial rendering reviewed; tempo glyph issue fixed in exporter, final ties case reviewed"
+  },
+  {
+    "case": "triplets",
+    "renderer": "Verovio 5.7.0",
+    "pages": 1,
+    "event_checks": "passed",
+    "visual_review": "initial rendering reviewed; tempo glyph issue fixed in exporter, final ties case reviewed"
+  }
+]

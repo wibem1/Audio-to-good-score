@@ -1,0 +1,278 @@
+{
+  "format": "MusicCraft-Composition-Plan",
+  "version": "0.3",
+  "plan_id": "synthetic-01",
+  "revision": 1,
+  "title": "MusicCraft - synthetic export test",
+  "source_analysis": null,
+  "request": {
+    "mode": "new",
+    "instructions": "Synthetic validator fixture, not user music"
+  },
+  "voices": [
+    {
+      "id": "RH",
+      "staff": 1,
+      "channel": 0
+    },
+    {
+      "id": "LH",
+      "staff": 2,
+      "channel": 1
+    }
+  ],
+  "bars": [
+    {
+      "number": 1,
+      "start_q": [
+        0,
+        1
+      ],
+      "length_q": [
+        3,
+        1
+      ],
+      "meter": [
+        6,
+        8
+      ]
+    }
+  ],
+  "tempos": [
+    {
+      "at_q": [
+        0,
+        1
+      ],
+      "per_minute": [
+        5000,
+        89
+      ],
+      "reference_q": [
+        3,
+        2
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "n0",
+      "voice_id": "RH",
+      "pitch_midi": 72,
+      "onset_q": [
+        0,
+        1
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n1",
+      "voice_id": "RH",
+      "pitch_midi": 76,
+      "onset_q": [
+        1,
+        4
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n2",
+      "voice_id": "RH",
+      "pitch_midi": 79,
+      "onset_q": [
+        1,
+        2
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n3",
+      "voice_id": "RH",
+      "pitch_midi": 77,
+      "onset_q": [
+        3,
+        4
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n4",
+      "voice_id": "RH",
+      "pitch_midi": 74,
+      "onset_q": [
+        1,
+        1
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n5",
+      "voice_id": "RH",
+      "pitch_midi": 71,
+      "onset_q": [
+        5,
+        4
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n6",
+      "voice_id": "RH",
+      "pitch_midi": 69,
+      "onset_q": [
+        3,
+        2
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n7",
+      "voice_id": "RH",
+      "pitch_midi": 72,
+      "onset_q": [
+        7,
+        4
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n8",
+      "voice_id": "RH",
+      "pitch_midi": 76,
+      "onset_q": [
+        2,
+        1
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n9",
+      "voice_id": "RH",
+      "pitch_midi": 74,
+      "onset_q": [
+        9,
+        4
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n10",
+      "voice_id": "RH",
+      "pitch_midi": 71,
+      "onset_q": [
+        5,
+        2
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "n11",
+      "voice_id": "RH",
+      "pitch_midi": 67,
+      "onset_q": [
+        11,
+        4
+      ],
+      "duration_q": [
+        1,
+        4
+      ],
+      "velocity": 72,
+      "decision_id": "d1"
+    },
+    {
+      "id": "b0",
+      "voice_id": "LH",
+      "pitch_midi": 48,
+      "onset_q": [
+        0,
+        1
+      ],
+      "duration_q": [
+        3,
+        1
+      ],
+      "velocity": 52,
+      "decision_id": "d1"
+    },
+    {
+      "id": "b1",
+      "voice_id": "LH",
+      "pitch_midi": 55,
+      "onset_q": [
+        0,
+        1
+      ],
+      "duration_q": [
+        3,
+        1
+      ],
+      "velocity": 52,
+      "decision_id": "d1"
+    }
+  ],
+  "rests": [],
+  "decisions": [
+    {
+      "id": "d1",
+      "description": "Synthetic test notes",
+      "finding_ids": [],
+      "kind": "addition"
+    }
+  ]
+}

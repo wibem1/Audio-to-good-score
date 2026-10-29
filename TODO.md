@@ -1,11 +1,20 @@
 # MusicCraft App – Aufgaben
 
-## Übergabeprotokoll 0.2
+## Verarbeitungskern 0.3
+
+- [x] Inhalt/Gestaltung trennen, JSON-Schemas und semantische Validatoren für das begrenzte Klavierprofil
+- [x] Kompakte verlustfreie Tabellen, Migration und Tonalternativen ohne automatische Übernahme
+- [x] music21/mido-Export, unabhängige XML-Prüfung, MIDI-Roundtrip und Verovio-Rendering
+- [x] 38 neue Tests, 12 Einheitenfälle und 39 bestehende JS-Kerntests bestanden
+- [ ] **Nächster Schritt:** Browseranbindung an Analyse-/Kompositionsmodule; Player/Chat und tatsächliche KI-Aufträge offen
+- [ ] Musikalisches Kandidatenranking, weitere Ausdrucksparameter, externer 0.3-Test und reale Dorico/MuseScore-Abnahme
+
+## Historischer Übergabeprotokoll-Stand 0.2
 
 - [x] Analysebefunde und spielbaren Composition Plan trennen; eindeutige Zeit-/Tempo-/Dauerregeln festhalten
 - [x] 12 isolierte Einheiten-Regressionen ausführen; Gemini-Fehlerklassen abdecken
-- [ ] **Nächster Schritt:** unabhängiger erneuter Test pro Quelle mit Protokoll 0.2
-- [ ] Vollständige JSON-Schemas, semantischen Validator und gemeinsamen MIDI-/MusicXML-Exporter aus Composition Plan implementieren; reale Roundtrips und Notensatzprüfung
+- [ ] Unabhängiger externer Test je Quelle mit aktuellem Protokoll 0.3
+- [x] Begrenztes Kernprofil 0.3 mit Schemas/Validator/Exporter; reale Zielprogramm-Abnahmen separat offen
 
 ## Vereinbarte Neuausrichtung (29.10.2026)
 
@@ -45,4 +54,5 @@ Abschluss und Startanleitung: `MILESTONE_1.md`.
 - [ ] Native Tablet-/Safari-/Firefox-Abnahme
 
 39 Kerntests bestanden. Vereinfachter Eingabe-/Abschnittsablauf sowie Schema-5-Sammelbearbeitung technisch geprüft; Nutzerbewertung der neuen Bedienung steht aus. Wiedergabe-Race behoben; vollständige Chromium-/Modellregression und unabhängige MIDI-Prüfungen wiederholt. Detaillierte Funktions-/Abnahmegrenzen: `ACCEPTANCE.md`. V0.1 nicht freigegeben. Keine kostenpflichtigen KI-Aufrufe.
+
 

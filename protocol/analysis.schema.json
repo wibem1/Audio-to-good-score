@@ -1,0 +1,537 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://musiccraft.invalid/protocol/analysis.schema.json",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "MusicCraft-Analysis-Handoff"
+    },
+    "version": {
+      "const": "0.3"
+    },
+    "analysis_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "audio",
+              "midi"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "range_s": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number",
+                "minimum": 0
+              },
+              {
+                "type": "number",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "sha256",
+          "range_s"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "source_access_allowed": {
+      "type": "boolean"
+    },
+    "content": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "feature": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {},
+              "certainty": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low",
+                  "undetermined"
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "basis": {
+                "enum": [
+                  "observation",
+                  "interpretation",
+                  "user_hint"
+                ]
+              },
+              "depends_on": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "required": [
+              "id",
+              "feature",
+              "value",
+              "certainty",
+              "reason",
+              "basis",
+              "depends_on"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "range_s": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "development": {
+                "type": "string",
+                "minLength": 1
+              },
+              "provisional_bar": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "id",
+              "source_id",
+              "range_s",
+              "development"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "time_s": {
+                "type": "number",
+                "minimum": 0
+              },
+              "section_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "slot": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "candidate_relation": {
+                "enum": [
+                  "alternatives",
+                  "simultaneous",
+                  "unresolved"
+                ]
+              },
+              "candidates": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "pitch_midi": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0,
+                      "maximum": 127
+                    },
+                    "strength": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "velocity": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 127
+                    },
+                    "offset_s": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "pitch_midi"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "pitch_certainty": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low",
+                  "undetermined"
+                ]
+              },
+              "rhythm_certainty": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low",
+                  "undetermined"
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "source_id",
+              "time_s",
+              "section_id",
+              "slot",
+              "candidate_relation",
+              "candidates",
+              "pitch_certainty",
+              "rhythm_certainty",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "summary",
+        "findings",
+        "sections",
+        "observations"
+      ],
+      "additionalProperties": false
+    },
+    "style": {
+      "type": "object",
+      "properties": {
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "feature": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {},
+              "certainty": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low",
+                  "undetermined"
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "basis": {
+                "enum": [
+                  "observation",
+                  "interpretation",
+                  "user_hint"
+                ]
+              },
+              "depends_on": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "required": [
+              "id",
+              "feature",
+              "value",
+              "certainty",
+              "reason",
+              "basis",
+              "depends_on"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "findings"
+      ],
+      "additionalProperties": false
+    },
+    "timing_hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "meter": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "pulse_duration_s": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "pulse_duration_q": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "tempo_reference_q": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "tempo_per_minute": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "certainty": {
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "undetermined"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "meter",
+          "pulse_duration_s",
+          "pulse_duration_q",
+          "tempo_reference_q",
+          "tempo_per_minute",
+          "certainty"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "section_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "section_id",
+          "question"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "suitability": {
+      "type": "object",
+      "properties": {
+        "forecast": {
+          "enum": [
+            "close",
+            "similar",
+            "free",
+            "not_advisable"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "forecast",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "method",
+        "limitations"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "analysis_id",
+    "revision",
+    "sources",
+    "source_access_allowed",
+    "content",
+    "style",
+    "timing_hypotheses",
+    "open_questions",
+    "suitability",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

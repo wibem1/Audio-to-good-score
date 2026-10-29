@@ -1,6 +1,8 @@
 # MusicCraft-Übergabeprotokoll 0.2
 
-Status: experimenteller, normativer Datenvertrag; ersetzt Pilot 0.1 für neue Versuche. Noch keine App-Integration oder allgemeine musikalische Abnahme. Versionsnummer betrifft das Format, nicht eine neue App-Version.
+**Historische Formatfassung 0.2.** Aktueller implementierter Kern 0.3: [IMPLEMENTATION_0.3.md](IMPLEMENTATION_0.3.md), JSON-Schemas im selben Ordner. 0.2 bleibt für bestehende Versuche dokumentiert.
+
+Status bei Erstellung: experimenteller, normativer Datenvertrag; ersetzt Pilot 0.1 für neue Versuche. Noch keine App-Integration oder allgemeine musikalische Abnahme. Versionsnummer betrifft das Format, nicht eine neue App-Version.
 
 ## 1. Zwei getrennte Verträge
 
@@ -85,3 +87,4 @@ Pflichtinhalt: `format=MusicCraft-Composition-Plan`, `version=0.2`, Plan-ID/Revi
 ## 6. Umfang dieses Schritts
 
 Die beiden bestehenden privaten Pilotübergaben wurden konservativ in0.2 überführt; alte Dateien bleiben erhalten. Keine neuen Erkennungsbefunde hinzugefügt, keine Tonhöhen „repariert“. Einheiten/Deutungen explizit gemacht. Getestet werden Umrechnungsregeln einschließlich der aus dem Gemini-Text erkennbaren Fehler, keine behauptete Ausführung von Geminis Originalcode. Produktionsschema, Converter und UI-Integration folgen separat. Umfangreiche Kompositionspläne sind kein Analyseauftrag.
+

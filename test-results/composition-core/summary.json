@@ -1,0 +1,21 @@
+{
+  "new_tests": 38,
+  "legacy_unit_tests": 12,
+  "existing_js_tests": 39,
+  "paid_api_calls": 0,
+  "integrated_into_browser": false,
+  "private_analysis_migrations": {
+    "audio_observations": 48,
+    "midi_observations": 48,
+    "source_files_read": false
+  },
+  "compact_fixture_bytes": 1533,
+  "expanded_fixture_bytes": 2155,
+  "model_quality": "not_run",
+  "dorico_musescore": "not_run",
+  "deps": {
+    "music21": "9.9.1",
+    "mido": "1.3.3",
+    "jsonschema": "4.26.0"
+  }
+}

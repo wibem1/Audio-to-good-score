@@ -1,0 +1,132 @@
+{
+  "xml_independent_timing_type_staff": "passed",
+  "xml_tempo_map": "passed",
+  "xml_bars_checked": 1,
+  "midi_events": "passed",
+  "midi_tempo_map": "passed",
+  "musicxml_pitch_onset_duration": "passed",
+  "notation_engine_visual": "not_run",
+  "human_listening": "not_run",
+  "ppq": 480,
+  "midi_tempo_rounding_us_per_quarter_max": 0.5,
+  "performance_tick_rounding_max": 0.5,
+  "notes": 14,
+  "python": "3.12.14",
+  "music21": "9.9.1",
+  "mido": "1.3.3",
+  "plan_sha256": "bb64a732249b4214bc7ee988ff77707c0a86df979072cd4e934e1bb2eb4a7ab8",
+  "performance_mapping": [
+    {
+      "id": "n0",
+      "channel": 0,
+      "pitch": 72,
+      "start_tick": 0,
+      "end_tick": 120,
+      "velocity": 72
+    },
+    {
+      "id": "n1",
+      "channel": 0,
+      "pitch": 76,
+      "start_tick": 120,
+      "end_tick": 240,
+      "velocity": 72
+    },
+    {
+      "id": "n2",
+      "channel": 0,
+      "pitch": 79,
+      "start_tick": 240,
+      "end_tick": 360,
+      "velocity": 72
+    },
+    {
+      "id": "n3",
+      "channel": 0,
+      "pitch": 77,
+      "start_tick": 360,
+      "end_tick": 480,
+      "velocity": 72
+    },
+    {
+      "id": "n4",
+      "channel": 0,
+      "pitch": 74,
+      "start_tick": 480,
+      "end_tick": 600,
+      "velocity": 72
+    },
+    {
+      "id": "n5",
+      "channel": 0,
+      "pitch": 71,
+      "start_tick": 600,
+      "end_tick": 720,
+      "velocity": 72
+    },
+    {
+      "id": "n6",
+      "channel": 0,
+      "pitch": 69,
+      "start_tick": 720,
+      "end_tick": 840,
+      "velocity": 72
+    },
+    {
+      "id": "n7",
+      "channel": 0,
+      "pitch": 72,
+      "start_tick": 840,
+      "end_tick": 960,
+      "velocity": 72
+    },
+    {
+      "id": "n8",
+      "channel": 0,
+      "pitch": 76,
+      "start_tick": 960,
+      "end_tick": 1080,
+      "velocity": 72
+    },
+    {
+      "id": "n9",
+      "channel": 0,
+      "pitch": 74,
+      "start_tick": 1080,
+      "end_tick": 1200,
+      "velocity": 72
+    },
+    {
+      "id": "n10",
+      "channel": 0,
+      "pitch": 71,
+      "start_tick": 1200,
+      "end_tick": 1320,
+      "velocity": 72
+    },
+    {
+      "id": "n11",
+      "channel": 0,
+      "pitch": 67,
+      "start_tick": 1320,
+      "end_tick": 1440,
+      "velocity": 72
+    },
+    {
+      "id": "b0",
+      "channel": 1,
+      "pitch": 48,
+      "start_tick": 0,
+      "end_tick": 1440,
+      "velocity": 52
+    },
+    {
+      "id": "b1",
+      "channel": 1,
+      "pitch": 55,
+      "start_tick": 0,
+      "end_tick": 1440,
+      "velocity": 52
+    }
+  ]
+}
