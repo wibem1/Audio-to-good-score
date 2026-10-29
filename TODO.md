@@ -1,9 +1,16 @@
 # MusicCraft App – Aufgaben
 
+## Übergabeprotokoll 0.2
+
+- [x] Analysebefunde und spielbaren Composition Plan trennen; eindeutige Zeit-/Tempo-/Dauerregeln festhalten
+- [x] 12 isolierte Einheiten-Regressionen ausführen; Gemini-Fehlerklassen abdecken
+- [ ] **Nächster Schritt:** unabhängiger erneuter Test pro Quelle mit Protokoll 0.2
+- [ ] Vollständige JSON-Schemas, semantischen Validator und gemeinsamen MIDI-/MusicXML-Exporter aus Composition Plan implementieren; reale Roundtrips und Notensatzprüfung
+
 ## Vereinbarte Neuausrichtung (29.10.2026)
 
 - [x] Umbenanntes GitHub-Repository bestätigen und neue Ausrichtung in Pflichtenheft, PROJECT_STATE, AGENTS und README dokumentieren
-- [ ] **Nächster Schritt:** versioniertes Analysebericht-Modell und einfache Modulansicht mit ausdrücklich gekennzeichneten Beispieldaten; Kriterien/Taktmatrix, Unsicherheiten, Nutzerhinweise und Änderungen zwischen Phrasen testen
+- [ ] Nachgeordnet: versioniertes Analysebericht-Modell und einfache Modulansicht mit ausdrücklich gekennzeichneten Beispieldaten; Kriterien/Taktmatrix, Unsicherheiten, Nutzerhinweise und Änderungen zwischen Phrasen testen
 - [ ] Echte musikalische Analyse von Audio-only, MIDI-only und Audio+MIDI integrieren und getrennt validieren; Modellwahl und Kosten kontrollieren, keine bezahlten Aufrufe ohne Zustimmung
 - [ ] Sicherheit je Kriterium und Takt/Zeitabschnitt aus Befunden begründen; Taktart-/Grenzunsicherheit weiterreichen, keine erfundenen Prozentwerte
 - [ ] Kurzurteil zu Eignung und erwartbarer Vorlagennähe; Details aufklappbar, Audiostelle/MIDI-Abschnitt direkt erreichbar

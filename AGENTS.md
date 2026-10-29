@@ -23,3 +23,7 @@ Vor jedem Entwicklungsauftrag zuerst die globalen Regeln [DEVELOPMENT_STANDARDS.
 Siehe [PFLICHTENHEFT_V0.1.md](PFLICHTENHEFT_V0.1.md) für detaillierte Kriterien, Funktionen und Abnahmetests.
 
 
+
+## Übergabe und Export
+
+Vor Schnittstellenarbeit [protocol/HANDOFF_PROTOCOL.md](protocol/HANDOFF_PROTOCOL.md) lesen. Analysebefunde nicht zur vollständigen Partitur zwingen. Composition Plan ist ein eigener Vertrag; keine stillen Tempo-Bezugswechsel. Prüfung tatsächlich ausführen und not_run von passed unterscheiden. `python3 tests/test_handoff_units.py` prüft isolierte Einheitenregeln, nicht den noch ausstehenden Produktionsvalidator oder Exporter.

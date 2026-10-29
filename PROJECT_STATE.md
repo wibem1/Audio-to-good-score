@@ -2,13 +2,21 @@
 
 Stand: **29.10.2026**. Maßgebliches Repository: **`wibem1/MusicCraft-App`**, `main`; vom Nutzer umbenannt. Letzter technisch geprüfter Produktcode: `f1e5eccbb68c12abdd4b74b0a1c10aaac84aa98f`.
 
-## Aktuelle Entscheidung und nächster Schritt
+## Übergabeprotokoll 0.2 (29.10.2026)
+
+Protokoll und isolierte Einheiten-Regression implementiert: `protocol/HANDOFF_PROTOCOL.md`, `tests/test_handoff_units.py`; 12/12 Tests bestanden (`test-results/handoff-0.2.txt`). Analyse bleibt lückenhafter Befundbericht; separater Composition Plan legt erst spielbare Ereignisse fest. Sekunden, Viertelnoten-Einheiten, Tempo-Bezugswert und exakte Brüche eindeutig definiert. Tests decken punktiertes Tempo, Taktfüllung, Triolen, Gate-Differenzen und unzureichende MusicXML-Divisionen ab. Kein Produktionsvalidator/Exporter, kein neues App-Release und keine bezahlten Aufrufe.
+
+Explorative private Audio-/MIDI-Übergabe und frischer KI-Kontext waren laut Nutzer im Hören vielversprechend. Nutzer lieferte anschließend Gemini-Code mit inkonsistentem Tempo und MusicXML-Dauern sowie unbelegten Prüfbehauptungen. Diese Fehlerklassen werden lokal arithmetisch reproduziert; Geminis vollständiger Originalcode wurde nicht ausgeführt. Ein erneuter externer Gemini-Test mit 0.2 steht aus. Nutzer-Musikdateien bleiben privat und werden nicht in GitHub aufgenommen.
+
+Nächster einzelner Schritt: 0.2 in frischen Kontexten je Quelle erneut prüfen; danach schema-validierten Composition Plan und gemeinsamen Exporter mit unabhängigem MIDI-/MusicXML-Roundtrip implementieren. Die folgenden früheren UI-Schritte sind nachgeordnet.
+
+## Vorige Entscheidung und Entwicklungsplanung
 
 **In diesem Schritt nur Dokumentation:** Produktname, Pflichtenheft, Agentenanweisungen, README und TODO auf die vereinbarte Ausrichtung gebracht. Kein Produktcode geändert, keine neue App-Version oder Freigabe, keine kostenpflichtigen Aufrufe. Die bisherigen Testnachweise sind historische Nachweise des unten beschriebenen Codes, keine Tests der neuen Zielarchitektur. Dokumentationsprüfung dieses Schritts: fünf Markdown-Dateien auf UTF-8, geschlossene Codeblöcke, vollständige MC01–MC10-Abnahmefälle, Kernkriterien, Statusabgrenzung und lokale Dateiverweise geprüft. Produkt-/Modelltests nicht erneut ausgeführt, da ausschließlich Dokumentation geändert wird.
 
 **Verbindlich geplant:** zwei eigenständige Module **Analyse** und **Komposition**. Audio-only, Audio+MIDI und MIDI-only sind gleichberechtigt. Neue Komposition aus Motiven/Vorgaben ist auch ohne Vorlage möglich. Vorlagenbezogene Imitation erst nach verständlichem Analysebericht und ausdrücklichem Nutzerauftrag. Bericht enthält Kriterienkatalog, Sicherheit je Kriterium und Takt/Zeitabschnitt, offene Fragen, Machbarkeit und begründete Prognose der Vorlagennähe. Details optional aufklappbar; keine bürokratische Einzelnotenabnahme. Siehe `PFLICHTENHEFT_V0.1.md`, Abschnitt 12.
 
-**Nächster einzelner Entwicklungsschritt:** versionierten Analysebericht als Datenmodell und einfache Modulansicht prototypisch umsetzen: Kurzurteil, Kriterien und Takt-/Zeitabschnittsmatrix einschließlich begründeter Unsicherheiten und Nutzerhinweisen. Testfälle für unsichere Taktgrenzen, unterschiedliche Sicherheit innerhalb desselben Takts und eine veränderte Schlussfigur vorsehen. Beispieldaten eindeutig als solche kennzeichnen; kein fingierter KI-Nachweis. Modell-/Kostenentscheidung für echte Analyse separat treffen; bezahlte Aufrufe bleiben zustimmungspflichtig.
+**Nachgeordneter UI-Schritt:** versionierten Analysebericht als Datenmodell und einfache Modulansicht prototypisch umsetzen: Kurzurteil, Kriterien und Takt-/Zeitabschnittsmatrix einschließlich begründeter Unsicherheiten und Nutzerhinweisen. Testfälle für unsichere Taktgrenzen, unterschiedliche Sicherheit innerhalb desselben Takts und eine veränderte Schlussfigur vorsehen. Beispieldaten eindeutig als solche kennzeichnen; kein fingierter KI-Nachweis. Modell-/Kostenentscheidung für echte Analyse separat treffen; bezahlte Aufrufe bleiben zustimmungspflichtig.
 
 **Noch nicht implementiert:** vollständiger semantischer KI-Analysebericht, grafische Sicherheitsmatrix, Machbarkeitsprognose, darauf aufbauende Nachkomposition und freie generative Komposition. Die vorhandene Basic-Pitch-Inferenz und regelbasierte Kontextdiagnose ersetzen diese Funktionen nicht.
 

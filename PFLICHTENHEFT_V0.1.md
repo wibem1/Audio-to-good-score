@@ -187,3 +187,7 @@ Ausgaben: abspielbare Fassung, MIDI und MusicXML, Analyse-/Änderungs-/Kostenber
 | MC10 | Reale kurze Passage technisch sowie im menschlichen Hörvergleich beurteilt; tatsächliche Nähe mit Prognose verglichen, Notation in Zielprogrammen geprüft; keine Verallgemeinerung aus einem gelungenen Ausschnitt |
 
 Technische Prototypen mit Beispieldaten sind kein Nachweis echter Erkennungsqualität. Eine musikalische Nutzerbestätigung gilt für die geprüfte Passage, nicht pauschal für das Modell oder alle Eingaben.
+
+## 13. Übergabeprotokoll 0.2
+
+Normativer experimenteller Vertrag: [protocol/HANDOFF_PROTOCOL.md](protocol/HANDOFF_PROTOCOL.md). Analyse liefert kompakte Befunde mit Unsicherheit, keine spielbare Partitur. Separater Composition Plan trifft erst musikalische Entscheidungen und definiert Exportereignisse. Einheiten und Tempo explizit; Exportprüfung unabhängig von Selbstaussagen. 12 Einheiten-Regressionen geprüft, vollständige Schema-/Exporter-/Modulintegration noch offen. Standardansicht bevorzugt problematische Passagen; vollständige Analyse aufklappbar. Player und Chat in beiden eigenständigen Modulen sowie direkt sichtbare Partitur sind Produktziel, noch nicht umgesetzt.
