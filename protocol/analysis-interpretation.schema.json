@@ -1,0 +1,412 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "feature": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {},
+        "certainty": {
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "undetermined"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "basis": {
+          "enum": [
+            "observation",
+            "interpretation",
+            "user_hint"
+          ]
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "feature",
+        "value",
+        "certainty",
+        "reason",
+        "basis",
+        "depends_on"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "format": {
+      "const": "MusicCraft-Analysis-Interpretation"
+    },
+    "version": {
+      "const": "1"
+    },
+    "base": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      },
+      "maxItems": 32
+    },
+    "style_findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      },
+      "maxItems": 12
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "range_s": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number",
+                "minimum": 0
+              },
+              {
+                "type": "number",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "development": {
+            "type": "string",
+            "minLength": 1
+          },
+          "provisional_bar": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "source_id",
+          "range_s",
+          "development"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 24
+    },
+    "timing_hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "meter": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "pulse_duration_s": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "pulse_duration_q": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "tempo_reference_q": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "tempo_per_minute": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "certainty": {
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "undetermined"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "meter",
+          "pulse_duration_s",
+          "pulse_duration_q",
+          "tempo_reference_q",
+          "tempo_per_minute",
+          "certainty"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 3
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "section_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "section_id",
+          "question"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 24
+    },
+    "suitability": {
+      "type": "object",
+      "properties": {
+        "forecast": {
+          "enum": [
+            "close",
+            "similar",
+            "free",
+            "not_advisable"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "forecast",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      },
+      "maxItems": 16
+    },
+    "observation_updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pitch_midi": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 127
+                },
+                "strength": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "velocity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 127
+                },
+                "offset_s": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "pitch_midi"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "candidate_relation": {
+            "enum": [
+              "alternatives",
+              "simultaneous",
+              "unresolved"
+            ]
+          },
+          "pitch_certainty": {
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "undetermined"
+            ]
+          },
+          "rhythm_certainty": {
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "undetermined"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "id",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 32
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "base",
+    "summary",
+    "findings",
+    "style_findings",
+    "sections",
+    "timing_hypotheses",
+    "open_questions",
+    "suitability",
+    "limitations",
+    "observation_updates"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+{
+  "previous_chars_before_instructions": 56652,
+  "new_complete_prompt_chars": 13232,
+  "reduction_percent": 76.6,
+  "observations_preserved": 144,
+  "token_counts_measured": false,
+  "paid_calls": 0
+}

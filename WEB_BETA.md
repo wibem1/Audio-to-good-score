@@ -1,6 +1,10 @@
-# MusicCraft App 0.1.0 Beta 1
+# MusicCraft App 0.1.0 Beta 2
 
 Zwei eigenständig nutzbare Module: Analyse und Komposition. Die Beta verbindet den geprüften Verarbeitungskern 0.3 mit einer statischen Browseroberfläche. Arbeitsmodus: **Musikalisch ausgewogen**. Sie ist eine technische Erprobung, keine allgemeine musikalische Qualitätsfreigabe.
+
+## Analyseüberarbeitung in Beta 2
+
+Die KI schreibt Rohbefunde nicht erneut aus. Sie ergänzt zwölf musikalische Kriterien sowie gezielte unsichere Stellen; der lokale Kern erstellt daraus die vollständige kompatible Übergabe. Voranalyse, musikalische Interpretation und fehlgeschlagener Versuch sind klar gekennzeichnet. „KI-Aufträge und Verbrauch“ zeigt Eingabe-, Antwort- und Denktokens, soweit gemeldet. „Diagnose speichern“ ist auch ohne Komposition verfügbar. Der manuelle Analyseauftrag ermöglicht denselben Austausch mit einer anderen KI. Keine automatische kostenpflichtige Fortsetzung, Wiederholung oder Limiterhöhung. Details: [Analyseaustausch 1](protocol/ANALYSIS_EXCHANGE_1.md).
 
 ## Benutzung
 
@@ -45,4 +49,4 @@ python3 web/build.py
 
 `web/build.py` erzeugt `dist/`; ein anderes Ziel ist mit `--output /absoluter/pfad` möglich. Statisch unter HTTPS bereitstellen. Projektkennung steht in `.openai/hosting.json`, niemals eine zweite Site für Updates anlegen. Pyodide 0.29.1 lädt music21 9.9.1, mido 1.3.3 und jsonschema 4.26.0; Verovio 5.7.0 rendert die erzeugte MusicXML. `web/core-worker.js` verarbeitet ausschließlich feste JSON-Aktionen, keinen Modellcode.
 
-Nachweise und Abnahmegrenzen: `test-results/web-beta/`. Der ältere Einzelnoten-/Reparaturprototyp im Repository bleibt historisch erhalten; die neue Web-App wird aus `web/` gebaut.
+Aktuelle Nachweise und Abnahmegrenzen: `test-results/analysis-redesign/`; frühere Beta-1-Prüfungen in `test-results/web-beta/`. Der ältere Einzelnoten-/Reparaturprototyp im Repository bleibt historisch erhalten; die neue Web-App wird aus `web/` gebaut.

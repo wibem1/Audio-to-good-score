@@ -2,6 +2,11 @@
 
 ## Aktuell: technische Web-Beta
 
+- [x] Analyseauftrag grundlegend auf kompakte Befunde und musikalische Ergänzungen umstellen
+- [x] Atomare Zusammenführung, zwölf Kriterien und Schutz der Messzeiten prüfen
+- [x] Verbrauch auch bei MAX_TOKENS erfassen; Diagnose ohne Komposition, klare Analysezustände
+- [ ] Live-Modelltest des neuen Analyseaustauschs und musikalische Beurteilung mit freigegebenem Kostenrahmen
+
 - [x] Eigenständige Analyse-/Kompositionsmodule mit Kern 0.3 verbinden
 - [x] Player, zeitbezogener A/B-Vergleich, Chat/Hinweise, Projekte und Fassungen
 - [x] Gezielte Taktänderung mit geschützten Nachbarpassagen; keine stille Einzelnotenreparatur

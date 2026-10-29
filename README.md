@@ -4,7 +4,9 @@ Musik analysieren und komponieren: zwei eigenständige Module mit optionaler Üb
 
 [**MusicCraft App öffnen**](https://musiccraft-app.wibem1.chatgpt.site/) – privater Zugang über dein ChatGPT-Konto.
 
-**Aktuelle technische Beta 0.1.0 Beta 1:** Browseroberfläche mit Audio-/MIDI-Import, Player und A/B-Vergleich, aufklappbarer Analyse, Chat, versionierten Kompositionsplänen, Undo/Redo, Partitur und geprüftem MIDI-/MusicXML-Export. Keine lokale Installation für die Web-App nötig.
+[Analyseüberarbeitung: kompakte Befunde, gezielte KI-Ergänzungen und Verbrauchsdiagnose](protocol/ANALYSIS_EXCHANGE_1.md).
+
+**Aktuelle technische Beta 0.1.0 Beta 2:** Browseroberfläche mit Audio-/MIDI-Import, Player und A/B-Vergleich, aufklappbarer Analyse, Chat, versionierten Kompositionsplänen, Undo/Redo, Partitur und geprüftem MIDI-/MusicXML-Export. Keine lokale Installation für die Web-App nötig.
 
 [Benutzung, Architektur, Kosten und Grenzen](WEB_BETA.md) · [Projektstand](PROJECT_STATE.md) · [Übergabeformat und Kernprofil](protocol/IMPLEMENTATION_0.3.md).
 

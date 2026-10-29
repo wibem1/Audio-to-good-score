@@ -24,6 +24,10 @@ Siehe [PFLICHTENHEFT_V0.1.md](PFLICHTENHEFT_V0.1.md) für detaillierte Kriterien
 
 
 
+## Analyseaustausch
+
+Die Web-Beta 2 nutzt den internen Interpretation-Vertrag aus `protocol/ANALYSIS_EXCHANGE_1.md`. Vollständige Rohbefunde lokal erhalten, keine erneute Vollabschrift vom Modell verlangen. Vorlagenbezogene Komposition bekommt weiterhin die vollständige logisch rekonstruierbare 0.3-Analyse. Verbrauch vor Fehlerweitergabe erfassen, keine automatische Fortsetzung nach MAX_TOKENS. Technische Simulation ist kein Live-Modellnachweis.
+
 ## Übergabe und Export
 
 Vor Schnittstellenarbeit [protocol/HANDOFF_PROTOCOL.md](protocol/HANDOFF_PROTOCOL.md) lesen. Analysebefunde nicht zur vollständigen Partitur zwingen. Composition Plan ist ein eigener Vertrag; keine stillen Tempo-Bezugswechsel. Prüfung tatsächlich ausführen und not_run von passed unterscheiden. `python3 tests/test_handoff_units.py` prüft isolierte Einheitenregeln, nicht den noch ausstehenden Produktionsvalidator oder Exporter.

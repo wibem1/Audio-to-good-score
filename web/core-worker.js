@@ -7,7 +7,7 @@ async function init(){
  await py.loadPackage('micropip');
  progress('Musikbibliotheken werden lokal im Browser vorbereitet …');
  await py.runPythonAsync("import micropip\nawait micropip.install(['music21==9.9.1','mido==1.3.3','jsonschema==4.26.0'])");
- const response=await fetch(new URL('./core.zip',self.location.href));if(!response.ok)throw Error('Kernpaket nicht erreichbar.');
+ const response=await fetch(new URL('./core.zip?v=0.1.0-beta.2',self.location.href));if(!response.ok)throw Error('Kernpaket nicht erreichbar.');
  py.unpackArchive(await response.arrayBuffer(),'zip',{extractDir:'/musiccraft'});
  py.runPython("import sys,json\nsys.path.insert(0,'/musiccraft')\nfrom musiccraft.web_bridge import dispatch");
  return py;

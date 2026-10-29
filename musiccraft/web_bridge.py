@@ -22,7 +22,16 @@ def preliminary(m):
 def dispatch(m):
  action=m['action']
  if action=='hash':return {'sha256':hashlib.sha256(base64.b64decode(m['data'])).hexdigest()}
- if action=='ready':return {'ready':True,'version':'0.1.0-beta.1','core':'0.3'}
+ if action=='ready':return {'ready':True,'version':'0.1.0-beta.2','core':'0.3'}
+ if action=='analysis_request':
+  from .analysis_exchange import request
+  return request(m['analysis'],m.get('hints'))
+ if action=='analysis_merge':
+  from .analysis_exchange import merge
+  return merge(m['analysis'],m['document'])
+ if action=='analysis_context':
+  from .analysis_exchange import context
+  return context(m['analysis'])
  if action=='preliminary':return preliminary(m)
  if action=='analysis':
   a=m['document']

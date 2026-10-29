@@ -1,0 +1,12 @@
+{
+  "version": "0.1.0-beta.2",
+  "analysisStage": "interpretation",
+  "analysisAttempt": null,
+  "usage": [],
+  "sources": [],
+  "notes": [
+    "Keine API-Schlüssel, Audiodaten oder Anfragetexte enthalten.",
+    "Zeichen sind keine Tokens. Fehlende Anbieterzähler bedeuten unbekannten Verbrauch.",
+    "Frühere MAX_TOKENS-Verbrauchsdaten lassen sich nicht nachträglich rekonstruieren."
+  ]
+}

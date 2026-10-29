@@ -1,0 +1,10 @@
+{
+  "browser_analysis_download": "passed",
+  "analysis_schema": "passed",
+  "original_observations_exactly_preserved": 14,
+  "revision": 2,
+  "required_musical_criteria": 12,
+  "independent_prompt_download": "passed",
+  "prompt_download_characters": 10659,
+  "source": "synthetic offline fixture; no real model call"
+}

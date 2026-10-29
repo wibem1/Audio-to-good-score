@@ -2,7 +2,19 @@
 
 Stand: **29.10.2026**. Maßgebliches Repository: **`wibem1/MusicCraft-App`**, `main`; vom Nutzer umbenannt. Kern-Ausgangsstand: `f52a6a83528f7782223b27a5a86a22739d25166a`; die Web-Beta baut darauf auf.
 
-## Aktuell: Web-Beta 0.1.0 Beta 1
+## Aktuell: Web-Beta 0.1.0 Beta 2 – Analyseüberarbeitung
+
+Ausgangsstand `9c359cfedc36f515fdc5570b0b95111872afd459`. Nutzer meldete MAX_TOKENS bereits für zehn Sekunden Audio; beide Exporte enthielten weiterhin lokale Voranalyse. Konkrete Diagnose: aufgeblähter Datenauftrag und Verbrauchsverlust im Fehlerpfad. Historischer tatsächlicher Tokenverbrauch und verwendetes Modell sind aus diesen Dateien nicht rekonstruierbar.
+
+**Implementiert und technisch geprüft:** kompakter verlustfreier Befundtransport, separates kleines Interpretation-Schema, zwölf musikalische Pflichtkriterien mit begründeter Unsicherheit, gezielte Ergänzungen statt Vollabschrift, lokale atomare Zusammenführung zur kompatiblen 0.3-Analyse. Keine Messzeiten verändert oder Kandidaten automatisch als gesichert ausgegeben. Gleicher kompakter Kontext bei Gespräch/Kompositionsauftrag. Quellen-/Revisionsbindung und bestehende Rhythmus-/Exportprüfungen bleiben erhalten.
+
+**Diagnose und Bedienung:** Verbrauch auch bei MAX_TOKENS/Abbruch sichern; Eingabe/Antwort/Denken getrennt, unbekannte Werte explizit unbekannt. Diagnose ohne fertige Komposition. Voranalyse/Interpretation/Fehlversuch sichtbar unterscheiden. Kein automatisches Wiederholen oder Erhöhen des Limits. Beta-1-Projekte bleiben lesbar; versionierte Ressourcen vermeiden veraltete Modul-/Kernpakete.
+
+**Nachweis:** 60 Python-, 61 Node- und 12 Einheitenfälle bestanden. Private 10-s-Datei: vollständiger neuer Prompt 13.232 Zeichen statt zuvor 56.652 Zeichen nur für Daten/Schema; 144 Beobachtungen erhalten, 76,6 % weniger Text. Keine gemessene Token-/Kostenersparnis. Einzelheiten `protocol/ANALYSIS_EXCHANGE_1.md` und `test-results/analysis-redesign/`.
+
+**Offen:** tatsächlicher Live-Modelltest mit ausdrücklich freigegebenem Kostenrahmen und musikalische Beurteilung. Keine kostenpflichtigen Testaufrufe. Bestehende Grenzen für Audio-only, Zielprogramme, Browser und Produktionsabnahme gelten weiter. Beta 2 unter https://musiccraft-app.wibem1.chatgpt.site erfolgreich privat veröffentlicht. Browserprüfung mit echtem Kern: Interpretation zusammengeführt, stale Ergänzung abgewiesen, Analyse/Auftrag/Diagnose heruntergeladen und Analyse unabhängig auf exakten Beobachtungserhalt geprüft. Nachweise einschließlich Deployment in `test-results/analysis-redesign/`.
+
+## Voriger veröffentlichter Stand: Web-Beta 0.1.0 Beta 1
 
 Analyse und Komposition sind jetzt als eigenständige Browsermodule an den Kern 0.3 angebunden (`web/`, `musiccraft/web_bridge.py`). Player mit zeitbezogenem A/B, Audio-/MIDI-Import, lokale unsichere Voranalyse, ausführlicher aufklappbarer Bericht, offene Passagen, Nutzerhinweise/Chat, optionaler Gemini-Adapter mit Einzelauftragszustimmung, Fremd-KI-Dateiaustausch, Kompositionsversionen/Undo/Redo, gezielte Taktänderung mit Nachbarpassagenschutz, Projekte/Autosave, direkte Verovio-Partitur sowie validierter MIDI-/MusicXML-Export.
 

@@ -1,0 +1,18 @@
+{
+  "id": "appgdep_6ae3736a50cc8191a8a261efe2459255",
+  "project_id": "appgprj_6ae329e40cc88191a1494446e8aec0be",
+  "title": "MusicCraft App",
+  "version_id": "appgprj_6ae329e40cc88191a1494446e8aec0be~appgver_9638745aaa6c8191b1dff567e76a39b7",
+  "type": "publish",
+  "status": "succeeded",
+  "url": "https://musiccraft-app.wibem1.chatgpt.site",
+  "has_mcp": false,
+  "screenshot_asset_pointer": null,
+  "provider_deployment_id": "site---6ae329e40cc88191a1494446e8aec0be",
+  "failure_message": null,
+  "env_set_revision": 0,
+  "updated_at": "2026-10-29T16:25:31.479321+00:00",
+  "source_commit": "1aa034695fd07e3ef4acbe0d4a2e30615ecf5b52",
+  "access": "owner-private",
+  "paid_test_calls": 0
+}
